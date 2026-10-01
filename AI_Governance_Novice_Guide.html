@@ -1,436 +1,1935 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Enterprise AI Governance: The Complete Master User Guide</title>
-<style>:root{
-  --gov-navy:#0B2E59;--gov-navy-dark:#061A33;--gov-navy-light:#16437E;
-  --gov-red:#E52421;--gov-red-soft:#FEE4E2;
-  --success-green:#059669;--success-soft:#D1FAE5;--warning-amber:#D97706;--warning-soft:#FEF3C7;
-  --danger-red:#DC2626;--danger-soft:#FEE2E2;--info-blue:#0284C7;--info-soft:#E0F2FE;--purple-ai:#7C3AED;--purple-soft:#EDE9FE;
-  --bg-page:#F8FAFC;--bg-card:#FFFFFF;--bg-sidebar:#FFFFFF;--border-light:#CBD5E1;--border-dark:#94A3B8;
-  --text-primary:#0F172A;--text-secondary:#334155;--text-muted:#475569;
-  --shadow-sm:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
-  --shadow-md:0 4px 6px -1px rgba(0,0,0,.08),0 2px 4px -2px rgba(0,0,0,.04);
-  --shadow-lg:0 12px 24px -4px rgba(11,46,89,.12),0 4px 6px -2px rgba(0,0,0,.05);
-  --shadow-float:0 16px 36px -4px rgba(6,26,51,.32),0 6px 12px -2px rgba(6,26,51,.18);
-  --radius-sm:6px;--radius-md:10px;--radius-lg:16px;--radius-full:9999px;
-  --transition:all .22s cubic-bezier(.4,0,.2,1);
-  --mono:Consolas,"Cascadia Mono","Courier New",monospace;
-  --sans:Calibri,"Segoe UI",Arial,sans-serif;
-}
-body.dark-mode{
-  --bg-page:#0A0F1D;--bg-card:#131E32;--bg-sidebar:#0E1726;--border-light:#2A3F60;--border-dark:#3B537E;
-  --text-primary:#F1F5F9;--text-secondary:#CBD5E1;--text-muted:#94A3B8;--gov-navy:#16437E;--gov-navy-dark:#0A1324;
-  --success-soft:rgba(5,150,105,.16);--warning-soft:rgba(217,119,6,.16);--danger-soft:rgba(220,38,38,.16);--info-soft:rgba(2,132,199,.16);--gov-red-soft:rgba(229,36,33,.16)
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%}
-body{font-family:var(--sans);background:var(--bg-page);color:var(--text-primary);line-height:1.5;height:100vh;display:flex;flex-direction:column;overflow:hidden;transition:background-color .3s,color .3s}
+<style>
+  :root {
+    --navy: #0B2E59;
+    --navy-dark: #061A33;
+    --navy-light: #16437E;
+    --red: #E52421;
+    --red-soft: #FEE2E2;
+    --green: #059669;
+    --green-soft: #D1FAE5;
+    --blue: #0284C7;
+    --blue-soft: #E0F2FE;
+    --purple: #7C3AED;
+    --purple-soft: #EDE9FE;
+    --amber: #D97706;
+    --amber-soft: #FEF3C7;
+    --bg-page: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --bg-sidebar: #FFFFFF;
+    --border-light: #E2E8F0;
+    --border-dark: #CBD5E1;
+    --text-main: #0F172A;
+    --text-secondary: #334155;
+    --text-muted: #64748B;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+    --shadow-lg: 0 12px 28px rgba(11,46,89,0.12);
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: "Cascadia Mono", Consolas, "Courier New", monospace;
+  }
 
-/* header */
-header.deck-header{background:linear-gradient(135deg,var(--gov-navy-dark) 0%,var(--gov-navy) 100%);color:#fff;padding:.7rem 1.6rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;position:sticky;top:0;z-index:1000;box-shadow:var(--shadow-md);border-bottom:2px solid rgba(229,36,33,.55);flex-wrap:wrap}
-.header-left{display:flex;align-items:center;gap:1.1rem}
-.logo-wrapper{background:#fff;padding:.3rem .6rem;border-radius:var(--radius-sm);display:flex;align-items:center;box-shadow:var(--shadow-sm)}
-.gov-logo-img{height:30px;width:auto;display:block}
-.header-title-box h1{font-size:1.15rem;font-weight:700;color:#fff;letter-spacing:-.01em}
-.header-title-box p{font-size:.76rem;color:#A9B8CC}
-.header-right{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap}
-.view-tabs{background:rgba(11,46,89,.45);padding:.25rem;border-radius:var(--radius-full);display:flex;gap:.3rem;border:1px solid rgba(255,255,255,.25)}
-.view-btn{background:transparent;border:none;color:#E2E8F0;padding:.4rem .95rem;font-size:.78rem;font-weight:700;border-radius:var(--radius-full);cursor:pointer;transition:all .2s;font-family:inherit}
-.view-btn:hover{background:rgba(255,255,255,.15);color:#fff}
-.view-btn.active{background:var(--gov-red);color:#fff;box-shadow:0 0 10px rgba(229,36,33,.5)}
-.btn-header{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);color:#fff;padding:.42rem .85rem;font-size:.76rem;font-weight:600;border-radius:var(--radius-sm);cursor:pointer;transition:var(--transition);font-family:inherit}
-.btn-header:hover{background:rgba(255,255,255,.24)}
-.btn-header.on{background:rgba(229,36,33,.85);border-color:var(--gov-red)}
+  body.dark-mode {
+    --bg-page: #080D1A;
+    --bg-card: #0F172A;
+    --bg-sidebar: #0B1120;
+    --border-light: #1E293B;
+    --border-dark: #334155;
+    --text-main: #F8FAFC;
+    --text-secondary: #CBD5E1;
+    --text-muted: #94A3B8;
+    --navy-dark: #050B14;
+    --navy: #16437E;
+  }
 
-/* layout */
-.app-body-layout{display:grid;grid-template-columns:320px 1fr;flex:1 1 auto;min-height:0;overflow:hidden}
-.app-body-layout>*{min-height:0}
-aside.sidebar-nav{position:relative;background:var(--bg-sidebar);border-right:1px solid var(--border-light);display:flex;flex-direction:column;overflow-y:auto;z-index:50}
-.sidebar-search-box{padding:.85rem 1rem;border-bottom:1px solid var(--border-light);background:var(--bg-card);position:sticky;top:0;z-index:10;display:flex;flex-direction:column;gap:.55rem}
-.sidebar-search-box input{width:100%;padding:.5rem .85rem;border-radius:var(--radius-sm);border:1px solid var(--border-light);background:var(--bg-page);color:var(--text-primary);font-size:.8rem;font-family:inherit;outline:none}
-.sidebar-search-box input:focus{border-color:var(--info-blue);box-shadow:0 0 0 2px rgba(2,132,199,.15)}
-.aud-tabs{display:flex;gap:.3rem}
-.aud-btn{flex:1;background:var(--bg-page);border:1px solid var(--border-light);color:var(--text-secondary);font-size:.7rem;font-weight:700;padding:.32rem .2rem;border-radius:var(--radius-sm);cursor:pointer;font-family:inherit}
-.aud-btn.active{background:var(--gov-navy);color:#fff;border-color:var(--gov-navy)}
-.sidebar-menu{list-style:none;padding:.7rem;display:flex;flex-direction:column;gap:.4rem}
-.sidebar-category-header{font-family:var(--mono);font-size:.68rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em;padding:.6rem .5rem .2rem}
-.sidebar-item{padding:.65rem .8rem;border-radius:var(--radius-md);cursor:pointer;border:1px solid transparent;transition:var(--transition);display:flex;flex-direction:column;gap:.25rem;background:var(--bg-card)}
-.sidebar-item:hover{background:var(--bg-page);border-color:var(--border-light);transform:translateX(2px)}
-.sidebar-item.active{background:rgba(11,46,89,.08);border-color:var(--gov-navy-light);box-shadow:var(--shadow-sm)}
-body.dark-mode .sidebar-item.active{background:rgba(2,132,199,.16);border-color:var(--info-blue)}
-.sidebar-item-header{display:flex;align-items:center;justify-content:space-between}
-.num-badge{font-family:var(--mono);font-size:.75rem;font-weight:800;color:#fff;background:#0B2E59;padding:.2rem .55rem;border-radius:4px;border:1px solid #2A5A9E;letter-spacing:.04em;display:inline-block;box-shadow:0 1px 3px rgba(0,0,0,.3)}
-.sidebar-item.active .num-badge,.slide-wrapper .num-badge.big{background:var(--gov-red);border-color:#FFA5A3;box-shadow:0 0 8px rgba(229,36,33,.4)}
-.sidebar-item-title{font-size:.88rem;font-weight:700;color:var(--text-primary);line-height:1.25}
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: var(--font);
+    background: var(--bg-page);
+    color: var(--text-main);
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: background-color 0.25s, color 0.25s;
+  }
 
-/* stage */
-main.presentation-stage{overflow-y:auto;padding:1.4rem 2rem 7rem;display:flex;flex-direction:column;gap:1.2rem;background:var(--bg-page)}
-.stage-ribbon{background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-md);padding:.7rem 1.2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;box-shadow:var(--shadow-sm);flex-wrap:wrap}
-.ribbon-meta{display:flex;align-items:center;gap:.8rem;font-size:.84rem}
-.pill-badge{font-family:var(--mono);font-size:.68rem;font-weight:700;padding:.2rem .55rem;border-radius:var(--radius-full);text-transform:uppercase}
-.pill-all{background:#F3F4F6;color:#374151;border:1px solid #E5E7EB}
-.pill-mgmt{background:#EFF6FF;color:#1D4ED8;border:1px solid #BFDBFE}
-.pill-arch{background:#FDF2F8;color:#BE185D;border:1px solid #FBCFE8}
-body.dark-mode .pill-all{background:#1E293B;color:#CBD5E1;border-color:#334155}
-body.dark-mode .pill-mgmt{background:rgba(29,78,216,.2);color:#93C5FD;border-color:rgba(147,197,253,.3)}
-body.dark-mode .pill-arch{background:rgba(190,24,93,.2);color:#F472B6;border-color:rgba(244,114,182,.3)}
-.kbd-hint{font-family:var(--mono);font-size:.68rem;color:#94A3B8;background:rgba(148,163,184,.14);padding:.15rem .35rem;border-radius:4px}
+  /* HEADER */
+  header.master-header {
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+    color: #fff;
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    border-bottom: 2px solid var(--red);
+    box-shadow: var(--shadow-md);
+    z-index: 100;
+    flex-shrink: 0;
+  }
 
-/* slides */
-.slide-wrapper{background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-md);padding:1.35rem 1.75rem 1.6rem;box-shadow:var(--shadow-lg);display:none;flex-direction:column;gap:.9rem;position:relative;scroll-margin-top:1rem}
-.slide-wrapper.show{display:flex;animation:slideIn .25s ease-out}
-body.full-mode .slide-wrapper.in-track{display:flex;animation:none}
-@keyframes slideIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.slide-hero{border-bottom:2px solid var(--border-light);padding-bottom:.75rem;display:flex;flex-direction:column;gap:.3rem}
-.hero-top{display:flex;align-items:center;gap:.6rem;margin-bottom:.3rem}
-.num-badge.big{font-size:.85rem;padding:.25rem .65rem}
-.slide-tag{font-family:var(--mono);font-size:.74rem;font-weight:700;color:var(--gov-red);letter-spacing:.08em;text-transform:uppercase}
-.slide-heading{font-size:1.4rem;font-weight:800;color:var(--gov-navy);line-height:1.18}
-body.dark-mode .slide-heading{color:#fff}
-.slide-description{font-size:.86rem;color:var(--text-secondary);font-weight:500;line-height:1.45;max-width:1150px}
-.evidence-tag{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--mono);font-size:.7rem;color:#475569;background:#F1F5F9;border:1px solid #CBD5E1;padding:.2rem .55rem;border-radius:var(--radius-sm);margin-top:.3rem;width:fit-content}
-body.dark-mode .evidence-tag{background:#1E293B;border-color:#334155;color:#94A3B8}
-.slide-body{display:flex;flex-direction:column;gap:1rem}
+  .header-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
 
-/* executive banner */
-.banner-executive{background:linear-gradient(135deg,#0B2E59 0%,#16437E 100%);color:#fff;padding:1rem 1.25rem;border-radius:8px;border-left:5px solid var(--gov-red);box-shadow:0 4px 12px rgba(0,0,0,.15);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem}
-.banner-executive .kicker{background:var(--gov-red);color:#fff;font-family:var(--mono);font-size:.7rem;padding:.15rem .55rem;border-radius:4px;font-weight:800;letter-spacing:.05em;text-transform:uppercase}
-.banner-executive h3{font-size:1.12rem;font-weight:800;margin:.35rem 0 .15rem;color:#fff}
-.banner-executive p{font-size:.82rem;color:#E2E8F0;max-width:860px;line-height:1.45}
-.banner-executive .scope{text-align:right}
-.banner-executive .scope span{display:block;font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:#CBD5E1;font-weight:700}
-.banner-executive .scope strong{font-family:var(--mono);font-size:1.35rem;font-weight:800;color:#fff}
+  .gov-badge {
+    background: var(--red);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 5px 12px;
+    border-radius: var(--radius-sm);
+    letter-spacing: 1px;
+    box-shadow: 0 2px 6px rgba(229,36,33,0.4);
+  }
 
-/* kpi cards */
-.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
-.kpi-grid.four{grid-template-columns:repeat(4,1fr)}
-.kpi{background:var(--bg-card);padding:.85rem 1rem;border-radius:8px;border:1px solid var(--border-light);border-top:3px solid var(--gov-navy);display:flex;flex-direction:column;justify-content:space-between;gap:.15rem;transition:var(--transition)}
-.kpi:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
-.kpi-head{display:flex;justify-content:space-between;align-items:center;gap:.4rem}
-.kpi-lbl{font-size:.72rem;text-transform:uppercase;color:var(--text-secondary);font-weight:800;letter-spacing:.05em}
-.kpi-val{font-family:var(--mono);font-size:1.65rem;font-weight:800;color:var(--gov-navy);margin:.15rem 0}
-body.dark-mode .kpi-val.c-navy{color:#93C5FD}
-.kpi-val small{font-size:.95rem}
-.kpi-desc{font-size:.76rem;color:var(--text-secondary);font-weight:600}
-.t-navy{border-top-color:#0B2E59}.t-blue{border-top-color:#0284C7}.t-amber{border-top-color:#D97706}.t-green{border-top-color:#059669}.t-purple{border-top-color:#7C3AED}.t-red{border-top-color:#DC2626}
-.c-navy{color:#0B2E59}.c-blue{color:#0284C7}.c-amber{color:#D97706}.c-green{color:#059669}.c-purple{color:#7C3AED}.c-red{color:#DC2626}
-.badge-evidence{display:inline-flex;align-items:center;font-family:var(--mono);font-size:.66rem;font-weight:700;padding:.15rem .45rem;border-radius:4px;letter-spacing:.03em;white-space:nowrap}
-.badge-ev-observed{background:#0B2E59;color:#fff;border:1px solid #1E4E8C}
-.badge-ev-derived{background:#1E3A8A;color:#BFDBFE;border:1px solid #3B82F6}
-.badge-ev-estimated{background:#78350F;color:#FDE68A;border:1px solid #D97706}
+  .brand-text h1 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+  }
 
-/* layout helpers */
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;align-items:start}
-.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-.four-col{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
-.box{background:var(--bg-page);border:1px solid var(--border-light);border-radius:var(--radius-md);padding:1.1rem 1.2rem;display:flex;flex-direction:column;gap:.6rem}
-.box-heading{font-size:1rem;font-weight:800;color:var(--text-primary);display:flex;align-items:center;gap:.5rem}
-.box p,.box li{font-size:.84rem;color:var(--text-secondary);line-height:1.5}
-.box ul,.box ol{padding-left:1.1rem;display:flex;flex-direction:column;gap:.3rem}
-.feature{background:var(--bg-card);border:1px solid var(--border-light);border-top:4px solid var(--info-blue);border-radius:var(--radius-md);padding:1rem 1.1rem;display:flex;flex-direction:column;gap:.5rem;transition:var(--transition)}
-.feature:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:var(--gov-navy-light)}
-.feature.f-red{border-top-color:#DC2626}.feature.f-green{border-top-color:#059669}.feature.f-amber{border-top-color:#D97706}.feature.f-purple{border-top-color:#7C3AED}.feature.f-navy{border-top-color:#0B2E59}
-.feature-head{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
-.feature-title{font-size:.98rem;font-weight:800;color:var(--text-primary);display:flex;align-items:center;gap:.5rem}
-.dot-num{width:22px;height:22px;border-radius:50%;background:var(--info-blue);color:#fff;font-size:.72rem;font-weight:800;display:inline-flex;align-items:center;justify-content:center;flex:none}
-.f-red .dot-num{background:#DC2626}.f-green .dot-num{background:#059669}.f-amber .dot-num{background:#D97706}.f-purple .dot-num{background:#7C3AED}.f-navy .dot-num{background:#0B2E59}
-.count-chip{font-family:var(--mono);font-size:.72rem;font-weight:800;background:#0B2E59;color:#fff;padding:.18rem .5rem;border-radius:4px;white-space:nowrap}
-.feature p{font-size:.83rem;color:var(--text-secondary);line-height:1.5}
-.reality{background:var(--bg-page);border-left:3px solid #DC2626;padding:.5rem .7rem;border-radius:0 6px 6px 0;font-size:.8rem;color:var(--text-secondary)}
-.reality b{color:#DC2626}
-.reality.ok{border-left-color:#059669}.reality.ok b{color:#059669}
-.action{border-top:1px dashed var(--border-light);padding-top:.5rem;font-size:.8rem;color:var(--text-secondary)}
-.action b{color:var(--text-primary)}
+  .brand-text p {
+    font-size: 11px;
+    color: #94A3B8;
+  }
 
-/* alerts */
-.alert-box{border-radius:var(--radius-md);padding:.9rem 1.1rem;font-size:.86rem;line-height:1.5}
-.alert-box strong{font-weight:800}
-.alert-danger{background:var(--danger-soft);color:#991B1B;border-left:4px solid var(--danger-red)}
-.alert-warning{background:var(--warning-soft);color:#92400E;border-left:4px solid var(--warning-amber)}
-.alert-success{background:var(--success-soft);color:#065F46;border-left:4px solid var(--success-green)}
-.alert-info{background:var(--info-soft);color:#075985;border-left:4px solid var(--info-blue)}
-body.dark-mode .alert-danger{color:#FCA5A5}body.dark-mode .alert-warning{color:#FCD34D}body.dark-mode .alert-success{color:#6EE7B7}body.dark-mode .alert-info{color:#7DD3FC}
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 
-/* presenter notes */
-.presenter-note{display:none;background:var(--bg-page);border:1px dashed var(--border-dark);border-left:4px solid var(--gov-navy);border-radius:var(--radius-md);padding:.7rem 1rem;font-size:.84rem;color:var(--text-secondary);font-style:italic}
-.presenter-note b{display:block;font-style:normal;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gov-red);margin-bottom:.2rem}
-body.notes-on .presenter-note{display:block}
+  .mode-tabs {
+    background: rgba(255,255,255,0.1);
+    padding: 3px;
+    border-radius: 20px;
+    display: flex;
+    gap: 2px;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
 
-/* tables */
-table.presentation-table{width:100%;border-collapse:separate;border-spacing:0;font-size:.82rem;text-align:left;border-radius:8px;overflow:hidden;border:1px solid var(--border-light);box-shadow:var(--shadow-sm);table-layout:fixed}
-table.presentation-table th{background:#0B2E59;color:#fff;font-weight:800;padding:.7rem .9rem;border-bottom:2px solid var(--gov-red);text-transform:uppercase;font-size:.72rem;letter-spacing:.06em}
-table.presentation-table td{padding:.62rem .9rem;border-bottom:1px solid var(--border-light);color:var(--text-primary);background:var(--bg-card);vertical-align:top;word-wrap:break-word}
-table.presentation-table tr:nth-child(even) td{background:rgba(11,46,89,.025)}
-table.presentation-table tr:last-child td{border-bottom:none}
-table.presentation-table tr:hover td{background:rgba(2,132,199,.07)}
-body.dark-mode table.presentation-table tr:nth-child(even) td{background:#18263E}
-body.dark-mode table.presentation-table tr:hover td{background:#203354}
-td.r,th.r{text-align:right}
-td.mono{font-family:var(--mono);font-weight:700}
-.status-pill{display:inline-flex;align-items:center;font-size:.7rem;font-weight:800;padding:.14rem .5rem;border-radius:var(--radius-full);white-space:nowrap}
-.status-danger{background:var(--danger-soft);color:var(--danger-red)}
-.status-warning{background:var(--warning-soft);color:var(--warning-amber)}
-.status-success{background:var(--success-soft);color:var(--success-green)}
-.status-info{background:var(--info-soft);color:var(--info-blue)}
+  .mode-btn {
+    background: transparent;
+    border: none;
+    color: #E2E8F0;
+    padding: 5px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 16px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+  }
 
-/* scrollable registers with frozen headers */
-.table-container{overflow:auto;position:relative;border:1px solid var(--border-light);border-radius:8px;box-shadow:var(--shadow-sm);max-height:470px;scrollbar-width:thin;scrollbar-color:#0B2E59 var(--bg-page)}
-.table-container table.presentation-table{border:none;border-radius:0;box-shadow:none;margin:0}
-.table-container thead th{position:sticky;top:0;z-index:5;border-bottom:3px solid var(--gov-red);box-shadow:0 4px 6px -1px rgba(0,0,0,.35)}
-.table-container td{font-size:.78rem;padding:.42rem .7rem}
-.reg-meta{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;font-size:.78rem;color:var(--text-secondary)}
+  .mode-btn.active {
+    background: var(--red);
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(229,36,33,0.4);
+  }
 
-/* diagrams */
-.diagram{background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-md);padding:.6rem;box-shadow:var(--shadow-sm)}
-.diagram svg{width:100%;height:auto;display:block}
-body.dark-mode .diagram{background:#F8FAFC}
-.fig-note{font-size:.78rem;color:var(--text-muted)}
+  .btn-action {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.22);
+    color: #fff;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+  }
 
-/* controller */
-.frozen-bottom-controller{position:fixed;bottom:22px;right:24px;z-index:9999;background:rgba(6,26,51,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.22);border-radius:var(--radius-lg);padding:.6rem .9rem;display:flex;align-items:center;gap:.7rem;box-shadow:var(--shadow-float);color:#fff;cursor:grab;user-select:none;touch-action:none;transition:border-color .2s,box-shadow .2s,opacity .3s}
-.frozen-bottom-controller:hover{border-color:rgba(255,255,255,.42)}
-.drag-handle-grip{color:rgba(255,255,255,.45);font-size:1.1rem;letter-spacing:-2px;cursor:grab;padding:0 .15rem}
-.drag-handle-grip:hover{color:#fff}
-.controller-nav-btn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);color:#fff;padding:.45rem .85rem;border-radius:var(--radius-sm);font-size:.82rem;font-weight:700;cursor:pointer;transition:var(--transition);font-family:inherit}
-.controller-nav-btn:hover:not(:disabled){background:var(--gov-red);border-color:var(--gov-red)}
-.controller-nav-btn:disabled{opacity:.35;cursor:not-allowed}
-.controller-info{display:flex;flex-direction:column;gap:.2rem;min-width:140px}
-.controller-slide-text{font-size:.85rem;font-weight:700;color:#fff;display:flex;align-items:center;gap:.4rem}
-.controller-progress-bar{width:100%;height:4px;background:rgba(255,255,255,.2);border-radius:var(--radius-full);overflow:hidden}
-.controller-progress-fill{height:100%;background:var(--gov-red);width:0;transition:width .25s}
-.controller-select{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;padding:.42rem .7rem;border-radius:var(--radius-sm);font-size:.76rem;font-family:inherit;font-weight:600;cursor:pointer;outline:none;max-width:230px}
-.controller-select option{background:#061A33;color:#fff}
+  .btn-action:hover {
+    background: rgba(255,255,255,0.22);
+  }
 
-/* presentation mode */
-body.present-mode header.deck-header,body.present-mode aside.sidebar-nav,body.present-mode .stage-ribbon{display:none}
-body.present-mode .app-body-layout{grid-template-columns:1fr}
-html.present-root{font-size:17px}
-body.present-mode main.presentation-stage{padding:0;gap:0;background:var(--bg-card)}
-body.present-mode .slide-wrapper{max-width:none;width:100%;min-height:100vh;margin:0;border:none;border-radius:0;box-shadow:none;padding:2.2rem 3rem 2.4rem}
-body.present-mode .frozen-bottom-controller,body.full-mode .frozen-bottom-controller{display:none}
-.exit-present{display:none;position:fixed;top:10px;right:14px;z-index:9999;background:rgba(6,26,51,.85);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:var(--radius-sm);padding:.35rem .75rem;font-size:.75rem;font-weight:700;cursor:pointer;opacity:0;transition:opacity .2s;font-family:inherit}
-.exit-present:hover,.exit-present:focus{opacity:.95}
-body.present-mode .exit-present{display:block}
+  /* LAYOUT */
+  .app-container {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
 
-@media(max-width:1180px){.kpi-grid.four,.four-col{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:1024px){.app-body-layout{grid-template-columns:1fr}aside.sidebar-nav{display:none}.two-col,.three-col,.kpi-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:720px){.two-col,.three-col,.kpi-grid,.kpi-grid.four,.four-col{grid-template-columns:1fr}}
+  /* SIDEBAR */
+  aside.sidebar {
+    background: var(--bg-sidebar);
+    border-right: 1px solid var(--border-light);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow-y: auto;
+  }
 
-@media print{
-  html,body{height:auto}
-  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  body{overflow:visible;display:block;background:#fff}
-  header.deck-header,.frozen-bottom-controller,.stage-ribbon,aside.sidebar-nav,.exit-present{display:none!important}
-  .app-body-layout{display:block;height:auto;overflow:visible}
-  main.presentation-stage{overflow:visible;padding:0;background:#fff}
-  .slide-wrapper.in-track{display:flex!important;page-break-after:always;break-after:page;box-shadow:none;border:1px solid #CBD5E1;margin-bottom:1rem;zoom:1}
-  .table-container{max-height:none;overflow:visible}
-  .table-container thead{display:table-header-group}
-  tr{break-inside:avoid}
-  @page{size:A4 landscape;margin:10mm}
-}
-</style></head>
-<body data-deck-label="Master User Guide">
-<header class="deck-header">
- <div class="header-left"><div class="ai-gov-header-badge" style="background:#E52421;color:#FFFFFF;font-family:Calibri,Arial,sans-serif;font-weight:800;font-size:13px;padding:6px 14px;border-radius:6px;letter-spacing:1.5px;margin-right:15px;box-shadow:0 2px 6px rgba(229,36,33,0.4)">AI-GOV</div>
- <div class="header-title-box"><h1>Enterprise AI Governance: The Complete Master User Guide</h1><p>Enterprise AI Governance Platform | Complete Architecture & Operational Guide | Workspace: C:\ai-governance-package | October 2026</p></div></div>
- <div class="header-right">
-  <div class="view-tabs" role="tablist" aria-label="View mode">
-   <button class="view-btn active" data-mode="slide" onclick="setMode('slide')" title="One slide at a time with navigation sidebar">Slide Mode</button>
-   <button class="view-btn" data-mode="present" onclick="setMode('present')" title="Full-screen presentation (F). Esc to exit">Presentation</button>
-   <button class="view-btn" data-mode="full" onclick="setMode('full')" title="All slides on one scrolling page">Full View</button>
+  .sidebar-search {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-light);
+    position: sticky;
+    top: 0;
+    background: var(--bg-sidebar);
+    z-index: 10;
+  }
+
+  .sidebar-search input {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-light);
+    background: var(--bg-page);
+    color: var(--text-main);
+    font-size: 13px;
+    outline: none;
+    font-family: inherit;
+  }
+
+  .sidebar-search input:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 2px rgba(2,132,199,0.15);
+  }
+
+  .sidebar-items-list {
+    padding: 12px 14px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .sidebar-chapter-heading {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 12px 8px 4px;
+  }
+
+  .sidebar-item {
+    padding: 10px 12px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+    background: var(--bg-card);
+  }
+
+  .sidebar-item:hover {
+    background: var(--bg-page);
+    border-color: var(--border-light);
+    transform: translateX(2px);
+  }
+
+  .sidebar-item.active {
+    background: rgba(11,46,89,0.06);
+    border-color: var(--navy-light);
+    box-shadow: var(--shadow-sm);
+  }
+
+  body.dark-mode .sidebar-item.active {
+    background: rgba(2,132,199,0.15);
+    border-color: var(--blue);
+  }
+
+  .sidebar-item-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+
+  .sidebar-item-num {
+    font-size: 11px;
+    font-weight: 800;
+    color: #fff;
+    background: var(--navy);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: var(--mono);
+  }
+
+  .sidebar-item.active .sidebar-item-num {
+    background: var(--red);
+  }
+
+  .sidebar-item-tag {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  .sidebar-item-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-main);
+    line-height: 1.35;
+  }
+
+  /* STAGE */
+  main.stage-area {
+    overflow-y: auto;
+    padding: 28px 36px 90px;
+    background: var(--bg-page);
+  }
+
+  /* SLIDE STYLING */
+  .slide-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 28px 36px 36px;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 28px;
+    display: none;
+    scroll-margin-top: 20px;
+  }
+
+  .slide-section.active {
+    display: block;
+    animation: fadeIn 0.25s ease-out;
+  }
+
+  body.full-mode .slide-section {
+    display: block !important;
+    animation: none !important;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .slide-header {
+    border-bottom: 2px solid var(--border-light);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+
+  .slide-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 12px;
+  }
+
+  .slide-num-pill {
+    background: var(--navy);
+    color: #fff;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: var(--mono);
+    font-size: 11px;
+  }
+
+  .slide-chapter-tag {
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .slide-sep {
+    color: var(--border-dark);
+  }
+
+  .slide-tag-pill {
+    background: var(--red-soft);
+    color: var(--red);
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+  }
+
+  body.dark-mode .slide-tag-pill {
+    background: rgba(229,36,33,0.2);
+  }
+
+  .slide-main-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.25;
+    margin-bottom: 6px;
+  }
+
+  body.dark-mode .slide-main-title {
+    color: #fff;
+  }
+
+  .slide-main-subtitle {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    max-width: 950px;
+  }
+
+  /* LEAD BANNER */
+  .lead-banner {
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-light) 100%);
+    color: #fff;
+    padding: 22px 28px;
+    border-radius: var(--radius-md);
+    border-left: 5px solid var(--red);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .lead-kicker {
+    background: var(--red);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+
+  .lead-banner h3 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #fff;
+  }
+
+  .lead-banner p {
+    font-size: 13px;
+    color: #E2E8F0;
+    line-height: 1.6;
+  }
+
+  /* GRIDS */
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+
+  /* CARDS & BOXES */
+  .stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-top: 3px solid var(--navy);
+    border-radius: var(--radius-md);
+    padding: 16px;
+  }
+
+  .stat-num {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--navy);
+    font-family: var(--mono);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  body.dark-mode .stat-num { color: #93C5FD; }
+
+  .stat-label {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+  }
+
+  .stat-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  .content-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 20px;
+  }
+
+  .content-box.highlight {
+    background: rgba(2,132,199,0.04);
+    border-color: var(--blue);
+  }
+
+  body.dark-mode .content-box.highlight {
+    background: rgba(2,132,199,0.1);
+  }
+
+  .box-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  body.dark-mode .box-title { color: #93C5FD; }
+
+  .clean-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .clean-list li {
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .clean-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--red);
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1;
+    top: 2px;
+  }
+
+  .clean-ordered-list {
+    padding-left: 20px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-main);
+  }
+
+  .clean-ordered-list li {
+    margin-bottom: 6px;
+  }
+
+  /* DIAGRAMS */
+  .diagram-wrapper {
+    background: #F1F5F9;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 20px;
+  }
+
+  body.dark-mode .diagram-wrapper { background: #0B1120; }
+
+  .diagram-title {
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 14px;
+    letter-spacing: 0.5px;
+  }
+
+  body.dark-mode .diagram-title { color: #93C5FD; }
+
+  .pipeline-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+  }
+
+  .pipeline-step {
+    background: #fff;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    border-top: 3px solid var(--blue);
+  }
+
+  body.dark-mode .pipeline-step { background: var(--bg-card); }
+
+  .pipeline-step.final {
+    border-top-color: var(--red);
+    background: #FFF5F5;
+  }
+
+  body.dark-mode .pipeline-step.final { background: rgba(229,36,33,0.12); }
+
+  .step-badge {
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--blue);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+
+  .step-badge.red { color: var(--red); }
+
+  .step-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  body.dark-mode .step-name { color: #fff; }
+
+  .step-desc {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin-bottom: 6px;
+  }
+
+  .step-file {
+    font-size: 10px;
+    font-family: var(--mono);
+    color: var(--text-secondary);
+    background: var(--bg-page);
+    padding: 2px 4px;
+    border-radius: 3px;
+    word-break: break-all;
+  }
+
+  /* TABLES */
+  .table-card {
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--bg-card);
+  }
+
+  .table-header {
+    background: #F1F5F9;
+    padding: 12px 18px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    border-bottom: 1px solid var(--border-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  body.dark-mode .table-header { background: #131E32; color: #fff; }
+
+  table.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  table.data-table th, table.data-table td {
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-light);
+    vertical-align: top;
+  }
+
+  table.data-table th {
+    background: #F8FAFC;
+    color: var(--text-secondary);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  body.dark-mode table.data-table th { background: #0F172A; }
+
+  table.data-table tr:hover td {
+    background: #F8FAFC;
+  }
+
+  body.dark-mode table.data-table tr:hover td {
+    background: #162036;
+  }
+
+  /* CODE BOX */
+  .code-box {
+    background: #061A33;
+    color: #F8FAFC;
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.6;
+    overflow-x: auto;
+  }
+
+  .code-box.highlight-cmd {
+    font-size: 14px;
+    font-weight: 600;
+    background: #0B2E59;
+    border: 1px solid #1E4E8C;
+    color: #4ADE80;
+  }
+
+  .cmd-comment { color: #94A3B8; }
+  .cmd-text { color: #F8FAFC; }
+
+  /* CALLOUTS */
+  .callout-box {
+    padding: 14px 18px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    line-height: 1.5;
+    border-left: 4px solid;
+  }
+
+  .callout-box.info {
+    background: #EFF6FF;
+    border-color: var(--blue);
+    color: #1E3A8A;
+  }
+
+  .callout-box.warning {
+    background: #FFFBEB;
+    border-color: var(--amber);
+    color: #92400E;
+  }
+
+  .callout-box.success {
+    background: #ECFDF5;
+    border-color: var(--green);
+    color: #065F46;
+  }
+
+  body.dark-mode .callout-box.info { background: rgba(2,132,199,0.12); color: #93C5FD; }
+  body.dark-mode .callout-box.warning { background: rgba(217,119,6,0.12); color: #FDE68A; }
+  body.dark-mode .callout-box.success { background: rgba(5,150,105,0.12); color: #A7F3D0; }
+
+  /* STEP CARDS */
+  .step-card {
+    display: flex;
+    gap: 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 18px 22px;
+    align-items: flex-start;
+  }
+
+  .step-card-num {
+    background: var(--navy);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-family: var(--mono);
+    text-transform: uppercase;
+  }
+
+  .step-card-body h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  body.dark-mode .step-card-body h4 { color: #fff; }
+
+  /* OVERLAY CARDS */
+  .overlay-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 14px;
+    border-top: 3px solid var(--purple);
+  }
+
+  .overlay-badge {
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--purple);
+    text-transform: uppercase;
+  }
+
+  .overlay-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    margin: 2px 0 4px;
+  }
+
+  body.dark-mode .overlay-name { color: #fff; }
+
+  .overlay-desc {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  /* OUTPUT CARDS */
+  .output-card {
+    display: flex;
+    gap: 14px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    align-items: flex-start;
+  }
+
+  .output-card.full {
+    border-left: 4px solid var(--green);
+  }
+
+  .output-num {
+    background: #F1F5F9;
+    color: var(--navy);
+    font-size: 13px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-family: var(--mono);
+  }
+
+  body.dark-mode .output-num { background: #1E293B; color: #93C5FD; }
+
+  .output-body h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  body.dark-mode .output-body h4 { color: #fff; }
+
+  .output-body p {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* BADGES */
+  .badge-action {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: var(--mono);
+    text-transform: uppercase;
+  }
+
+  .badge-action.red {
+    background: var(--red-soft);
+    color: var(--red);
+  }
+
+  body.dark-mode .badge-action.red {
+    background: rgba(229,36,33,0.25);
+  }
+
+  /* CHAT PROMPT BOX */
+  .chat-prompt-box {
+    background: #EFF6FF;
+    border-left: 4px solid var(--blue);
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-top: 6px;
+  }
+
+  body.dark-mode .chat-prompt-box {
+    background: rgba(2,132,199,0.15);
+    color: #93C5FD;
+  }
+
+  /* CONTROLLER */
+  .bottom-controller {
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    background: rgba(6,26,51,0.92);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 30px;
+    padding: 8px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    z-index: 1000;
+  }
+
+  body.full-mode .bottom-controller { display: none; }
+
+  .nav-btn {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+  }
+
+  .nav-btn:hover:not(:disabled) {
+    background: var(--red);
+    border-color: var(--red);
+  }
+
+  .nav-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+
+  .progress-info {
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 110px;
+    text-align: center;
+  }
+
+  .progress-bar-wrap {
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    background: var(--red);
+    width: 10%;
+    transition: width 0.2s;
+  }
+
+  .slide-select-dropdown {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-family: inherit;
+    outline: none;
+    cursor: pointer;
+    max-width: 180px;
+  }
+
+  .slide-select-dropdown option {
+    background: #061A33;
+    color: #fff;
+  }
+
+  /* PRESENTATION MODE */
+  body.present-mode header.master-header,
+  body.present-mode aside.sidebar {
+    display: none;
+  }
+
+  body.present-mode .app-container {
+    grid-template-columns: 1fr;
+  }
+
+  body.present-mode main.stage-area {
+    padding: 0;
+    background: var(--bg-card);
+  }
+
+  body.present-mode .slide-section {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    min-height: 100vh;
+    padding: 40px 60px;
+  }
+
+  .exit-present-btn {
+    display: none;
+    position: fixed;
+    top: 14px;
+    right: 20px;
+    z-index: 9999;
+    background: rgba(6,26,51,0.85);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  body.present-mode .exit-present-btn {
+    display: block;
+  }
+
+  /* PRINT STYLES */
+  @media print {
+    header.master-header,
+    aside.sidebar,
+    .bottom-controller,
+    .exit-present-btn {
+      display: none !important;
+    }
+
+    .app-container {
+      display: block !important;
+    }
+
+    main.stage-area {
+      overflow: visible !important;
+      padding: 0 !important;
+      background: #fff !important;
+    }
+
+    .slide-section {
+      display: block !important;
+      page-break-after: always !important;
+      break-after: page !important;
+      box-shadow: none !important;
+      border: 1px solid #CBD5E1 !important;
+      margin-bottom: 20px !important;
+      background: #fff !important;
+    }
+
+    @page {
+      size: landscape;
+      margin: 10mm;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .app-container { grid-template-columns: 1fr; }
+    aside.sidebar { display: none; }
+    .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .pipeline-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    main.stage-area { padding: 16px; }
+    .slide-section { padding: 20px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="master-header">
+  <div class="header-brand">
+    <div class="gov-badge">AI-GOV</div>
+    <div class="brand-text">
+      <h1>Enterprise AI Governance: Complete Master User Guide</h1>
+      <p>Workspace: C:\ai-governance-package | GitHub: dwaipayanmojumder24-lgtm/ai-governance-package</p>
+    </div>
   </div>
-  <button class="btn-header" id="btnNotes" onclick="toggleNotes()" title="Show presenter notes (N)">Notes</button>
-  <button class="btn-header" onclick="toggleDarkMode()">Dark / Light</button>
-  <button class="btn-header" onclick="window.print()">Export PDF</button>
- </div>
+  <div class="header-actions">
+    <div class="mode-tabs">
+      <button class="mode-btn active" id="btnModeSlide" onclick="setMode('slide')">Slide Mode</button>
+      <button class="mode-btn" id="btnModeFull" onclick="setMode('full')">Full View</button>
+      <button class="mode-btn" id="btnModePresent" onclick="setMode('present')">Present (F)</button>
+    </div>
+    <button class="btn-action" onclick="toggleDarkMode()">Dark / Light</button>
+    <button class="btn-action" onclick="window.print()">Save as PDF</button>
+  </div>
 </header>
-<div class="app-body-layout">
- <aside class="sidebar-nav">
-  <div class="sidebar-search-box">
-   <input type="text" id="sidebarSearch" placeholder="Filter slides (e.g. copilot, mcp, policies, architecture, outputs)..." oninput="filterSidebarSlides()">
-   <div class="aud-tabs"><button class="aud-btn active" data-aud="all" onclick="setAudience('all')">All</button><button class="aud-btn" data-aud="mgmt" onclick="setAudience('mgmt')">Management</button><button class="aud-btn" data-aud="arch" onclick="setAudience('arch')">Architect</button></div>
+
+<button class="exit-present-btn" onclick="setMode('slide')">Exit Presentation (Esc)</button>
+
+<div class="app-container">
+  <aside class="sidebar">
+    <div class="sidebar-search">
+      <input type="text" id="searchInput" placeholder="Search guide (e.g. mcp, policies, outputs)..." oninput="filterSidebar()">
+    </div>
+    <div class="sidebar-items-list" id="sidebarList">
+      <div class="sidebar-chapter-heading">Platform Overview</div>
+
+        <div class="sidebar-item active" onclick="goToSlide(0)" id="nav-item-0">
+          <div class="sidebar-item-top">
+            <span class="sidebar-item-num">01</span>
+            <span class="sidebar-item-tag">The Big Picture</span>
+          </div>
+          <div class="sidebar-item-title">What is the AI Governance Package & Why Does It Exist?</div>
+        </div>
+        
+        <div class="sidebar-item" onclick="goToSlide(1)" id="nav-item-1">
+          <div class="sidebar-item-top">
+            <span class="sidebar-item-num">02</span>
+            <span class="sidebar-item-tag">Under the Hood</span>
+          </div>
+          <div class="sidebar-item-title">Platform Architecture: How It Operates Under the Hood</div>
+        </div>
+        <div class="sidebar-chapter-heading">Policies & Standards</div>
+
+        <div class="sidebar-item" onclick="goToSlide(2)" id="nav-item-2">
+          <div class="sidebar-item-top">
+            <span class="sidebar-item-num">03</span>
+            <span class="sidebar-item-tag">Standards Covered</span>
+          </div>
+          <div class="sidebar-item-title">What Policies & Standards Does It Check?</div>
+        </div>
+        <div class="sidebar-chapter-heading">Setup & Usage</div>
+
+        <div class="sidebar-item" onclick="goToSlide(3)" id="nav-item-3">
+          <div class="sidebar-item-top">
+            <span class="sidebar-item-num">04</span>
+            <span class="sidebar-item-tag">Git Workflow</span>
+          </div>
+          <div class="sidebar-item-title">Git Setup: Publishing to GitHub (Personal & Company)</div>
+        </div>
+        
+        <div class="sidebar-item" onclick="goToSlide(4)" id="nav-item-4">
+          <div class="sidebar-item-top">
+            <span class="sidebar-item-num">05</span>
+            <span class="sidebar-item-tag">Method 1: CLI</span>
+          </div>
+          <div class="sidebar-item-title">How to Use It: Method 1 - Autonomous Governance Copilot</div>
+        </div>
+        
+        <div class="sidebar-item" onclick="goToSlide(5)" id="nav-item-5">
+          <div class="sidebar-item-top">
+            <span class="sidebar-item-num">06</span>
+            <span class="sidebar-item-tag">Method 2: IDE MCP</span>
+          </div>
+          <div class="sidebar-item-title">How to Use It: Method 2 - IDE Chat Integration via MCP</div>
+        </div>
+        <div class="sidebar-chapter-heading">Hands-on Sandbox</div>
+
+        <div class="sidebar-item" onclick="goToSlide(6)" id="nav-item-6">
+          <div class="sidebar-item-top">
+            <span class="sidebar-item-num">07</span>
+            <span class="sidebar-item-tag">Testing Sandbox</span>
+          </div>
+          <div class="sidebar-item-title">Hands-on Example Walkthrough: Testing with sample-ai-project</div>
+        </div>
+        
+        <div class="sidebar-item" onclick="goToSlide(7)" id="nav-item-7">
+          <div class="sidebar-item-top">
+            <span class="sidebar-item-num">08</span>
+            <span class="sidebar-item-tag">Inference Breakdown</span>
+          </div>
+          <div class="sidebar-item-title">What Does It Infer Once the YAML Files Are Generated?</div>
+        </div>
+        <div class="sidebar-chapter-heading">Deliverables & Enforcement</div>
+
+        <div class="sidebar-item" onclick="goToSlide(8)" id="nav-item-8">
+          <div class="sidebar-item-top">
+            <span class="sidebar-item-num">09</span>
+            <span class="sidebar-item-tag">Concrete Deliverables</span>
+          </div>
+          <div class="sidebar-item-title">The 7 Tangible Outputs You Get at the End of the Day</div>
+        </div>
+        
+        <div class="sidebar-item" onclick="goToSlide(9)" id="nav-item-9">
+          <div class="sidebar-item-top">
+            <span class="sidebar-item-num">10</span>
+            <span class="sidebar-item-tag">Enforcement & Fallback</span>
+          </div>
+          <div class="sidebar-item-title">Automated Enforcement: What Actions Happen If Standards Fail?</div>
+        </div>
+        
+    </div>
+  </aside>
+
+  <main class="stage-area" id="stageArea">
+    
+        <section class="slide-section active" id="slide-1" data-index="0">
+          <div class="slide-header">
+            <div class="slide-meta">
+              <span class="slide-num-pill">Slide 01</span>
+              <span class="slide-chapter-tag">Platform Overview</span>
+              <span class="slide-sep">&bull;</span>
+              <span class="slide-tag-pill">The Big Picture</span>
+            </div>
+            <h2 class="slide-main-title">What is the AI Governance Package & Why Does It Exist?</h2>
+            <p class="slide-main-subtitle">An automated, tool-neutral 'Governance-as-a-Service' engine that turns legal policies into automated code and CI/CD barriers.</p>
+          </div>
+          <div class="slide-content-body">
+            
+<div class="lead-banner">
+  <div class="lead-kicker">Core Mission</div>
+  <h3>Eliminate manual spreadsheets and legal bureaucracy by embedding automated, continuous governance directly into developer workflows.</h3>
+  <p>The package exists locally on your machine at <code>C:\ai-governance-package</code> and on GitHub at <code>github.com/dwaipayanmojumder24-lgtm/ai-governance-package</code>. It acts as a shared, plug-and-play governance engine across all AI projects in an organization.</p>
+</div>
+
+<div class="grid-4" style="margin-top:20px;">
+  <div class="stat-card">
+    <div class="stat-num">16</div>
+    <div class="stat-label">Baseline Policies</div>
+    <div class="stat-desc">Full lifecycle from inventory to retirement</div>
   </div>
-  <ul class="sidebar-menu" id="sidebarMenuList"></ul>
- </aside>
- <main class="presentation-stage" id="stage">
-  <div class="stage-ribbon"><div class="ribbon-meta"><span id="ribbonViewPill" class="pill-badge pill-all">Master User Guide</span><span style="color:var(--text-muted)">|</span><span id="ribbonSlideTitle" style="font-weight:700;color:var(--text-primary)"></span></div>
-  <div style="font-size:.8rem;color:var(--text-secondary)">Shortcuts: <span class="kbd-hint">&#9664; / &#9654;</span> <span class="kbd-hint">PgUp / PgDn</span> <span class="kbd-hint">F</span> present <span class="kbd-hint">N</span> notes</div></div>
-<section class="slide-wrapper" id="slide-1-1" data-num="1.1" data-chapter="Chapter 1: Platform Overview &amp; Architecture" data-aud="exec" data-tag="Executive Summary" data-title="What is the AI Governance Package &amp; Why Does It Exist?">
-<div class="slide-hero"><div class="hero-top"><span class="num-badge big">1.1</span><span class="slide-tag">Executive Summary</span></div>
-<h2 class="slide-heading">1.1 What is the AI Governance Package & Why Does It Exist?</h2><p class="slide-description">An enterprise-grade, tool-neutral 'Governance-as-a-Service' software package that turns policies into automated code and CI/CD barriers.</p><span class="evidence-tag">Evidence base: Workspace: C:\ai-governance-package | Golden Master GitHub: github.com/dwaipayanmojumder24-lgtm/ai-governance-package</span></div>
-<div class="slide-body"><div class="banner-executive"><div><span class="kicker">Core Purpose</span><h3>Eliminate manual spreadsheets and legal bureaucracy by embedding automated, continuous governance directly into developer workflows.</h3><p>The package exists at C:\ai-governance-package. It serves as a plug-and-play central governance engine for multiple AI projects across an enterprise.</p></div><div class="scope"><span>Setup Time</span><strong>3 Seconds</strong></div></div><div class="kpi-grid"><div class="kpi t-navy"><div class="kpi-head"><span class="kpi-lbl">Baseline Policies</span><span class="badge-evidence badge-ev-observed">[A. Observed]</span></div><div class="kpi-val c-navy">16</div><span class="kpi-desc">Covering full AI lifecycle</span></div><div class="kpi t-blue"><div class="kpi-head"><span class="kpi-lbl">Machine Controls</span><span class="badge-evidence badge-ev-observed">[A. Observed]</span></div><div class="kpi-val c-blue">61</div><span class="kpi-desc">YAML schema-validated controls</span></div><div class="kpi t-purple"><div class="kpi-head"><span class="kpi-lbl">Regulatory Overlays</span><span class="badge-evidence badge-ev-observed">[A. Observed]</span></div><div class="kpi-val c-purple">4</div><span class="kpi-desc">EU AI Act, FinServ, Agents, Tier 3</span></div><div class="kpi t-green"><div class="kpi-head"><span class="kpi-lbl">Automated Scaffolding</span><span class="badge-evidence badge-ev-observed">[A. Observed]</span></div><div class="kpi-val c-green">100%</div><span class="kpi-desc">Manifests, snapshots & gates generated</span></div><div class="kpi t-amber"><div class="kpi-head"><span class="kpi-lbl">Vendor Lock-in</span><span class="badge-evidence badge-ev-observed">[A. Observed]</span></div><div class="kpi-val c-amber">0%</div><span class="kpi-desc">Pure Python, JSON Schemas, YAML</span></div><div class="kpi t-green"><div class="kpi-head"><span class="kpi-lbl">Human Verification</span><span class="badge-evidence badge-ev-derived">[B. Derived]</span></div><div class="kpi-val c-green">1 Step</div><span class="kpi-desc">Verify draft model benchmark scores</span></div></div><div class="two-col"><div class="box"><div class="box-heading">The Problem This Package Solves</div><p style='font-size:13px;line-height:1.6;'>Traditional enterprise AI governance relies on 50-page Word documents, annual questionnaires, and manual spreadsheet checklists that developers dread and ignore. When an incident occurs or auditors arrive, there is no mathematical proof of compliance.</p></div><div class="box"><div class="box-heading">The Solution: Governance-as-Code</div><p style='font-size:13px;line-height:1.6;'>This package treats governance as <b>declarative software</b>. It inspects your code via static AST, automatically binds required controls, produces a cryptographically sealed snapshot (SHA-256), and blocks non-compliant code at pre-commit and CI/CD gates.</p></div></div><div class="alert-box alert-info"><strong>Key Takeaway:</strong> Governance is no longer a post-development legal hurdle. It is automated software that protects developers and organizations continuously.</div></div></section>
-<section class="slide-wrapper" id="slide-1-2" data-num="1.2" data-chapter="Chapter 1: Platform Overview &amp; Architecture" data-aud="arch" data-tag="Architecture" data-title="Platform Architecture: How It Operates Under the Hood">
-<div class="slide-hero"><div class="hero-top"><span class="num-badge big">1.2</span><span class="slide-tag">Architecture</span></div>
-<h2 class="slide-heading">1.2 Platform Architecture: How It Operates Under the Hood</h2><p class="slide-description">From source code inspection to deterministic policy resolution, cryptographic sealing, and runtime guardrails.</p><span class="evidence-tag">Evidence base: project-kit/resolver/resolve.py | policy-as-code/engine.py | plugins/agent-interceptor</span></div>
-<div class="slide-body"><div class="diagram"><svg viewBox="0 0 1120 135" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="End-to-End Architecture Flow"><rect x="10" y="20" width="165" height="95" rx="8" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.5"/><text x="92" y="48" text-anchor="middle" style="font-family:Calibri,Arial,sans-serif;font-size:13px;font-weight:700;fill:#0B2E59">1. Code Telemetry</text><text x="92" y="68" text-anchor="middle" style="font-family:Calibri,Arial,sans-serif;font-size:11px;fill:#64748B">AST scan: imports,</text><text x="92" y="84" text-anchor="middle" style="font-family:Calibri,Arial,sans-serif;font-size:11px;fill:#64748B">PII, tools, vector DB</text><text x="92" y="100" text-anchor="middle" style="font-family:Calibri,Arial,sans-serif;font-size:10px;font-weight:700;fill:#0284C7">governance_agent.py</text><path d="M178,67 L218,67" stroke="#0B2E59" stroke-width="2" fill="none"/><rect x="220" y="20" width="165" height="95" rx="8" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.5"/><text x="302" y="48" text-anchor="middle" style="font-family:Calibri,Arial,sans-serif;font-size:13px;font-weight:700;fill:#1E3A8A">2. Inference Engine</text><text x="302" y="68" text-anchor="middle" style="font-family:Calibri,Arial,sans-serif;font-size:11px;fill:#2563EB">Archetype + Risk Tier</text><text x="302" y="84" text-anchor="middle" style="font-family:Calibri,Arial,sans-serif;font-size:11px;fill:#2563EB">Binds Overlays</text><text x="302" y="100" text-anchor="middle" style="font-family:Calibri,Arial,sans-serif;font-size:10px;font-weight:700;fill:#1D4ED8">ai-project-manifest</text><path d="M388,67 L428,67" stroke="#0B2E59" stroke-width="2" fill="none"/><rect x="430" y="20" width="165" height="95" rx="8" fill="#FEF3C7" stroke="#D97706" stroke-width="1.5"/><text x="512" y="48" text-anchor="middle" style="font-family:Calibri,Arial,sans-serif;font-size:13px;font-weight:700;fill:#92400E">3. Policy Resolver</text><text x="512" y="68" text-anchor="middle" style="font-family:Calibri,Arial,sans-serif;font-size:11px;fill:#B45309">61 Baseline + Overlays</text><text x="512" y="84" text-anchor="middle" style="font-family:Calibri,Arial,sans-serif;font-size:11px;fill:#B45309">Monotonic merge math</text><text x="512" y="100" text-anchor="middle" style="font-family:Calibri,Arial,sans-serif;font-size:10px;font-weight:700;fill:#D97706">resolve.py</text><path d="M598,67 L638,67" stroke="#0B2E59" stroke-width="2" fill="none"/><rect x="640" y="20" width="165" height="95" rx="8" fill="#DCFCE7" stroke="#16A34A" stroke-width="1.5"/><text x="722" y="48" text-anchor="middle" style="font-family:Calibri,Arial,sans-serif;font-size:13px;font-weight:700;fill:#166534">4. Policy Snapshot</text><text x="722" y="68" text-anchor="middle" style="font-family:Calibri,Arial,sans-serif;font-size:11px;fill:#15803D">Authoritative rulebook</text><text x="722" y="84" text-anchor="middle" style="font-family:Calibri,Arial,sans-serif;font-size:11px;fill:#15803D">SHA-256 seal</text><text x="722" y="100" text-anchor="middle" style="font-family:Calibri,Arial,sans-serif;font-size:10px;font-weight:700;fill:#16A34A">effective-snapshot.json</text><path d="M808,67 L848,67" stroke="#0B2E59" stroke-width="2" fill="none"/><rect x="850" y="20" width="260" height="95" rx="8" fill="#0B2E59" stroke="#E52421" stroke-width="2"/><text x="980" y="48" text-anchor="middle" style="font-family:Calibri,Arial,sans-serif;font-size:13px;font-weight:700;fill:#fff">5. Automated Enforcement</text><text x="980" y="68" text-anchor="middle" style="font-family:Calibri,Arial,sans-serif;font-size:11px;fill:#FCA5A5">Pre-Commit: Blocks secret leaks</text><text x="980" y="84" text-anchor="middle" style="font-family:Calibri,Arial,sans-serif;font-size:11px;fill:#E2E8F0">CI/CD Gate: Locks PR merge button</text><text x="980" y="100" text-anchor="middle" style="font-family:Calibri,Arial,sans-serif;font-size:10px;font-weight:700;fill:#FFA5A3">Runtime: Agent PEP Interceptor</text></svg></div><div class="two-col"><div class="box"><div class="box-heading">Pure Deterministic Math</div><p style='font-size:12px;line-height:1.6;'>The merge engine in <code>resolve.py</code> is purely deterministic. Given the same project manifest and baseline controls, it produces the exact same byte-for-byte policy snapshot and SHA-256 hash every time. No hallucinations, no non-deterministic AI guessing in the policy algebra.</p></div><div class="box"><div class="box-heading">Outside-the-Model Enforcement</div><p style='font-size:12px;line-height:1.6;'>Safety is never enforced by 'asking the LLM to behave'. Enforcement takes place <b>outside the model</b> via OS-level pre-commit hooks, CI/CD pipeline blockers, and a reverse-proxy PEP that cuts off tool calls if recursion depth exceeds 5 or if dual-key approval tokens are missing.</p></div></div></div></section>
-<section class="slide-wrapper" id="slide-2-1" data-num="2.1" data-chapter="Chapter 2: Policies, Standards &amp; Controls (What It Checks)" data-aud="mgmt" data-tag="Policy Domains" data-title="The 16 Baseline Policy Domains (POL-ACC to POL-RET)">
-<div class="slide-hero"><div class="hero-top"><span class="num-badge big">2.1</span><span class="slide-tag">Policy Domains</span></div>
-<h2 class="slide-heading">2.1 The 16 Baseline Policy Domains (POL-ACC to POL-RET)</h2><p class="slide-description">The package encompasses 16 comprehensive policy domains covering the entire AI system lifecycle from conception to retirement.</p><span class="evidence-tag">Evidence base: baseline/policies/POL-*.md | baseline/principles/charter.md</span></div>
-<div class="slide-body"><div class="table-container" style="max-height:260px"><table class="presentation-table"><thead><tr><th style="width:15%">Domain Code</th><th style="width:30%">Policy Name</th><th style="width:55%">Core Operational Rule Enforced</th></tr></thead><tbody><tr><td><code>POL-ACC</code></td><td>Accountability & System Inventory</td><td>Mandatory system owner, engineering lead, and registration in enterprise catalog.</td></tr><tr><td><code>POL-USE</code></td><td>Acceptable Use & AI Literacy</td><td>Prohibits deceptive AI, social scoring, biometric classification; requires AI literacy.</td></tr><tr><td><code>POL-RSK</code></td><td>Risk Classification & Impact</td><td>Classifies systems into Tiers 1-4; requires AI Impact Assessment for Tiers 3 & 4.</td></tr><tr><td><code>POL-DAT</code></td><td>Data Privacy & Retention</td><td>Mandates PII sanitization, consent lineage tracking, and max 5-year retention rules.</td></tr><tr><td><code>POL-SUP</code></td><td>Supply Chain & Model Provenance</td><td>Requires Software Bill of Materials (SBOM) and verified model weight provenance.</td></tr><tr><td><code>POL-IPR</code></td><td>Intellectual Property & Code</td><td>Prohibits training on copyleft code; mandates human peer review on AI-generated code.</td></tr><tr><td><code>POL-SEC</code></td><td>AI Security & Adversarial Defense</td><td>Mandates automated prompt injection defense, model serialization checks, secret scanning.</td></tr><tr><td><code>POL-ROB</code></td><td>Robustness & Evaluation Testing</td><td>Enforces benchmark accuracy >= 85%, hallucination rate ceiling <= 5.0%.</td></tr><tr><td><code>POL-FAI</code></td><td>Fairness, Bias & Accessibility</td><td>Requires demographic parity analysis; blocks disparate impact on protected classes.</td></tr><tr><td><code>POL-TRN</code></td><td>Transparency & Disclosures</td><td>Requires visible AI watermarks, user-facing disclosure notices, and explainability cards.</td></tr><tr><td><code>POL-HUM</code></td><td>Human Oversight & Redress</td><td>Guarantees human-in-the-loop fallback for automated decisions affecting users.</td></tr><tr><td><code>POL-AGT</code></td><td>Agent Autonomy & Guardrails</td><td>Enforces max recursion depth <= 5, sub-second kill switches, outside-the-model PEP.</td></tr><tr><td><code>POL-MON</code></td><td>Continuous Monitoring & Drift</td><td>Monitors token budgets, latency drift, concept drift, and incident alerting.</td></tr><tr><td><code>POL-CST</code></td><td>Cost & Resource Management</td><td>Enforces per-request token budgets and monthly organizational spending ceilings.</td></tr><tr><td><code>POL-REC</code></td><td>Evidence & Audit Recordkeeping</td><td>Maintains tamper-evident cryptographic audit logs for at least 7 years.</td></tr><tr><td><code>POL-RET</code></td><td>Retirement & Decommissioning</td><td>Prescribes zero-leak weight destruction, data sanitization, and stakeholder notice.</td></tr></tbody></table></div></div></section>
-<section class="slide-wrapper" id="slide-2-2" data-num="2.2" data-chapter="Chapter 2: Policies, Standards &amp; Controls (What It Checks)" data-aud="arch" data-tag="Controls &amp; Overlays" data-title="The 61 Baseline Controls &amp; 4 Regulatory Overlays">
-<div class="slide-hero"><div class="hero-top"><span class="num-badge big">2.2</span><span class="slide-tag">Controls & Overlays</span></div>
-<h2 class="slide-heading">2.2 The 61 Baseline Controls & 4 Regulatory Overlays</h2><p class="slide-description">Controls are machine-readable YAML files. Overlays tighten controls for specific jurisdictions and risk profiles.</p><span class="evidence-tag">Evidence base: baseline/controls/*.yaml | overlays/ | schemas/control.schema.json</span></div>
-<div class="slide-body"><div class="two-col"><div class="box"><div class="box-heading">The 61 Baseline Control Catalogue</div><p style='font-size:12px;line-height:1.6;'>Each control in <code>baseline/controls/</code> is a structured YAML file validated against <code>schemas/control.schema.json</code>. A control specifies: unique ID (<code>ORG-CTL-*</code>), mandatory level, verification method, enforcement point, and audit evidence requirement.</p></div><div class="box"><div class="box-heading">The 4 Contextual Overlays</div><ul style='padding-left:18px;font-size:12px;line-height:1.6;'><li><b>EU AI Act Overlay (<code>ORG-OVL-GEO-EUACT-001</code>):</b> Mandates Article 9 risk management, Article 14 human oversight, Article 72 incident reporting.</li><li><b>Financial Services Overlay (<code>ORG-OVL-SEC-FINSERV-001</code>):</b> Enforces SR 11-7 model risk management, SEC 17a-4 7-year audit logs.</li><li><b>Tier 3 High-Risk Overlay (<code>ORG-OVL-RSK-TIER3-001</code>):</b> Mandates red-teaming, Cosign image signing, outside-the-model PEP proxy.</li><li><b>Autonomous Agent Overlay (<code>ORG-OVL-ARC-AGENT-001</code>):</b> Limits recursion depth <= 5, requires dual-key tokens for fund transfers.</li></ul></div></div><div class="alert-box alert-warning"><strong>The Strict Monotonicity Invariant:</strong> Overlays can ONLY ADD new controls or TIGHTEN existing thresholds (e.g. tightening accuracy from 85% to 92%). Overlays are mathematically forbidden from loosening, waiving, or deleting baseline obligations.</div></div></section>
-<section class="slide-wrapper" id="slide-3-1" data-num="3.1" data-chapter="Chapter 3: Git Setup &amp; The 2 Execution Methods" data-aud="arch" data-tag="Git Setup" data-title="Git Setup: Central Package &amp; Downstream AI Projects">
-<div class="slide-hero"><div class="hero-top"><span class="num-badge big">3.1</span><span class="slide-tag">Git Setup</span></div>
-<h2 class="slide-heading">3.1 Git Setup: Central Package & Downstream AI Projects</h2><p class="slide-description">Step-by-step instructions on setting up Git for both the Central Governance Package and your downstream AI applications.</p><span class="evidence-tag">Evidence base: git remote add origin | git push origin main</span></div>
-<div class="slide-body"><div class="two-col"><div class="box"><div class="box-heading">Part A: Central Governance Package (C:\ai-governance-package)</div><p>Your central package is already initialized locally and pushed to your personal GitHub repository:</p><div style='background:#061A33;color:#F8FAFC;padding:10px;border-radius:6px;font-family:Consolas,monospace;font-size:12px;margin:8px 0;line-height:1.6;'>cd C:\ai-governance-package<br>git remote add origin https://github.com/dwaipayanmojumder24-lgtm/ai-governance-package.git<br>git branch -M main<br>git push -u origin main</div><p style='font-size:12px;color:#059669;'><b>Status: Live & Verified!</b> All 184 files and subdirectories are synchronized.</p></div><div class="box"><div class="box-heading">Part B: Your Downstream AI Project (sample-ai-project)</div><p>For each AI project that consumes governance:</p><div style='background:#061A33;color:#F8FAFC;padding:10px;border-radius:6px;font-family:Consolas,monospace;font-size:12px;margin:8px 0;line-height:1.6;'>cd C:\ai-governance-package\sample-ai-project<br>git init<br>python C:\ai-governance-package\agents\governance_agent.py auto-setup .<br>git add .<br>git commit -m "feat(gov): add AI governance"<br>git remote add origin https://github.com/dwaipayanmojumder24-lgtm/sample-ai-project.git<br>git push -u origin main</div><p style='font-size:12px;color:#0284C7;'><b>Status: Live & Verified!</b> GitHub Actions PR gate is active in cloud.</p></div></div><div class="alert-box alert-info"><strong>Authentication Handled by Windows:</strong> You do not need to hardcode passwords or tokens in files. Windows Git Credential Manager handles encrypted authentication behind the scenes.</div></div></section>
-<section class="slide-wrapper" id="slide-3-2" data-num="3.2" data-chapter="Chapter 3: Git Setup &amp; The 2 Execution Methods" data-aud="exec" data-tag="Method 1: Copilot" data-title="How to Use It: Method 1 - Autonomous Governance Copilot (CLI)">
-<div class="slide-hero"><div class="hero-top"><span class="num-badge big">3.2</span><span class="slide-tag">Method 1: Copilot</span></div>
-<h2 class="slide-heading">3.2 How to Use It: Method 1 - Autonomous Governance Copilot (CLI)</h2><p class="slide-description">Run one terminal command to automatically inspect code, bind controls, install gates, and generate compliance reports.</p><span class="evidence-tag">Evidence base: C:\ai-governance-package\agents\governance_agent.py</span></div>
-<div class="slide-body"><div class="two-col"><div class="box"><div class="box-heading">1. This is what I need to do</div><p>Open PowerShell and run this single command:</p><div style='background:#061A33;color:#F8FAFC;padding:12px;border-radius:6px;font-family:Consolas,monospace;font-size:13px;margin:8px 0;'><span style='color:#4ADE80'>python</span> C:\ai-governance-package\agents\governance_agent.py auto-setup C:\ai-governance-package\sample-ai-project</div><p style='font-size:12px;color:#64748B;'>Execution completes in ~3 seconds with zero manual YAML writing.</p></div><div class="box"><div class="box-heading">2. What the Copilot Does 100% Automatically</div><ul style='padding-left:18px;font-size:12px;line-height:1.6;'><li><b>Inspects AST:</b> Detects libraries (<code>openai</code>, <code>chromadb</code>), tools, and PII fields.</li><li><b>Infers System Profile:</b> Assigns Archetype (<code>autonomous_agent</code>) and Risk Tier (<code>tier_3_high</code>).</li><li><b>Generates Manifest:</b> Writes <code>ai-project-manifest.yaml</code> with owners and bindings.</li><li><b>Computes Policy Snapshot:</b> Merges 61 baseline controls into 40 active rules sealed with SHA-256.</li><li><b>Installs Gates:</b> Sets up <code>.pre-commit-config.yaml</code> and <code>.github/workflows/ai-governance-gate.yaml</code>.</li><li><b>Synthesizes Cards & Report:</b> Creates Model/Data cards and <code>governance-compliance-report.html</code>.</li></ul></div></div><div class="box"><div class="box-heading">Copilot Terminal Output (What You See on Screen)</div><div style='background:#061A33;color:#F8FAFC;padding:12px;border-radius:6px;font-family:Consolas,monospace;font-size:12px;line-height:1.5;'><span style='color:#38BDF8'>[AGENT]</span> Scanning repository at: C:\ai-governance-package\sample-ai-project<br><span style='color:#38BDF8'>[AGENT]</span> Code Inferred: Frameworks: chromadb, openai | PII: DETECTED | Archetype: autonomous_agent (Risk: tier_3_high)<br><span style='color:#38BDF8'>[AGENT]</span> Generating manifest: ai-project-manifest.yaml<br><span style='color:#38BDF8'>[AGENT]</span> Resolving snapshot: effective-policy-snapshot.json (40 controls active, SHA-256: 6ae8a7b81c4a...)<br><span style='color:#38BDF8'>[AGENT]</span> Installing pre-commit hooks and GitHub Actions PR gate...<br><span style='color:#38BDF8'>[AGENT]</span> Generating interactive HTML audit report: governance-compliance-report.html<br><span style='color:#4ADE80'>[SUCCESS] AUTONOMOUS GOVERNANCE SETUP COMPLETE</span></div></div><div class="alert-box alert-success"><strong>Realistic Boundary:</strong> The copilot removes 99% of mechanical friction. The only human step before production is confirming real evaluation benchmark numbers in model-card.yaml.</div></div></section>
-<section class="slide-wrapper" id="slide-3-3" data-num="3.3" data-chapter="Chapter 3: Git Setup &amp; The 2 Execution Methods" data-aud="arch" data-tag="Method 2: MCP IDE" data-title="How to Use It: Method 2 - IDE Integration via MCP (Claude / Cursor)">
-<div class="slide-hero"><div class="hero-top"><span class="num-badge big">3.3</span><span class="slide-tag">Method 2: MCP IDE</span></div>
-<h2 class="slide-heading">3.3 How to Use It: Method 2 - IDE Integration via MCP (Claude / Cursor)</h2><p class="slide-description">Integrate governance directly into your IDE. Ask your AI coding assistant to govern projects without leaving your editor.</p><span class="evidence-tag">Evidence base: %APPDATA%\Claude\claude_desktop_config.json | agents/mcp_server.py</span></div>
-<div class="slide-body"><div class="two-col"><div class="box"><div class="box-heading">Configuration Status in Claude Desktop</div><p>Your Claude Desktop config is <b>already active and configured</b> at:<br><code>%APPDATA%\Claude\claude_desktop_config.json</code></p><div style='background:#061A33;color:#F8FAFC;padding:8px;border-radius:4px;font-family:Consolas,monospace;font-size:11px;margin:8px 0;'>{
+  <div class="stat-card">
+    <div class="stat-num">61</div>
+    <div class="stat-label">Machine Controls</div>
+    <div class="stat-desc">YAML schema-validated rule definitions</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num">4</div>
+    <div class="stat-label">Regulatory Overlays</div>
+    <div class="stat-desc">EU AI Act, FinServ, High-Risk, Agents</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num">3s</div>
+    <div class="stat-label">Copilot Setup</div>
+    <div class="stat-desc">Automated code inspection & manifest generation</div>
+  </div>
+</div>
+
+<div class="grid-2" style="margin-top:24px;">
+  <div class="content-box">
+    <div class="box-title">The Problem: Traditional Governance Fails</div>
+    <ul class="clean-list">
+      <li><b>50-page Word questionnaires:</b> Developers fill them out once, forget them, and code drifts silently.</li>
+      <li><b>Manual review bottlenecks:</b> Releases stall for weeks waiting for legal and risk committees.</li>
+      <li><b>Zero mathematical proof:</b> When auditors ask for compliance evidence, teams scramble to piece together logs.</li>
+      <li><b>Unprotected agent tools:</b> LLMs execute database queries and external APIs without outside-the-model guardrails.</li>
+    </ul>
+  </div>
+  <div class="content-box highlight">
+    <div class="box-title">The Solution: Governance-as-Code</div>
+    <ul class="clean-list">
+      <li><b>Automated Telemetry Scan:</b> Static AST inspects imports, models, vector DBs, and PII in seconds.</li>
+      <li><b>Cryptographic Proof (SHA-256):</b> Mathematical merge of baseline + overlays produces a sealed policy snapshot.</li>
+      <li><b>Hard CI/CD Barriers:</b> Pre-commit hooks stop API keys; GitHub Actions blocks non-compliant PR merges.</li>
+      <li><b>Outside-the-Model Interception:</b> Reverse proxy limits agent tool recursion depth and enforces human approval tokens.</li>
+    </ul>
+  </div>
+</div>
+
+          </div>
+        </section>
+        
+        <section class="slide-section" id="slide-2" data-index="1">
+          <div class="slide-header">
+            <div class="slide-meta">
+              <span class="slide-num-pill">Slide 02</span>
+              <span class="slide-chapter-tag">Platform Overview</span>
+              <span class="slide-sep">&bull;</span>
+              <span class="slide-tag-pill">Under the Hood</span>
+            </div>
+            <h2 class="slide-main-title">Platform Architecture: How It Operates Under the Hood</h2>
+            <p class="slide-main-subtitle">The 5-stage automated pipeline that takes raw source code and turns it into an audited, production-ready AI system.</p>
+          </div>
+          <div class="slide-content-body">
+            
+<div class="diagram-wrapper">
+  <div class="diagram-title">The 5-Stage Automated Governance Pipeline</div>
+  <div class="pipeline-grid">
+    <div class="pipeline-step">
+      <div class="step-badge">Stage 1</div>
+      <div class="step-name">Code Telemetry</div>
+      <div class="step-desc">Static AST scans imports, OpenAI/ChromaDB clients, tool calls, and PII fields.</div>
+      <div class="step-file">agents/governance_agent.py</div>
+    </div>
+    <div class="pipeline-step">
+      <div class="step-badge">Stage 2</div>
+      <div class="step-name">Risk Inference</div>
+      <div class="step-desc">Maps code to Archetype (e.g. autonomous_agent) and Risk Tier (tier_3_high).</div>
+      <div class="step-file">ai-project-manifest.yaml</div>
+    </div>
+    <div class="pipeline-step">
+      <div class="step-badge">Stage 3</div>
+      <div class="step-name">Policy Resolver</div>
+      <div class="step-desc">Pure Python math merges 61 baseline controls with regulatory overlays.</div>
+      <div class="step-file">project-kit/resolver/resolve.py</div>
+    </div>
+    <div class="pipeline-step">
+      <div class="step-badge">Stage 4</div>
+      <div class="step-name">SHA-256 Seal</div>
+      <div class="step-desc">Calculates cryptographic hash of the active obligations. Any edit breaks the seal.</div>
+      <div class="step-file">effective-policy-snapshot.json</div>
+    </div>
+    <div class="pipeline-step final">
+      <div class="step-badge red">Stage 5</div>
+      <div class="step-name">Active Gates</div>
+      <div class="step-desc">Pre-commit blocks secrets. CI/CD locks PR merge button. PEP proxy blocks rogue tools.</div>
+      <div class="step-file">.github/workflows/ + plugins/</div>
+    </div>
+  </div>
+</div>
+
+<div class="grid-2" style="margin-top:24px;">
+  <div class="content-box">
+    <div class="box-title">Pure Deterministic Math (No AI Hallucinations)</div>
+    <p>The policy merge engine in <code>resolve.py</code> is written in pure Python 3 without LLM dependencies. Given the exact same project manifest and control catalog, it produces the exact same byte-for-byte policy snapshot and SHA-256 integrity hash every single time.</p>
+  </div>
+  <div class="content-box">
+    <div class="box-title">The Strict Monotonicity Invariant</div>
+    <p>A core mathematical law of this architecture: <b>Overlays can ONLY tighten obligations; they can NEVER loosen them.</b> An overlay can add mandatory red-teaming or raise accuracy from 85% to 92%, but it cannot waive baseline privacy or security controls.</p>
+  </div>
+</div>
+
+          </div>
+        </section>
+        
+        <section class="slide-section" id="slide-3" data-index="2">
+          <div class="slide-header">
+            <div class="slide-meta">
+              <span class="slide-num-pill">Slide 03</span>
+              <span class="slide-chapter-tag">Policies & Standards</span>
+              <span class="slide-sep">&bull;</span>
+              <span class="slide-tag-pill">Standards Covered</span>
+            </div>
+            <h2 class="slide-main-title">What Policies & Standards Does It Check?</h2>
+            <p class="slide-main-subtitle">16 enterprise policy domains and 4 regulatory overlays covering the complete AI lifecycle.</p>
+          </div>
+          <div class="slide-content-body">
+            
+<div class="table-card">
+  <div class="table-header">The 16 Baseline Policy Domains (POL-ACC through POL-RET)</div>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th style="width:14%">Domain Code</th>
+        <th style="width:26%">Policy Domain Name</th>
+        <th style="width:60%">Core Operational Standard Enforced</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code>POL-ACC</code></td><td>Accountability & Inventory</td><td>Mandatory named business owner, technical lead, and entry in enterprise catalog.</td></tr>
+      <tr><td><code>POL-USE</code></td><td>Acceptable Use & Literacy</td><td>Prohibits deceptive AI, social scoring, biometric categorization; mandates literacy.</td></tr>
+      <tr><td><code>POL-RSK</code></td><td>Risk Classification & Impact</td><td>Assigns Risk Tiers 1-4; requires comprehensive AI Impact Assessment for Tiers 3 & 4.</td></tr>
+      <tr><td><code>POL-DAT</code></td><td>Data Privacy & Retention</td><td>Mandates PII sanitization, consent lineage tracking, and maximum 5-year retention rules.</td></tr>
+      <tr><td><code>POL-SUP</code></td><td>Supply Chain & Model Provenance</td><td>Requires Software Bill of Materials (SBOM) and verified cryptographic model weight origin.</td></tr>
+      <tr><td><code>POL-IPR</code></td><td>Intellectual Property & Code</td><td>Blocks copyleft GPL in commercial AI; mandates human peer review on AI-generated code.</td></tr>
+      <tr><td><code>POL-SEC</code></td><td>AI Security & Defense</td><td>Enforces prompt injection filtering, safe serialization (safetensors/ONNX), and secret scanning.</td></tr>
+      <tr><td><code>POL-ROB</code></td><td>Robustness & Evaluation</td><td>Enforces minimum benchmark accuracy >= 85% and hallucination rate ceiling <= 5.0%.</td></tr>
+      <tr><td><code>POL-FAI</code></td><td>Fairness, Bias & Accessibility</td><td>Requires demographic parity analysis; blocks disparate impact on protected classes.</td></tr>
+      <tr><td><code>POL-TRN</code></td><td>Transparency & Disclosures</td><td>Mandates synthetic media watermarking, user-facing disclosure notices, and explainability cards.</td></tr>
+      <tr><td><code>POL-HUM</code></td><td>Human Oversight & Redress</td><td>Guarantees human-in-the-loop fallback and recourse for automated AI decisions.</td></tr>
+      <tr><td><code>POL-AGT</code></td><td>Autonomous Agent Guardrails</td><td>Limits recursion depth <= 5; enforces sub-second kill switches and outside-the-model PEP proxy.</td></tr>
+      <tr><td><code>POL-MON</code></td><td>Continuous Monitoring & Drift</td><td>Monitors concept drift, token spending velocity, and automated security incident alerting.</td></tr>
+      <tr><td><code>POL-CST</code></td><td>Cost & Token Management</td><td>Enforces per-request token caps and monthly organizational spending ceilings.</td></tr>
+      <tr><td><code>POL-REC</code></td><td>Evidence Recordkeeping</td><td>Preserves cryptographic audit trails for a minimum of 7 years for compliance review.</td></tr>
+      <tr><td><code>POL-RET</code></td><td>Model Retirement & Decom</td><td>Prescribes zero-leak model weight destruction, data purges, and stakeholder notice.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="grid-4" style="margin-top:20px;">
+  <div class="overlay-card">
+    <div class="overlay-badge">Overlay 1</div>
+    <div class="overlay-name">EU AI Act</div>
+    <div class="overlay-desc">Article 9 Risk Management, Article 14 Oversight, Article 72 Incidents</div>
+  </div>
+  <div class="overlay-card">
+    <div class="overlay-badge">Overlay 2</div>
+    <div class="overlay-name">Financial Services</div>
+    <div class="overlay-desc">SR 11-7 Model Risk Management, SEC 17a-4 7-year audit recordkeeping</div>
+  </div>
+  <div class="overlay-card">
+    <div class="overlay-badge">Overlay 3</div>
+    <div class="overlay-name">Tier 3 High Risk</div>
+    <div class="overlay-desc">Mandatory pre-deployment red teaming and Cosign container image signing</div>
+  </div>
+  <div class="overlay-card">
+    <div class="overlay-badge">Overlay 4</div>
+    <div class="overlay-name">Autonomous Agents</div>
+    <div class="overlay-desc">Dual-key human approval tokens for financial or destructive tool calls</div>
+  </div>
+</div>
+
+          </div>
+        </section>
+        
+        <section class="slide-section" id="slide-4" data-index="3">
+          <div class="slide-header">
+            <div class="slide-meta">
+              <span class="slide-num-pill">Slide 04</span>
+              <span class="slide-chapter-tag">Setup & Usage</span>
+              <span class="slide-sep">&bull;</span>
+              <span class="slide-tag-pill">Git Workflow</span>
+            </div>
+            <h2 class="slide-main-title">Git Setup: Publishing to GitHub (Personal & Company)</h2>
+            <p class="slide-main-subtitle">How to connect the master package and downstream AI projects to GitHub cleanly and securely.</p>
+          </div>
+          <div class="slide-content-body">
+            
+<div class="grid-2">
+  <div class="content-box">
+    <div class="box-title">Part A: The Central Governance Package</div>
+    <p>Your local package at <code>C:\ai-governance-package</code> is already committed to Git and live on GitHub:</p>
+    <div class="code-box">
+      <span class="cmd-comment"># Already pushed and synchronized:</span><br>
+      <span class="cmd-text">cd C:\ai-governance-package</span><br>
+      <span class="cmd-text">git remote add origin https://github.com/dwaipayanmojumder24-lgtm/ai-governance-package.git</span><br>
+      <span class="cmd-text">git branch -M main</span><br>
+      <span class="cmd-text">git push -u origin main</span>
+    </div>
+    <div class="status-box green">
+      <strong>Status: 100% Live on GitHub</strong><br>
+      All 184 files and subdirectories are synchronized at commit <code>40f616c</code>.
+    </div>
+  </div>
+
+  <div class="content-box">
+    <div class="box-title">Part B: Your Downstream AI Project</div>
+    <p>When you start or work on an AI project that consumes this governance:</p>
+    <div class="code-box">
+      <span class="cmd-comment"># In your project directory:</span><br>
+      <span class="cmd-text">cd C:\ai-governance-package\sample-ai-project</span><br>
+      <span class="cmd-text">git init</span><br>
+      <span class="cmd-text">python C:\ai-governance-package\agents\governance_agent.py auto-setup .</span><br>
+      <span class="cmd-text">git add .</span><br>
+      <span class="cmd-text">git commit -m "feat(gov): add enterprise AI governance"</span><br>
+      <span class="cmd-text">git remote add origin https://github.com/dwaipayanmojumder24-lgtm/sample-ai-project.git</span><br>
+      <span class="cmd-text">git push -u origin main</span>
+    </div>
+    <div class="status-box blue">
+      <strong>Status: Cloud CI/CD Active</strong><br>
+      GitHub Actions automatically runs the AI governance validation gate on push.
+    </div>
+  </div>
+</div>
+
+<div class="callout-box info" style="margin-top:20px;">
+  <strong>How Authentication Works Securely:</strong> You never have to hardcode passwords or tokens in code. When you run <code>git push</code> on Windows, the <b>Windows Git Credential Manager</b> securely authenticates via your personal browser session and caches the token in your Windows Credential Locker.
+</div>
+
+          </div>
+        </section>
+        
+        <section class="slide-section" id="slide-5" data-index="4">
+          <div class="slide-header">
+            <div class="slide-meta">
+              <span class="slide-num-pill">Slide 05</span>
+              <span class="slide-chapter-tag">Setup & Usage</span>
+              <span class="slide-sep">&bull;</span>
+              <span class="slide-tag-pill">Method 1: CLI</span>
+            </div>
+            <h2 class="slide-main-title">How to Use It: Method 1 - Autonomous Governance Copilot</h2>
+            <p class="slide-main-subtitle">Run one terminal command to automatically inspect code, bind controls, and generate compliance reports.</p>
+          </div>
+          <div class="slide-content-body">
+            
+<div class="step-card">
+  <div class="step-card-num">Step 1</div>
+  <div class="step-card-body">
+    <h4>Open PowerShell and Run This Single Command</h4>
+    <div class="code-box highlight-cmd">
+      python C:\ai-governance-package\agents\governance_agent.py auto-setup C:\ai-governance-package\sample-ai-project
+    </div>
+    <p style="font-size:13px; color:var(--text-muted); margin-top:6px;">Takes ~3 seconds to execute. To govern any other project, simply replace the last path with your project folder.</p>
+  </div>
+</div>
+
+<div class="grid-2" style="margin-top:20px;">
+  <div class="content-box">
+    <div class="box-title">What the Copilot Does 100% Automatically</div>
+    <ul class="clean-list">
+      <li><b>Inspects AST:</b> Detects libraries (<code>openai</code>, <code>chromadb</code>), tools, and PII fields (<code>customer_email</code>).</li>
+      <li><b>Infers Profile:</b> Assigns Archetype (<code>autonomous_agent</code>) and Risk Tier (<code>tier_3_high</code>).</li>
+      <li><b>Generates Manifest:</b> Writes <code>ai-project-manifest.yaml</code> with project owners and overlay bindings.</li>
+      <li><b>Resolves Snapshot:</b> Merges baseline controls into 40 active rules sealed with SHA-256.</li>
+      <li><b>Installs Gates:</b> Copies <code>.pre-commit-config.yaml</code> and <code>ai-governance-gate.yaml</code>.</li>
+      <li><b>Generates HTML Report:</b> Produces <code>governance-compliance-report.html</code>.</li>
+    </ul>
+  </div>
+
+  <div class="content-box">
+    <div class="box-title">The Realistic Human Boundary (Before Production)</div>
+    <p style="font-size:13px; line-height:1.6; color:var(--text-main);">The Copilot eliminates 99% of mechanical friction (writing manifests, schemas, hashes, CI configs). However, true enterprise accountability still has <b>1 human verification step</b>:</p>
+    <div class="callout-box warning" style="margin-top:10px;">
+      <strong>The 1 Human Sign-Off Step:</strong> Before production release, an ML engineer reviews <code>governance-cards/model-card.yaml</code> to verify that actual evaluation scores match declared targets (accuracy >= 85%), and replaces <code>[ROLE: Business Owner]</code> with the real owner email.
+    </div>
+  </div>
+</div>
+
+          </div>
+        </section>
+        
+        <section class="slide-section" id="slide-6" data-index="5">
+          <div class="slide-header">
+            <div class="slide-meta">
+              <span class="slide-num-pill">Slide 06</span>
+              <span class="slide-chapter-tag">Setup & Usage</span>
+              <span class="slide-sep">&bull;</span>
+              <span class="slide-tag-pill">Method 2: IDE MCP</span>
+            </div>
+            <h2 class="slide-main-title">How to Use It: Method 2 - IDE Chat Integration via MCP</h2>
+            <p class="slide-main-subtitle">Integrate governance directly into Claude Desktop, Cursor, or VS Code. Zero terminal commands needed.</p>
+          </div>
+          <div class="slide-content-body">
+            
+<div class="grid-2">
+  <div class="content-box highlight">
+    <div class="box-title">Claude Desktop is Already Configured on Your PC!</div>
+    <p>We already added the AI Governance MCP server to your active config file at:<br><code>%APPDATA%\Claude\claude_desktop_config.json</code></p>
+    <div class="code-box">
+{
   "mcpServers": {
     "ai-governance": {
       "command": "python",
       "args": ["C:/ai-governance-package/agents/mcp_server.py"]
     }
   }
-}</div><p style='font-size:12px;color:#059669;'>Zero cloud dependencies: runs locally on your laptop via standard stdio.</p></div><div class="box"><div class="box-heading">The 2 Tools Exposed to Claude</div><ul style='padding-left:18px;font-size:12px;line-height:1.6;'><li><b><code>ai_governance_inspect</code>:</b> Read-only AST code inspection. Scans files and returns JSON telemetry (detected models, DBs, PII indicators, inferred risk tier).</li><li><b><code>ai_governance_auto_setup</code>:</b> Full onboarding orchestration. Writes project manifest, calculates snapshot, installs CI gates, and synthesizes documentation cards.</li></ul><div style='background:#EFF6FF;border-left:4px solid #0284C7;padding:8px;border-radius:4px;margin-top:8px;font-size:12px;color:#0B2E59;font-weight:700;'>Prompt to Claude: &ldquo;Use the ai_governance tool to inspect C:/ai-governance-package/sample-ai-project&rdquo;</div></div></div><div class="alert-box alert-info"><strong>Cross-Editor Compatibility:</strong> The exact same MCP server file (<code>agents/mcp_server.py</code>) works identically across Claude Desktop, Claude Code, Cursor, Roo Code, and VS Code.</div></div></section>
-<section class="slide-wrapper" id="slide-4-1" data-num="4.1" data-chapter="Chapter 4: Hands-on Example &amp; Inference Breakdown" data-aud="exec" data-tag="Hands-on Sandbox" data-title="Hands-on Example Walkthrough with sample-ai-project">
-<div class="slide-hero"><div class="hero-top"><span class="num-badge big">4.1</span><span class="slide-tag">Hands-on Sandbox</span></div>
-<h2 class="slide-heading">4.1 Hands-on Example Walkthrough with sample-ai-project</h2><p class="slide-description">Step-by-step verification using the realistic sample customer support AI application included in your workspace.</p><span class="evidence-tag">Evidence base: sample-ai-project/app.py | sample-ai-project/requirements.txt</span></div>
-<div class="slide-body"><div class="three-col"><div class="feature f-navy"><div class="feature-head"><span class="feature-title"><span class="dot-num">1</span>The Code (app.py)</span><span class="count-chip">Code</span></div><p>A 35-line customer support AI script. Takes a customer inquiry, checks ChromaDB vector memory, calls OpenAI GPT, and handles <code>customer_email</code>.</p></div><div class="feature f-green"><div class="feature-head"><span class="feature-title"><span class="dot-num">2</span>The Dependencies (requirements.txt)</span><span class="count-chip">Libraries</span></div><p>Specifies <code>openai</code> and <code>chromadb</code>. Standard libraries found in modern enterprise generative AI applications.</p></div><div class="feature f-purple"><div class="feature-head"><span class="feature-title"><span class="dot-num">3</span>Safe Testing Sandbox</span><span class="count-chip">Sandbox</span></div><p>A self-contained testing sandbox where you can safely test, delete, regenerate, or push governance artifacts.</p></div></div><table class="presentation-table"><thead><tr><th style="width:15%">Step Number</th><th style="width:45%">Action Performed</th><th style="width:40%">Concrete Outcome Observed</th></tr></thead><tbody><tr><td><b>1. Inspect Code</b></td><td>Open <code>sample-ai-project\app.py</code> in editor.</td><td>Notice OpenAI client, ChromaDB vector query, customer email field.</td></tr><tr><td><b>2. Run Copilot</b></td><td>Run <code>python agents\governance_agent.py auto-setup sample-ai-project</code></td><td>Generates 5 files: manifest, snapshot, PR gate, cards, HTML report.</td></tr><tr><td><b>3. Open HTML Report</b></td><td>Double click <code>sample-ai-project\governance-compliance-report.html</code>.</td><td>Interactive report opens in browser with 7/7 verification checks passed.</td></tr><tr><td><b>4. Test Secret Shield</b></td><td>Try to commit a test file containing <code>sk-123456...</code></td><td>Pre-commit scanner aborts commit with Exit Code 1. Key cannot leak.</td></tr><tr><td><b>5. Push to GitHub</b></td><td>Push to <code>dwaipayanmojumder24-lgtm/sample-ai-project</code>.</td><td>GitHub Actions runs cloud CI gate and reports green checkmark!</td></tr></tbody></table></div></section>
-<section class="slide-wrapper" id="slide-4-2" data-num="4.2" data-chapter="Chapter 4: Hands-on Example &amp; Inference Breakdown" data-aud="mgmt" data-tag="YAML Inference" data-title="What Does It Infer Once the YAML Files Are Generated?">
-<div class="slide-hero"><div class="hero-top"><span class="num-badge big">4.2</span><span class="slide-tag">YAML Inference</span></div>
-<h2 class="slide-heading">4.2 What Does It Infer Once the YAML Files Are Generated?</h2><p class="slide-description">Plain-English explanation of how AST telemetry maps to Archetypes, Risk Tiers, and active obligations.</p><span class="evidence-tag">Evidence base: ai-project-manifest.yaml | effective-policy-snapshot.json | governance-cards/</span></div>
-<div class="slide-body"><div class="two-col"><div class="box"><div class="box-heading">1. Technical Inferences Made from Code</div><ul style='padding-left:18px;font-size:12px;line-height:1.7;'><li><b>Inferred Archetype (<code>autonomous_agent</code>):</b> Triggered by the presence of an LLM client (<code>openai</code>) combined with database tool execution (<code>chromadb</code>).</li><li><b>Assigned Risk Tier (<code>tier_3_high</code>):</b> Autonomous agents executing external tools and touching PII (<code>customer_email</code>) carry high systemic risk under the baseline charter.</li><li><b>Applicable Overlays:</b> Binds High-Risk Tier Overlay (<code>ORG-OVL-RSK-TIER3-001</code>) and Autonomous Agent Overlay (<code>ORG-OVL-ARC-AGENT-001</code>).</li></ul></div><div class="box"><div class="box-heading">2. Plain-English Breakdown of Generated Files</div><ul style='padding-left:18px;font-size:12px;line-height:1.7;'><li><b><code>ai-project-manifest.yaml</code>:</b> The declaration card of the AI system. Records project ID, ownership, and regulatory overlay bindings.</li><li><b><code>effective-policy-snapshot.json</code>:</b> The authoritative single-file rulebook. Merges the 61 baseline controls with overlays into exactly <b>40 active controls</b> sealed with SHA-256.</li><li><b><code>governance-cards/model-card.yaml</code>:</b> Pre-filled evaluation specs declaring accuracy benchmark (0.88) and hallucination ceiling (0.04).</li><li><b><code>governance-cards/data-card.yaml</code>:</b> Pre-filled data governance specs declaring PII sanitization and 5-year retention rules.</li></ul></div></div><div class="alert-box alert-info"><strong>No Hidden Magic:</strong> Every inference rule is codified transparently in <code>agents/governance_agent.py</code> lines 28-155. It is open, deterministic logic.</div></div></section>
-<section class="slide-wrapper" id="slide-5-1" data-num="5.1" data-chapter="Chapter 5: Tangible Outputs &amp; Automated Enforcement" data-aud="exec" data-tag="Concrete Outputs" data-title="Tangible Outputs: What You Actually Get at the End of the Day">
-<div class="slide-hero"><div class="hero-top"><span class="num-badge big">5.1</span><span class="slide-tag">Concrete Outputs</span></div>
-<h2 class="slide-heading">5.1 Tangible Outputs: What You Actually Get at the End of the Day</h2><p class="slide-description">Using this package yields 7 concrete, verifiable deliverables that satisfy both engineering and regulatory audit requirements.</p><span class="evidence-tag">Evidence base: Deliverables Inventory across C:\ai-governance-package\sample-ai-project</span></div>
-<div class="slide-body"><table class="presentation-table"><thead><tr><th style="width:22%">Deliverable Output</th><th style="width:28%">File Type & Format</th><th style="width:18%">Primary Audience</th><th style="width:32%">Concrete Value Delivered</th></tr></thead><tbody><tr><td><b>1. System Manifest</b></td><td><code>ai-project-manifest.yaml</code></td><td>Engineering Lead</td><td>Registers system identity, owners, and technology stack in enterprise catalog.</td></tr><tr><td><b>2. Policy Snapshot</b></td><td><code>effective-policy-snapshot.json</code></td><td>Security / Risk</td><td>Authoritative rulebook of active obligations sealed with cryptographic SHA-256 hash.</td></tr><tr><td><b>3. Visual Audit Report</b></td><td><code>governance-compliance-report.html</code></td><td>Auditors / Leadership</td><td>Self-contained interactive HTML compliance report with 7/7 verification checks.</td></tr><tr><td><b>4. Workstation Shield</b></td><td><code>.pre-commit-config.yaml</code></td><td>Developers</td><td>Blocks git commit if unencrypted API keys or bearer tokens are staged.</td></tr><tr><td><b>5. Cloud CI/CD PR Gate</b></td><td><code>.github/workflows/ai-governance-gate.yaml</code></td><td>DevOps / Release Mgr</td><td>Fails GitHub Actions build and locks PR merge button if policies fail.</td></tr><tr><td><b>6. Model & Data Cards</b></td><td><code>governance-cards/*.yaml</code></td><td>ML Engineers / Legal</td><td>Standardized documentation of model accuracy benchmarks, hallucination ceilings, and data retention.</td></tr><tr><td><b>7. Evidence Bundle</b></td><td><code>pr-governance-audit-bundle.zip</code></td><td>Internal / External Audit</td><td>Downloadable, signed evidence archive stored for 7 years in CI artifacts.</td></tr></tbody></table></div></section>
-<section class="slide-wrapper" id="slide-5-2" data-num="5.2" data-chapter="Chapter 5: Tangible Outputs &amp; Automated Enforcement" data-aud="arch" data-tag="Automated Enforcement" data-title="Automated Enforcement: What Actions Happen If Standards Fail?">
-<div class="slide-hero"><div class="hero-top"><span class="num-badge big">5.2</span><span class="slide-tag">Automated Enforcement</span></div>
-<h2 class="slide-heading">5.2 Automated Enforcement: What Actions Happen If Standards Fail?</h2><p class="slide-description">The system actively prevents non-compliant software from reaching production through 5 automated enforcement points.</p><span class="evidence-tag">Evidence base: plugins/pre-commit | plugins/pull-request | plugins/admission-controller | plugins/agent-interceptor</span></div>
-<div class="slide-body"><table class="presentation-table"><thead><tr><th style="width:26%">Enforcement Point</th><th style="width:36%">Violation Trigger</th><th style="width:38%">Automated Action Taken by System</th></tr></thead><tbody><tr><td><b>1. Workstation Pre-Commit</b></td><td>Developer accidentally stages an OpenAI/Anthropic API key.</td><td><span style='color:#DC2626;font-weight:700'>ABORTS GIT COMMIT</span> (Exit Code 1). Key cannot leave the laptop.</td></tr><tr><td><b>2. Pull Request Gate (CI/CD)</b></td><td>Accuracy < 85%, hallucination > 5%, or copyleft GPL licenses found.</td><td><span style='color:#DC2626;font-weight:700'>FAILS BUILD & LOCKS PR MERGE</span>. Code cannot be merged into main.</td></tr><tr><td><b>3. Model Registry Promotion</b></td><td>Model serialized in unsafe Python <code>pickle</code> format or missing Model Card.</td><td><span style='color:#DC2626;font-weight:700'>BLOCKS MODEL PROMOTION</span> to staging/production registry.</td></tr><tr><td><b>4. Kubernetes Cluster Admission</b></td><td>Container image lacks cryptographic Cosign signature from CI/CD.</td><td><span style='color:#DC2626;font-weight:700'>REJECTS POD DEPLOYMENT</span> with HTTP 403 Forbidden.</td></tr><tr><td><b>5. Runtime Agent Interceptor (PEP)</b></td><td>Agent executes tool > 5 recursion depth or does sensitive action without token.</td><td><span style='color:#DC2626;font-weight:700'>BLOCKS TOOL CALL IN REAL-TIME</span> and writes immutable audit record.</td></tr></tbody></table><div class="two-col"><div class="box"><div class="box-heading">The Lawful Fallback: Exception Request Workflow</div><p style='font-size:12px;line-height:1.6;'>If an urgent hotfix or legacy model cannot comply immediately, developers <b>cannot</b> bypass the system. Instead, they must submit <code>project-kit/exception-request.template.yaml</code> specifying compensating controls, valid for a maximum of 90 days, requiring formal AI Safety Board sign-off.</p></div><div class="box"><div class="box-heading">Zero Silent Failures</div><p style='font-size:12px;line-height:1.6;'>Every enforcement barrier outputs an actionable, human-readable error message explaining exactly which policy failed (e.g. <code>ORG-CTL-SEC-001</code>) and the 1-step remediation required to pass.</p></div></div></div></section>
-<section class="slide-wrapper" id="slide-6-1" data-num="6.1" data-chapter="Chapter 6: Daily Reference &amp; Novice Checklist" data-aud="exec" data-tag="Master Checklist" data-title="The Master 1-Page Novice Cheat Sheet &amp; Quick Reference">
-<div class="slide-hero"><div class="hero-top"><span class="num-badge big">6.1</span><span class="slide-tag">Master Checklist</span></div>
-<h2 class="slide-heading">6.1 The Master 1-Page Novice Cheat Sheet & Quick Reference</h2><p class="slide-description">Summary of all steps, commands, and file references. Keep this slide handy for every AI project.</p><span class="evidence-tag">Evidence base: C:\ai-governance-package</span></div>
-<div class="slide-body"><table class="presentation-table"><thead><tr><th style="width:12%">Step</th><th style="width:28%">What I Need To Do</th><th style="width:48%">Exact Command / Action</th><th style="width:12%">Time Needed</th></tr></thead><tbody><tr><td><b>1. Setup Git</b></td><td>Initialize Git in project</td><td><code>git init</code> (or clone existing repo)</td><td>5 seconds</td></tr><tr><td><b>2. Run Copilot</b></td><td>Execute governance agent</td><td><code>python C:\ai-governance-package\agents\governance_agent.py auto-setup .</code></td><td>3 seconds</td></tr><tr><td><b>3. Check Report</b></td><td>View visual audit</td><td>Double-click <code>governance-compliance-report.html</code></td><td>10 seconds</td></tr><tr><td><b>4. Verify Metrics</b></td><td>Confirm model card</td><td>Verify benchmark scores in <code>governance-cards/model-card.yaml</code></td><td>1 minute</td></tr><tr><td><b>5. Commit & Push</b></td><td>Save governed state</td><td><code>git add . && git commit -m "feat(gov): add AI governance" && git push</code></td><td>10 seconds</td></tr></tbody></table><div class="two-col"><div class="box"><div class="box-heading">Key File Links for Quick Navigation</div><p style='font-size:12px;line-height:1.7;'><b>Master README:</b> <a href='file:///C:/ai-governance-package/README.md'>C:\ai-governance-package\README.md</a><br><b>Onboarding Guide:</b> <a href='file:///C:/ai-governance-package/docs/onboarding-guide.md'>docs/onboarding-guide.md</a><br><b>Sample App Code:</b> <a href='file:///C:/ai-governance-package/sample-ai-project/app.py'>sample-ai-project/app.py</a><br><b>HTML Audit Report:</b> <a href='file:///C:/ai-governance-package/sample-ai-project/governance-compliance-report.html'>sample-ai-project/governance-compliance-report.html</a><br><b>Copilot Agent Script:</b> <a href='file:///C:/ai-governance-package/agents/governance_agent.py'>agents/governance_agent.py</a><br><b>MCP IDE Server:</b> <a href='file:///C:/ai-governance-package/agents/mcp_server.py'>agents/mcp_server.py</a></p></div><div class="box"><div class="box-heading">Final Summary</div><p style='font-size:14px;color:#059669;font-weight:700;'>Governance is Now an Engineering Asset.</p><p style='font-size:12px;line-height:1.6;margin-top:6px;'>You have a complete, production-ready, audited AI governance engine on your machine. It requires zero paperwork, executes in 3 seconds, and provides mathematical proof of compliance for every AI project you build.</p></div></div><div class="presenter-note"><b>Closing line</b>"That is the complete platform. 16 domains, 61 controls, 4 overlays, 2 execution methods, 7 tangible outputs, and zero manual spreadsheets."</div></div></section>
- </main>
+}
+    </div>
+    <p style="font-size:12px; color:var(--green); margin-top:8px;"><b>100% Local & Private:</b> Runs locally on your machine via standard stdio. No code or telemetry leaves your computer.</p>
+  </div>
+
+  <div class="content-box">
+    <div class="box-title">How to Use It in Chat (The Layman Experience)</div>
+    <p>1. Restart Claude Desktop (right-click Claude in system tray &rarr; Quit, then reopen).</p>
+    <p>2. Look for the small <b>hammer icon</b> in the chat box. You will see two tools:</p>
+    <ul class="clean-list" style="margin:10px 0;">
+      <li><code>ai_governance_inspect</code> &mdash; Read-only AST code telemetry scanner.</li>
+      <li><code>ai_governance_auto_setup</code> &mdash; Full manifest, snapshot, and gate generator.</li>
+    </ul>
+    <p>3. Simply type in the chat window:</p>
+    <div class="chat-prompt-box">
+      &ldquo;Use the ai_governance tool to inspect C:/ai-governance-package/sample-ai-project&rdquo;
+    </div>
+    <p style="font-size:12px; color:var(--text-muted); margin-top:8px;">Claude invokes the local tool, inspects your files, and reports the governance profile directly in chat.</p>
+  </div>
 </div>
-<button class="exit-present" onclick="exitPresent()">Exit presentation (Esc)</button>
-<div class="frozen-bottom-controller" id="frozenPane" title="Drag to reposition">
- <div class="drag-handle-grip">&#8942;&#8942;</div>
- <button class="controller-nav-btn" id="ctrlPrevBtn" onclick="stepSlide(-1)">&#9664; Prev</button>
- <div class="controller-info"><div class="controller-slide-text"><span id="ctrlSlideCounter">Slide 1</span><span class="kbd-hint">[&larr; / &rarr;]</span></div><div class="controller-progress-bar"><div class="controller-progress-fill" id="ctrlProgressBar"></div></div></div>
- <button class="controller-nav-btn" id="ctrlNextBtn" onclick="stepSlide(1)">Next &#9654;</button>
- <select class="controller-select" id="ctrlJumpSelect" onchange="jumpToSlide(this.value)"></select>
+
+<div class="callout-box info" style="margin-top:20px;">
+  <strong>Universal Editor Support:</strong> The exact same <code>agents/mcp_server.py</code> script works identically across <b>Cursor</b> (Settings &rarr; Features &rarr; MCP Servers), <b>VS Code Roo Code / Cline</b>, and <b>Claude Code</b>.
 </div>
-<script>(function(){
-"use strict";
-var slides=Array.prototype.slice.call(document.querySelectorAll('.slide-wrapper'));
-var mode='slide', aud='all', track=[], cur=0;
-var AUDLABEL={all:(document.body.dataset.deckLabel||'Complete Deck'),mgmt:'Management View',arch:"Architect's View"};
-function audOk(s){if(aud==='all')return true;var a=s.dataset.aud;return a==='exec'||a===aud;}
-function searchOk(s){var q=(document.getElementById('sidebarSearch').value||'').toLowerCase().trim();if(!q)return true;return (s.dataset.num+' '+s.dataset.title+' '+s.dataset.tag+' '+s.dataset.chapter).toLowerCase().indexOf(q)>-1;}
-function rebuild(){
-  track=slides.filter(function(s){return audOk(s)&&searchOk(s);});
-  slides.forEach(function(s){s.classList.toggle('in-track',track.indexOf(s)>-1);});
-  var sel=document.getElementById('ctrlJumpSelect');sel.innerHTML='';
-  track.forEach(function(s,i){var o=document.createElement('option');o.value=i;o.textContent=s.dataset.num+' '+s.dataset.title;sel.appendChild(o);});
-  renderSidebar();
-}
-function pill(a){if(a==='mgmt')return '<span class="status-pill status-warning">MGMT</span>';if(a==='arch')return '<span class="status-pill status-danger">ARCH</span>';return '<span class="status-pill status-success">EXEC &amp; TECH</span>';}
-function renderSidebar(){
-  var ul=document.getElementById('sidebarMenuList');ul.innerHTML='';var last='';
-  track.forEach(function(s,i){
-    if(s.dataset.chapter!==last){var h=document.createElement('li');h.className='sidebar-category-header';h.textContent=s.dataset.chapter;ul.appendChild(h);last=s.dataset.chapter;}
-    var li=document.createElement('li');li.className='sidebar-item'+(i===cur?' active':'');li.tabIndex=0;li.setAttribute('role','button');
-    li.innerHTML='<div class="sidebar-item-header"><span class="num-badge">'+s.dataset.num+'</span>'+pill(s.dataset.aud)+'</div><span class="sidebar-item-title">'+s.dataset.title+'</span>';
-    li.onclick=function(){go(i,true);};li.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go(i,true);}};
-    ul.appendChild(li);
-  });
-}
-function updateChrome(){
-  var n=track.length, s=track[cur];
-  document.getElementById('ctrlSlideCounter').textContent=n?('Slide '+(cur+1)+' of '+n):'No slides';
-  document.getElementById('ctrlProgressBar').style.width=(n?Math.round((cur+1)/n*100):0)+'%';
-  document.getElementById('ctrlPrevBtn').disabled=cur<=0;
-  document.getElementById('ctrlNextBtn').disabled=cur>=n-1;
-  document.getElementById('ctrlJumpSelect').value=cur;
-  document.getElementById('ribbonSlideTitle').textContent=s?(s.dataset.num+' '+s.dataset.title+' ('+(cur+1)+' of '+n+')'):'';
-  var p=document.getElementById('ribbonViewPill');p.className='pill-badge pill-'+aud;p.textContent=AUDLABEL[aud]+' ('+n+' slides)';
-  document.querySelectorAll('#sidebarMenuList .sidebar-item').forEach(function(li,i){li.classList.toggle('active',i===cur);if(i===cur){var sb=document.querySelector('aside.sidebar-nav');var lt=li.offsetTop, lb=lt+li.offsetHeight;if(lt<sb.scrollTop+90||lb>sb.scrollTop+sb.clientHeight-10){sb.scrollTop=Math.max(0,lt-sb.clientHeight/3);}}});
-}
-function go(i,fromNav){
-  if(!track.length)return;
-  cur=Math.max(0,Math.min(i,track.length-1));
-  var stage=document.getElementById('stage');
-  if(mode==='full'){
-    if(fromNav!==false){lockSpy=true;track[cur].scrollIntoView({behavior:'smooth',block:'start'});setTimeout(function(){lockSpy=false;},700);}
-  }else{
-    slides.forEach(function(s){s.classList.remove('show');});
-    track[cur].classList.add('show');stage.scrollTop=0;document.documentElement.scrollTop=0;document.body.scrollTop=0;
+
+          </div>
+        </section>
+        
+        <section class="slide-section" id="slide-7" data-index="6">
+          <div class="slide-header">
+            <div class="slide-meta">
+              <span class="slide-num-pill">Slide 07</span>
+              <span class="slide-chapter-tag">Hands-on Sandbox</span>
+              <span class="slide-sep">&bull;</span>
+              <span class="slide-tag-pill">Testing Sandbox</span>
+            </div>
+            <h2 class="slide-main-title">Hands-on Example Walkthrough: Testing with sample-ai-project</h2>
+            <p class="slide-main-subtitle">A complete step-by-step walkthrough using the customer support AI app included in your workspace.</p>
+          </div>
+          <div class="slide-content-body">
+            
+<div class="grid-3">
+  <div class="feature-card">
+    <div class="card-tag">The Application</div>
+    <h4>app.py (35 Lines)</h4>
+    <p>A customer support assistant. Accepts a query, retrieves context from ChromaDB, calls OpenAI GPT, and handles <code>customer_email</code>.</p>
+  </div>
+  <div class="feature-card">
+    <div class="card-tag green">The Dependencies</div>
+    <h4>requirements.txt</h4>
+    <p>Contains <code>openai</code> and <code>chromadb</code>. Standard libraries found in thousands of enterprise generative AI projects.</p>
+  </div>
+  <div class="feature-card">
+    <div class="card-tag purple">Safe Sandbox</div>
+    <h4>Zero Risk</h4>
+    <p>A self-contained testing sandbox where you can modify code, test secret leaks, or re-run governance tools freely.</p>
+  </div>
+</div>
+
+<div class="table-card" style="margin-top:24px;">
+  <div class="table-header">Interactive 5-Step Testing Procedure</div>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th style="width:10%">Step</th>
+        <th style="width:30%">Action You Perform</th>
+        <th style="width:35%">What the Tool Does</th>
+        <th style="width:25%">Verifiable Outcome</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>1</b></td>
+        <td>Open <code>sample-ai-project/app.py</code></td>
+        <td>Inspects Python code structure</td>
+        <td>Notice OpenAI, ChromaDB, and customer email.</td>
+      </tr>
+      <tr>
+        <td><b>2</b></td>
+        <td>Run Copilot <code>auto-setup</code> in PowerShell</td>
+        <td>Scans AST, creates manifest, snapshot & gates</td>
+        <td>5 files created in project folder in 3 seconds.</td>
+      </tr>
+      <tr>
+        <td><b>3</b></td>
+        <td>Double click <code>governance-compliance-report.html</code></td>
+        <td>Opens report in Chrome/Edge offline</td>
+        <td>Visual dashboard shows 7/7 verification checks passed.</td>
+      </tr>
+      <tr>
+        <td><b>4</b></td>
+        <td>Add a fake key <code>sk-123456...</code> and commit</td>
+        <td>Pre-commit hook intercepts staged files</td>
+        <td><b>Commit aborted!</b> Leaked key blocked on laptop.</td>
+      </tr>
+      <tr>
+        <td><b>5</b></td>
+        <td>Push to GitHub: <code>git push origin main</code></td>
+        <td>Triggers GitHub Actions cloud CI gate</td>
+        <td>Green checkmark on GitHub Actions tab.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+          </div>
+        </section>
+        
+        <section class="slide-section" id="slide-8" data-index="7">
+          <div class="slide-header">
+            <div class="slide-meta">
+              <span class="slide-num-pill">Slide 08</span>
+              <span class="slide-chapter-tag">Hands-on Sandbox</span>
+              <span class="slide-sep">&bull;</span>
+              <span class="slide-tag-pill">Inference Breakdown</span>
+            </div>
+            <h2 class="slide-main-title">What Does It Infer Once the YAML Files Are Generated?</h2>
+            <p class="slide-main-subtitle">How the system analyzes raw code and maps it to concrete regulatory obligations.</p>
+          </div>
+          <div class="slide-content-body">
+            
+<div class="grid-2">
+  <div class="content-box">
+    <div class="box-title">Why Did It Assign Archetype & Risk Tier?</div>
+    <ul class="clean-list">
+      <li><b>Detected <code>openai</code> client:</b> Identifies generative language model capabilities.</li>
+      <li><b>Detected <code>chromadb</code> + tool execution:</b> Elevates the system archetype from a static text generator to an <b><code>autonomous_agent</code></b> (because it queries external databases and executes tool calls).</li>
+      <li><b>Detected <code>customer_email</code>:</b> Identifies processing of Personally Identifiable Information (PII).</li>
+      <li><b>Assigned Risk Tier: <code>tier_3_high</code>:</b> Under the baseline charter, any system combining agent tool execution with personal data processing is classified as High Risk, requiring active outside-the-model guardrails.</li>
+    </ul>
+  </div>
+
+  <div class="content-box">
+    <div class="box-title">Why Exactly 40 Active Controls in the Snapshot?</div>
+    <p style="font-size:13px; line-height:1.6; color:var(--text-main);">Out of 61 baseline controls in the enterprise catalog, why does this project have exactly 40 active obligations?</p>
+    <ul class="clean-list" style="margin-top:8px;">
+      <li><b>Baseline Controls:</b> Inactive domains (e.g. computer vision watermarking, hardware biometric scanning) are set to advisory or inactive.</li>
+      <li><b>High-Risk Overlay (<code>ORG-OVL-RSK-TIER3-001</code>):</b> Tightens benchmark accuracy to >= 85%, activates Cosign image signing.</li>
+      <li><b>Agent Overlay (<code>ORG-OVL-ARC-AGENT-001</code>):</b> Activates recursion depth limits (<= 5) and sub-second emergency kill switches.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="table-card" style="margin-top:20px;">
+  <div class="table-header">Plain-English Translation of Every Generated File</div>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th style="width:25%">Generated Artifact</th>
+        <th style="width:25%">Plain-English Analogy</th>
+        <th style="width:50%">Why It Matters to Engineers & Auditors</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code>ai-project-manifest.yaml</code></td><td>The System Passport</td><td>Declares system ID, owners, lifecycle stage, and regulatory overlays bound to this repo.</td></tr>
+      <tr><td><code>effective-policy-snapshot.json</code></td><td>The Sealed Rulebook</td><td>The single authoritative source of truth. Its SHA-256 seal proves exactly what policies governed this build.</td></tr>
+      <tr><td><code>governance-cards/model-card.yaml</code></td><td>The Spec Sheet</td><td>Documents architecture, intended use, benchmark accuracy ceiling (88%), and hallucination ceiling (4%).</td></tr>
+      <tr><td><code>governance-cards/data-card.yaml</code></td><td>The Privacy Certificate</td><td>Certifies that PII sanitization is active and retention is strictly capped at 5 years.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+          </div>
+        </section>
+        
+        <section class="slide-section" id="slide-9" data-index="8">
+          <div class="slide-header">
+            <div class="slide-meta">
+              <span class="slide-num-pill">Slide 09</span>
+              <span class="slide-chapter-tag">Deliverables & Enforcement</span>
+              <span class="slide-sep">&bull;</span>
+              <span class="slide-tag-pill">Concrete Deliverables</span>
+            </div>
+            <h2 class="slide-main-title">The 7 Tangible Outputs You Get at the End of the Day</h2>
+            <p class="slide-main-subtitle">Using this package yields 7 verifiable engineering and compliance deliverables for your organization.</p>
+          </div>
+          <div class="slide-content-body">
+            
+<div class="grid-2">
+  <div class="output-card">
+    <div class="output-num">01</div>
+    <div class="output-body">
+      <h4>Declarative Project Manifest (<code>ai-project-manifest.yaml</code>)</h4>
+      <p>Registers your AI system in the enterprise inventory. Contains ownership metadata, technical characteristics, and active regulatory bindings.</p>
+    </div>
+  </div>
+  <div class="output-card">
+    <div class="output-num">02</div>
+    <div class="output-body">
+      <h4>Cryptographic Policy Snapshot (<code>effective-policy-snapshot.json</code>)</h4>
+      <p>A single-file rulebook of all active controls sealed with a SHA-256 integrity digest (e.g. <code>6ae8a7b81c4a...</code>). Proves compliance mathematically.</p>
+    </div>
+  </div>
+  <div class="output-card">
+    <div class="output-num">03</div>
+    <div class="output-body">
+      <h4>Interactive HTML Compliance Report (<code>governance-compliance-report.html</code>)</h4>
+      <p>A standalone, offline HTML audit report. Displays 7/7 verification checks, active enforcement rules, and can be exported as a PDF for leadership.</p>
+    </div>
+  </div>
+  <div class="output-card">
+    <div class="output-num">04</div>
+    <div class="output-body">
+      <h4>Workstation Secret Scanner (<code>.pre-commit-config.yaml</code>)</h4>
+      <p>A local Git hook that intercepts <code>git commit</code> if an unencrypted OpenAI or Anthropic API key is accidentally staged in code.</p>
+    </div>
+  </div>
+  <div class="output-card">
+    <div class="output-num">05</div>
+    <div class="output-body">
+      <h4>Cloud CI/CD PR Governance Gate (<code>ai-governance-gate.yaml</code>)</h4>
+      <p>A GitHub Actions workflow that evaluates every Pull Request. Fails the build and locks the merge button if policies fail.</p>
+    </div>
+  </div>
+  <div class="output-card">
+    <div class="output-num">06</div>
+    <div class="output-body">
+      <h4>Auditor-Ready Model & Data Cards (<code>governance-cards/*.yaml</code>)</h4>
+      <p>Standardized documentation declaring model benchmark accuracy, bias parity thresholds, and dataset privacy retention periods.</p>
+    </div>
+  </div>
+</div>
+
+<div class="output-card full" style="margin-top:16px;">
+  <div class="output-num">07</div>
+  <div class="output-body">
+    <h4>Signed Compliance Audit Evidence Bundle (<code>pr-governance-audit-bundle.zip</code>)</h4>
+    <p>A downloadable zip archive generated automatically by GitHub Actions containing the snapshot, test reports, and verification logs. Retained for 7 years for enterprise auditors.</p>
+  </div>
+</div>
+
+          </div>
+        </section>
+        
+        <section class="slide-section" id="slide-10" data-index="9">
+          <div class="slide-header">
+            <div class="slide-meta">
+              <span class="slide-num-pill">Slide 10</span>
+              <span class="slide-chapter-tag">Deliverables & Enforcement</span>
+              <span class="slide-sep">&bull;</span>
+              <span class="slide-tag-pill">Enforcement & Fallback</span>
+            </div>
+            <h2 class="slide-main-title">Automated Enforcement: What Actions Happen If Standards Fail?</h2>
+            <p class="slide-main-subtitle">The system does not just write notes; it actively blocks non-compliant code and provides a lawful exception process.</p>
+          </div>
+          <div class="slide-content-body">
+            
+<div class="table-card">
+  <div class="table-header">The 5 Automated Enforcement Barriers</div>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th style="width:25%">Enforcement Point</th>
+        <th style="width:35%">Violation Trigger (What Fails?)</th>
+        <th style="width:40%">Automated Action Taken by System</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>1. Workstation Pre-Commit</b></td>
+        <td>Developer accidentally stages an OpenAI/Anthropic API key.</td>
+        <td><span class="badge-action red">ABORTS GIT COMMIT</span> (Exit Code 1). Key cannot leave the laptop.</td>
+      </tr>
+      <tr>
+        <td><b>2. Pull Request Gate (CI/CD)</b></td>
+        <td>Accuracy &lt; 85%, hallucination &gt; 5%, or copyleft GPL licenses found.</td>
+        <td><span class="badge-action red">FAILS BUILD & LOCKS PR MERGE</span>. Code cannot be merged into main.</td>
+      </tr>
+      <tr>
+        <td><b>3. Model Registry Promotion</b></td>
+        <td>Model serialized in unsafe Python <code>.pkl</code> pickle format or missing Model Card.</td>
+        <td><span class="badge-action red">BLOCKS MODEL PROMOTION</span> to staging or production registry.</td>
+      </tr>
+      <tr>
+        <td><b>4. Kubernetes Cluster Admission</b></td>
+        <td>Container image lacks cryptographic Cosign signature from CI/CD.</td>
+        <td><span class="badge-action red">REJECTS POD DEPLOYMENT</span> with HTTP 403 Forbidden.</td>
+      </tr>
+      <tr>
+        <td><b>5. Runtime Agent Interceptor (PEP)</b></td>
+        <td>Agent executes tool &gt; 5 recursion depth or does sensitive action without approval.</td>
+        <td><span class="badge-action red">BLOCKS TOOL CALL IN REAL-TIME</span> and writes immutable audit record.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="grid-2" style="margin-top:20px;">
+  <div class="content-box">
+    <div class="box-title">What If You Need an Exception? (The Lawful Fallback)</div>
+    <p style="font-size:13px; line-height:1.6; color:var(--text-main);">If an urgent hotfix or legacy model cannot meet a rule immediately, developers <b>cannot silently bypass the check</b>. Instead, they must submit:</p>
+    <div class="code-box" style="margin:8px 0;">project-kit/exception-request.template.yaml</div>
+    <p style="font-size:12px; color:var(--text-muted); line-height:1.5;">Requires compensating controls, maximum 90-day time limit, and formal sign-off by the AI Safety Review Board (<code>[ROLE: AI Safety Board]</code>).</p>
+  </div>
+
+  <div class="content-box">
+    <div class="box-title">The Master 5-Step Daily Engineering Workflow</div>
+    <ol class="clean-ordered-list">
+      <li><b>Setup Git:</b> <code>git init</code> in your AI project folder.</li>
+      <li><b>Run Copilot:</b> <code>python C:\ai-governance-package\agents\governance_agent.py auto-setup .</code></li>
+      <li><b>Check Report:</b> Double-click <code>governance-compliance-report.html</code>.</li>
+      <li><b>Confirm Metrics:</b> Review evaluation numbers in <code>governance-cards/model-card.yaml</code>.</li>
+      <li><b>Commit & Push:</b> <code>git add . && git commit -m "feat(gov): add AI governance" && git push</code></li>
+    </ol>
+  </div>
+</div>
+
+          </div>
+        </section>
+        
+  </main>
+</div>
+
+<div class="bottom-controller">
+  <button class="nav-btn" id="btnPrev" onclick="prevSlide()">&#9664; Prev</button>
+  <div class="progress-info">
+    <span id="slideCounterText">Slide 1 of 10</span>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progressFill" style="width: 10%;"></div>
+    </div>
+  </div>
+  <button class="nav-btn" id="btnNext" onclick="nextSlide()">Next &#9654;</button>
+  <select class="slide-select-dropdown" id="slideSelectDropdown" onchange="goToSlide(parseInt(this.value))">
+    <option value="0">01. What is the AI Governance Package & Why Does ...</option>
+<option value="1">02. Platform Architecture: How It Operates Under ...</option>
+<option value="2">03. What Policies & Standards Does It Check?...</option>
+<option value="3">04. Git Setup: Publishing to GitHub (Personal & C...</option>
+<option value="4">05. How to Use It: Method 1 - Autonomous Governan...</option>
+<option value="5">06. How to Use It: Method 2 - IDE Chat Integratio...</option>
+<option value="6">07. Hands-on Example Walkthrough: Testing with sa...</option>
+<option value="7">08. What Does It Infer Once the YAML Files Are Ge...</option>
+<option value="8">09. The 7 Tangible Outputs You Get at the End of ...</option>
+<option value="9">10. Automated Enforcement: What Actions Happen If...</option>
+
+  </select>
+</div>
+
+<script>
+  let currentSlide = 0;
+  const totalSlides = 10;
+  let currentMode = 'slide';
+
+  function updateUI() {
+    // Hide / show slides in slide mode
+    for (let i = 0; i < totalSlides; i++) {
+      const sec = document.getElementById('slide-' + (i + 1));
+      const navItem = document.getElementById('nav-item-' + i);
+      if (sec) {
+        if (currentMode === 'slide' || currentMode === 'present') {
+          sec.classList.toggle('active', i === currentSlide);
+        } else {
+          sec.classList.add('active');
+        }
+      }
+      if (navItem) {
+        navItem.classList.toggle('active', i === currentSlide);
+      }
+    }
+
+    // Update bottom controller
+    const counterText = document.getElementById('slideCounterText');
+    if (counterText) counterText.textContent = `Slide ${currentSlide + 1} of ${totalSlides}`;
+
+    const progressFill = document.getElementById('progressFill');
+    if (progressFill) {
+      const pct = Math.round(((currentSlide + 1) / totalSlides) * 100);
+      progressFill.style.width = pct + '%';
+    }
+
+    const btnPrev = document.getElementById('btnPrev');
+    const btnNext = document.getElementById('btnNext');
+    if (btnPrev) btnPrev.disabled = (currentSlide === 0);
+    if (btnNext) btnNext.disabled = (currentSlide === totalSlides - 1);
+
+    const dropdown = document.getElementById('slideSelectDropdown');
+    if (dropdown) dropdown.value = currentSlide;
+
+    // Scroll active slide into view if full mode
+    if (currentMode === 'full') {
+      const sec = document.getElementById('slide-' + (currentSlide + 1));
+      if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
-  updateChrome();
-}
-window.stepSlide=function(d){go(cur+d,true);};
-window.jumpToSlide=function(v){go(parseInt(v,10),true);};
-window.setAudience=function(a){
-  var keep=track[cur];aud=a;
-  document.querySelectorAll('.aud-btn').forEach(function(b){b.classList.toggle('active',b.dataset.aud===a);});
-  rebuild();var k=track.indexOf(keep);go(k>-1?k:0,true);
-};
-window.filterSidebarSlides=function(){var keep=track[cur];rebuild();var k=track.indexOf(keep);go(k>-1?k:0,true);};
-function setTabs(){document.querySelectorAll('.view-btn').forEach(function(b){b.classList.toggle('active',b.dataset.mode===mode);});}
-window.setMode=function(m){
-  if(m==='present'){enterPresent();return;}
-  if(mode==='present'){exitFs();}
-  mode=m;document.body.classList.remove('present-mode');document.documentElement.classList.remove('present-root');
-  document.body.classList.toggle('full-mode',m==='full');
-  slides.forEach(function(s){s.classList.remove('show');});
-  setTabs();
-  if(m==='full'){setTimeout(function(){go(cur,true);},30);}else{go(cur,false);}
-};
-function enterPresent(){
-  mode='present';document.body.classList.remove('full-mode');document.body.classList.add('present-mode');document.documentElement.classList.add('present-root');setTabs();go(cur,false);
-  var el=document.documentElement;
-  try{if(el.requestFullscreen&&!document.fullscreenElement){el.requestFullscreen().catch(function(){});}}catch(e){}
-}
-function exitFs(){try{if(document.fullscreenElement&&document.exitFullscreen){document.exitFullscreen().catch(function(){});}}catch(e){}}
-window.exitPresent=function(){setMode('slide');};
-document.addEventListener('fullscreenchange',function(){if(!document.fullscreenElement&&mode==='present'){setMode('slide');}});
-window.toggleDarkMode=function(){document.body.classList.toggle('dark-mode');};
-window.toggleNotes=function(){var on=document.body.classList.toggle('notes-on');document.getElementById('btnNotes').classList.toggle('on',on);};
-/* scroll spy for full view */
-var lockSpy=false;
-document.getElementById('stage').addEventListener('scroll',function(){
-  if(mode!=='full'||lockSpy)return;
-  var st=this.getBoundingClientRect().top, best=0;
-  track.forEach(function(s,i){if(s.getBoundingClientRect().top-st<160)best=i;});
-  if(best!==cur){cur=best;updateChrome();}
-},{passive:true});
-document.addEventListener('keydown',function(e){
-  var t=e.target.tagName;if(t==='INPUT'||t==='SELECT'||t==='TEXTAREA')return;
-  if(e.key==='ArrowRight'||e.key==='PageDown'||(e.key===' '&&mode!=='full')){e.preventDefault();stepSlide(1);}
-  else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();stepSlide(-1);}
-  else if(e.key==='Home'){e.preventDefault();go(0,true);}
-  else if(e.key==='End'){e.preventDefault();go(track.length-1,true);}
-  else if(e.key==='f'||e.key==='F'){e.preventDefault();if(mode==='present')setMode('slide');else setMode('present');}
-  else if(e.key==='Escape'&&mode==='present'){setMode('slide');}
-  else if(e.key==='n'||e.key==='N'){toggleNotes();}
-});
-window.addEventListener('beforeprint',function(){document.body.classList.add('printing');});
-/* draggable controller */
-(function(){
-  var pane=document.getElementById('frozenPane');var drag=false,sx,sy,il,it;
-  pane.addEventListener('pointerdown',function(e){
-    if(e.target.closest('button')||e.target.closest('select'))return;
-    drag=true;sx=e.clientX;sy=e.clientY;var r=pane.getBoundingClientRect();il=r.left;it=r.top;
-    pane.style.bottom='auto';pane.style.right='auto';pane.style.left=il+'px';pane.style.top=it+'px';pane.style.cursor='grabbing';
-    document.addEventListener('pointermove',mv);document.addEventListener('pointerup',up);
+
+  function goToSlide(idx) {
+    if (idx >= 0 && idx < totalSlides) {
+      currentSlide = idx;
+      updateUI();
+    }
+  }
+
+  function nextSlide() {
+    if (currentSlide < totalSlides - 1) {
+      currentSlide++;
+      updateUI();
+    }
+  }
+
+  function prevSlide() {
+    if (currentSlide > 0) {
+      currentSlide--;
+      updateUI();
+    }
+  }
+
+  function setMode(mode) {
+    currentMode = mode;
+    document.body.classList.remove('full-mode', 'present-mode');
+    document.getElementById('btnModeSlide').classList.remove('active');
+    document.getElementById('btnModeFull').classList.remove('active');
+    document.getElementById('btnModePresent').classList.remove('active');
+
+    if (mode === 'full') {
+      document.body.classList.add('full-mode');
+      document.getElementById('btnModeFull').classList.add('active');
+    } else if (mode === 'present') {
+      document.body.classList.add('present-mode');
+      document.getElementById('btnModePresent').classList.add('active');
+    } else {
+      document.getElementById('btnModeSlide').classList.add('active');
+    }
+    updateUI();
+  }
+
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+  }
+
+  function filterSidebar() {
+    const query = document.getElementById('searchInput').value.toLowerCase();
+    const items = document.querySelectorAll('.sidebar-item');
+    items.forEach(it => {
+      const text = it.textContent.toLowerCase();
+      it.style.display = text.includes(query) ? 'block' : 'none';
+    });
+  }
+
+  // Keyboard navigation
+  window.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+      nextSlide();
+    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      prevSlide();
+    } else if (e.key === 'Home') {
+      goToSlide(0);
+    } else if (e.key === 'End') {
+      goToSlide(totalSlides - 1);
+    } else if (e.key === 'f' || e.key === 'F') {
+      setMode(currentMode === 'present' ? 'slide' : 'present');
+    } else if (e.key === 'Escape') {
+      if (currentMode === 'present') setMode('slide');
+    }
   });
-  function mv(e){if(!drag)return;var nl=il+e.clientX-sx,nt=it+e.clientY-sy;
-    nl=Math.max(10,Math.min(nl,window.innerWidth-pane.offsetWidth-10));nt=Math.max(10,Math.min(nt,window.innerHeight-pane.offsetHeight-10));
-    pane.style.left=nl+'px';pane.style.top=nt+'px';}
-  function up(){drag=false;pane.style.cursor='grab';document.removeEventListener('pointermove',mv);document.removeEventListener('pointerup',up);}
-})();
-rebuild();go(0,false);
-})();
+
+  // Init
+  updateUI();
 </script>
-</body></html>
+</body>
+</html>
