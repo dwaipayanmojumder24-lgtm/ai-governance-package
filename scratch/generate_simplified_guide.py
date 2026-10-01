@@ -141,19 +141,25 @@ slide("1.1", C1, "exec", "Start Here", "The Situation: What You Have on Your C: 
 # ------------------------------------------------------------------------------
 # 1.2 Git Setup: How to Set Up Git for the Governance Package & Projects
 # ------------------------------------------------------------------------------
-slide("1.2", C1, "arch", "Git Setup", "Git Setup: How to Set Up Git Locally & Push to GitHub",
-      "Step-by-step instructions on setting up Git for both the Central Governance Package and your downstream AI projects.",
+slide("1.2", C1, "arch", "Git Setup", "Git Setup: How to Set Up Git Locally & Push to Your Personal GitHub",
+      "Step-by-step instructions on pushing to your personal GitHub account (or company repo) and connecting downstream AI projects.",
       "git status | git commit | git push origin main",
       cols([
-          box("Part A: Setting Up Git for the Central Governance Package (C:\\ai-governance-package)",
-              "<p>Your local package at <code>C:\\ai-governance-package</code> is already a committed Git repository. To share it with your company on GitHub:</p>"
+          box("Part A: Pushing to Your Personal GitHub Account (No Company Repo Needed!)",
+              "<p>Your local package at <code>C:\\ai-governance-package</code> is already committed to Git. To push it to your <b>personal GitHub</b>:</p>"
               "<ol style='padding-left:18px;margin-top:8px;line-height:1.7'>"
-              "<li>Open PowerShell and navigate to the package:<br><code>cd C:\\ai-governance-package</code></li>"
-              "<li>Create a new empty repository on your company GitHub (e.g., <code>https://github.com/your-org/ai-governance-package.git</code>).</li>"
-              "<li>Link your local folder to GitHub:<br><code>git remote add origin https://github.com/your-org/ai-governance-package.git</code></li>"
-              "<li>Push the master branch to GitHub:<br><code>git branch -M main</code><br><code>git push -u origin main</code></li>"
+              "<li>Log in to <a href='https://github.com' target='_blank'>github.com</a> and click <b>New repository</b>.</li>"
+              "<li>Set <b>Owner</b> to your personal username, Name: <code>ai-governance-package</code>.</li>"
+              "<li>Choose <b>Public</b> (free unlimited CI/CD) or <b>Private</b> (for personal use). Leave 'Add README' unchecked.</li>"
+              "<li>Open PowerShell and connect your local folder to your personal repository:<br>"
+              "<div style='background:#061A33;color:#F8FAFC;padding:8px;border-radius:4px;font-family:Consolas,monospace;font-size:12px;margin:6px 0;'>"
+              "cd C:\\ai-governance-package<br>"
+              "git remote add origin https://github.com/&lt;your-personal-username&gt;/ai-governance-package.git<br>"
+              "git branch -M main<br>"
+              "git push -u origin main"
+              "</div></li>"
               "</ol>"
-              "<p style='margin-top:8px;font-size:12px;color:#059669'><b>Done!</b> Now all engineering teams in your company can clone or reference this repository.</p>"),
+              "<p style='margin-top:8px;font-size:12px;color:#059669'><b>Zero Code Changes Needed:</b> The package is 100% tool-neutral. No enterprise servers or licenses are required.</p>"),
           box("Part B: Setting Up Git for Your AI Project (sample-ai-project or Any Project)",
               "<p>When you start or work on an AI project that needs governance:</p>"
               "<ol style='padding-left:18px;margin-top:8px;line-height:1.7'>"
@@ -161,11 +167,11 @@ slide("1.2", C1, "arch", "Git Setup", "Git Setup: How to Set Up Git Locally & Pu
               "<li>If it is a new folder, initialize Git:<br><code>git init</code></li>"
               "<li>Run the Governance Copilot (see next slide) to create your governance files.</li>"
               "<li>Stage and commit all files including the governance snapshot:<br><code>git add .</code><br><code>git commit -m \"feat(gov): add enterprise AI governance\"</code></li>"
-              "<li>Push your branch to GitHub:<br><code>git push origin feature/governed-ai-app</code></li>"
+              "<li>Push to your personal GitHub repo:<br><code>git remote add origin https://github.com/&lt;your-personal-username&gt;/sample-ai-project.git</code><br><code>git push -u origin main</code></li>"
               "</ol>"
               "<p style='margin-top:8px;font-size:12px;color:#0284C7'><b>Notice:</b> The pre-commit scanner will automatically protect you from committing plain-text secrets!</p>")
       ]) +
-      alert("Why Git Matters for Governance:", "Git commits provide an immutable audit trail. The cryptographic SHA-256 snapshot hash committed to Git proves to regulators exactly which policies were active when code was written.", "info"))
+      alert("Personal vs. Company GitHub:", "Whether pushed to your personal GitHub or an enterprise organization, the governance engine, CI/CD gates, and HTML reports behave identically.", "info"))
 
 # ------------------------------------------------------------------------------
 # 2.1 Point 1: Autonomous Governance Copilot
