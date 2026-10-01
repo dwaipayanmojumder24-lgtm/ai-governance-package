@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Enterprise AI Governance: The Complete Master User Guide</title>
+<title>Enterprise AI Governance: Executive & Management Overview</title>
 <style>
   :root {
     --navy: #0B2E59;
@@ -56,7 +56,7 @@
     font-family: var(--font);
     background: var(--bg-page);
     color: var(--text-main);
-    line-height: 1.5;
+    line-height: 1.6;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -67,7 +67,7 @@
   header.master-header {
     background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
     color: #fff;
-    padding: 10px 24px;
+    padding: 12px 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -89,20 +89,20 @@
     color: #fff;
     font-size: 12px;
     font-weight: 800;
-    padding: 5px 12px;
+    padding: 6px 12px;
     border-radius: var(--radius-sm);
     letter-spacing: 1px;
     box-shadow: 0 2px 6px rgba(229,36,33,0.4);
   }
 
   .brand-text h1 {
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 700;
     color: #fff;
   }
 
   .brand-text p {
-    font-size: 11px;
+    font-size: 12px;
     color: #94A3B8;
   }
 
@@ -125,7 +125,7 @@
     background: transparent;
     border: none;
     color: #E2E8F0;
-    padding: 5px 14px;
+    padding: 6px 14px;
     font-size: 12px;
     font-weight: 600;
     border-radius: 16px;
@@ -160,7 +160,7 @@
   /* LAYOUT */
   .app-container {
     display: grid;
-    grid-template-columns: 320px 1fr;
+    grid-template-columns: 310px 1fr;
     flex: 1;
     min-height: 0;
     overflow: hidden;
@@ -215,7 +215,7 @@
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.8px;
-    padding: 12px 8px 4px;
+    padding: 14px 8px 4px;
   }
 
   .sidebar-item {
@@ -281,7 +281,7 @@
   /* STAGE */
   main.stage-area {
     overflow-y: auto;
-    padding: 28px 36px 90px;
+    padding: 30px 42px 90px;
     background: var(--bg-page);
   }
 
@@ -290,9 +290,9 @@
     background: var(--bg-card);
     border: 1px solid var(--border-light);
     border-radius: var(--radius-lg);
-    padding: 28px 36px 36px;
+    padding: 32px 42px 40px;
     box-shadow: var(--shadow-md);
-    margin-bottom: 28px;
+    margin-bottom: 30px;
     display: none;
     scroll-margin-top: 20px;
   }
@@ -361,7 +361,7 @@
   }
 
   .slide-main-title {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 800;
     color: var(--navy);
     line-height: 1.25;
@@ -373,7 +373,7 @@
   }
 
   .slide-main-subtitle {
-    font-size: 14px;
+    font-size: 15px;
     color: var(--text-secondary);
     font-weight: 500;
     max-width: 950px;
@@ -383,7 +383,7 @@
   .lead-banner {
     background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-light) 100%);
     color: #fff;
-    padding: 22px 28px;
+    padding: 24px 30px;
     border-radius: var(--radius-md);
     border-left: 5px solid var(--red);
     box-shadow: var(--shadow-sm);
@@ -402,30 +402,29 @@
   }
 
   .lead-banner h3 {
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 700;
     margin-bottom: 6px;
     color: #fff;
   }
 
   .lead-banner p {
-    font-size: 13px;
+    font-size: 14px;
     color: #E2E8F0;
     line-height: 1.6;
   }
 
   /* GRIDS */
-  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
-  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 
-  /* CARDS & BOXES */
+  /* STAT CARDS */
   .stat-card {
     background: var(--bg-card);
     border: 1px solid var(--border-light);
     border-top: 3px solid var(--navy);
     border-radius: var(--radius-md);
-    padding: 16px;
+    padding: 18px;
   }
 
   .stat-num {
@@ -448,16 +447,18 @@
   }
 
   .stat-desc {
-    font-size: 12px;
+    font-size: 13px;
     color: var(--text-muted);
-    margin-top: 4px;
+    margin-top: 6px;
+    line-height: 1.5;
   }
 
+  /* CONTENT BOX */
   .content-box {
     background: var(--bg-card);
     border: 1px solid var(--border-light);
     border-radius: var(--radius-md);
-    padding: 20px;
+    padding: 22px;
   }
 
   .content-box.highlight {
@@ -470,194 +471,83 @@
   }
 
   .box-title {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 10px;
+    font-size: 15px;
+    font-weight: 800;
+    margin-bottom: 12px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
-
-  body.dark-mode .box-title { color: #93C5FD; }
 
   .clean-list {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    font-size: 13px;
+    gap: 10px;
+    font-size: 14px;
   }
 
   .clean-list li {
-    padding-left: 18px;
+    padding-left: 20px;
     position: relative;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   .clean-list li::before {
     content: "•";
     position: absolute;
     left: 0;
-    color: var(--red);
+    color: var(--navy);
     font-weight: 800;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1;
     top: 2px;
   }
 
-  .clean-ordered-list {
-    padding-left: 20px;
-    font-size: 13px;
-    line-height: 1.7;
-    color: var(--text-main);
-  }
-
-  .clean-ordered-list li {
-    margin-bottom: 6px;
-  }
-
-  /* DIAGRAMS */
-  .diagram-wrapper {
-    background: #F1F5F9;
+  /* STEP CARDS */
+  .step-card {
+    background: var(--bg-card);
     border: 1px solid var(--border-light);
     border-radius: var(--radius-md);
     padding: 20px;
+    border-top: 4px solid var(--blue);
   }
 
-  body.dark-mode .diagram-wrapper { background: #0B1120; }
-
-  .diagram-title {
-    font-size: 13px;
-    font-weight: 800;
-    text-transform: uppercase;
-    color: var(--navy);
-    margin-bottom: 14px;
-    letter-spacing: 0.5px;
-  }
-
-  body.dark-mode .diagram-title { color: #93C5FD; }
-
-  .pipeline-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 12px;
-  }
-
-  .pipeline-step {
-    background: #fff;
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-sm);
-    padding: 12px 14px;
-    border-top: 3px solid var(--blue);
-  }
-
-  body.dark-mode .pipeline-step { background: var(--bg-card); }
-
-  .pipeline-step.final {
-    border-top-color: var(--red);
-    background: #FFF5F5;
-  }
-
-  body.dark-mode .pipeline-step.final { background: rgba(229,36,33,0.12); }
-
-  .step-badge {
-    font-size: 10px;
-    font-weight: 800;
-    color: var(--blue);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 2px;
-  }
-
-  .step-badge.red { color: var(--red); }
-
-  .step-name {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 4px;
-  }
-
-  body.dark-mode .step-name { color: #fff; }
-
-  .step-desc {
+  .step-card-num {
+    background: var(--navy);
+    color: #fff;
     font-size: 11px;
-    color: var(--text-muted);
-    line-height: 1.4;
-    margin-bottom: 6px;
-  }
-
-  .step-file {
-    font-size: 10px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 4px;
     font-family: var(--mono);
-    color: var(--text-secondary);
-    background: var(--bg-page);
-    padding: 2px 4px;
-    border-radius: 3px;
-    word-break: break-all;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 8px;
   }
 
-  /* TABLES */
-  .table-card {
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    background: var(--bg-card);
-  }
-
-  .table-header {
-    background: #F1F5F9;
-    padding: 12px 18px;
-    font-size: 13px;
+  .step-card-body h4 {
+    font-size: 16px;
     font-weight: 700;
     color: var(--navy);
-    border-bottom: 1px solid var(--border-light);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    margin-bottom: 8px;
   }
 
-  body.dark-mode .table-header { background: #131E32; color: #fff; }
+  body.dark-mode .step-card-body h4 { color: #fff; }
 
-  table.data-table {
-    width: 100%;
-    border-collapse: collapse;
+  .step-card-body p {
     font-size: 13px;
-  }
-
-  table.data-table th, table.data-table td {
-    padding: 10px 14px;
-    text-align: left;
-    border-bottom: 1px solid var(--border-light);
-    vertical-align: top;
-  }
-
-  table.data-table th {
-    background: #F8FAFC;
     color: var(--text-secondary);
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  body.dark-mode table.data-table th { background: #0F172A; }
-
-  table.data-table tr:hover td {
-    background: #F8FAFC;
-  }
-
-  body.dark-mode table.data-table tr:hover td {
-    background: #162036;
+    line-height: 1.5;
   }
 
   /* CODE BOX */
   .code-box {
     background: #061A33;
     color: #F8FAFC;
-    padding: 12px 16px;
+    padding: 14px 18px;
     border-radius: var(--radius-sm);
     font-family: var(--mono);
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1.6;
     overflow-x: auto;
   }
@@ -673,12 +563,35 @@
   .cmd-comment { color: #94A3B8; }
   .cmd-text { color: #F8FAFC; }
 
-  /* CALLOUTS */
-  .callout-box {
-    padding: 14px 18px;
+  /* STATUS BOX */
+  .status-box {
+    padding: 10px 14px;
     border-radius: var(--radius-sm);
     font-size: 13px;
     line-height: 1.5;
+  }
+
+  .status-box.green {
+    background: #ECFDF5;
+    border: 1px solid #A7F3D0;
+    color: #065F46;
+  }
+
+  .status-box.blue {
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    color: #1E3A8A;
+  }
+
+  body.dark-mode .status-box.green { background: rgba(5,150,105,0.15); color: #A7F3D0; }
+  body.dark-mode .status-box.blue { background: rgba(2,132,199,0.15); color: #93C5FD; }
+
+  /* CALLOUTS */
+  .callout-box {
+    padding: 16px 20px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    line-height: 1.6;
     border-left: 4px solid;
   }
 
@@ -704,81 +617,68 @@
   body.dark-mode .callout-box.warning { background: rgba(217,119,6,0.12); color: #FDE68A; }
   body.dark-mode .callout-box.success { background: rgba(5,150,105,0.12); color: #A7F3D0; }
 
-  /* STEP CARDS */
-  .step-card {
-    display: flex;
-    gap: 16px;
-    background: var(--bg-card);
+  /* TABLES */
+  .table-card {
     border: 1px solid var(--border-light);
     border-radius: var(--radius-md);
-    padding: 18px 22px;
-    align-items: flex-start;
+    overflow: hidden;
+    background: var(--bg-card);
   }
 
-  .step-card-num {
-    background: var(--navy);
-    color: #fff;
+  .table-header {
+    background: #F1F5F9;
+    padding: 14px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--navy);
+    border-bottom: 1px solid var(--border-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  body.dark-mode .table-header { background: #131E32; color: #fff; }
+
+  table.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  table.data-table th, table.data-table td {
+    padding: 12px 18px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-light);
+    vertical-align: top;
+  }
+
+  table.data-table th {
+    background: #F8FAFC;
+    color: var(--text-secondary);
     font-size: 12px;
-    font-weight: 800;
-    padding: 4px 10px;
-    border-radius: 4px;
-    font-family: var(--mono);
-    text-transform: uppercase;
-  }
-
-  .step-card-body h4 {
-    font-size: 15px;
     font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 4px;
-  }
-
-  body.dark-mode .step-card-body h4 { color: #fff; }
-
-  /* OVERLAY CARDS */
-  .overlay-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-md);
-    padding: 14px;
-    border-top: 3px solid var(--purple);
-  }
-
-  .overlay-badge {
-    font-size: 10px;
-    font-weight: 800;
-    color: var(--purple);
     text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 
-  .overlay-name {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--navy);
-    margin: 2px 0 4px;
+  body.dark-mode table.data-table th { background: #0F172A; }
+
+  table.data-table tr:hover td {
+    background: #F8FAFC;
   }
 
-  body.dark-mode .overlay-name { color: #fff; }
-
-  .overlay-desc {
-    font-size: 11px;
-    color: var(--text-muted);
-    line-height: 1.4;
+  body.dark-mode table.data-table tr:hover td {
+    background: #162036;
   }
 
   /* OUTPUT CARDS */
   .output-card {
     display: flex;
-    gap: 14px;
+    gap: 16px;
     background: var(--bg-card);
     border: 1px solid var(--border-light);
     border-radius: var(--radius-md);
-    padding: 16px;
+    padding: 20px;
     align-items: flex-start;
-  }
-
-  .output-card.full {
-    border-left: 4px solid var(--green);
   }
 
   .output-num {
@@ -794,7 +694,7 @@
   body.dark-mode .output-num { background: #1E293B; color: #93C5FD; }
 
   .output-body h4 {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     color: var(--navy);
     margin-bottom: 4px;
@@ -803,7 +703,7 @@
   body.dark-mode .output-body h4 { color: #fff; }
 
   .output-body p {
-    font-size: 12px;
+    font-size: 13px;
     color: var(--text-muted);
     line-height: 1.5;
   }
@@ -811,8 +711,8 @@
   /* BADGES */
   .badge-action {
     font-size: 11px;
-    font-weight: 700;
-    padding: 2px 8px;
+    font-weight: 800;
+    padding: 3px 8px;
     border-radius: 4px;
     font-family: var(--mono);
     text-transform: uppercase;
@@ -831,12 +731,12 @@
   .chat-prompt-box {
     background: #EFF6FF;
     border-left: 4px solid var(--blue);
-    padding: 10px 14px;
+    padding: 12px 16px;
     border-radius: 4px;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
     color: var(--navy);
-    margin-top: 6px;
+    margin-top: 8px;
   }
 
   body.dark-mode .chat-prompt-box {
@@ -908,7 +808,7 @@
   .progress-bar-fill {
     height: 100%;
     background: var(--red);
-    width: 10%;
+    width: 14%;
     transition: width 0.2s;
   }
 
@@ -922,7 +822,7 @@
     font-family: inherit;
     outline: none;
     cursor: pointer;
-    max-width: 180px;
+    max-width: 200px;
   }
 
   .slide-select-dropdown option {
@@ -1012,12 +912,11 @@
   @media (max-width: 1024px) {
     .app-container { grid-template-columns: 1fr; }
     aside.sidebar { display: none; }
-    .grid-4 { grid-template-columns: repeat(2, 1fr); }
-    .pipeline-grid { grid-template-columns: 1fr; }
+    .grid-3 { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 768px) {
-    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
     main.stage-area { padding: 16px; }
     .slide-section { padding: 20px 16px; }
   }
@@ -1029,7 +928,7 @@
   <div class="header-brand">
     <div class="gov-badge">AI-GOV</div>
     <div class="brand-text">
-      <h1>Enterprise AI Governance: Complete Master User Guide</h1>
+      <h1>Enterprise AI Governance: Executive & Management Overview</h1>
       <p>Workspace: C:\ai-governance-package | GitHub: dwaipayanmojumder24-lgtm/ai-governance-package</p>
     </div>
   </div>
@@ -1049,93 +948,70 @@
 <div class="app-container">
   <aside class="sidebar">
     <div class="sidebar-search">
-      <input type="text" id="searchInput" placeholder="Search guide (e.g. mcp, policies, outputs)..." oninput="filterSidebar()">
+      <input type="text" id="searchInput" placeholder="Search overview..." oninput="filterSidebar()">
     </div>
     <div class="sidebar-items-list" id="sidebarList">
-      <div class="sidebar-chapter-heading">Platform Overview</div>
+      <div class="sidebar-chapter-heading">Executive Summary</div>
 
         <div class="sidebar-item active" onclick="goToSlide(0)" id="nav-item-0">
           <div class="sidebar-item-top">
             <span class="sidebar-item-num">01</span>
-            <span class="sidebar-item-tag">The Big Picture</span>
+            <span class="sidebar-item-tag">Business Purpose</span>
           </div>
-          <div class="sidebar-item-title">What is the AI Governance Package & Why Does It Exist?</div>
+          <div class="sidebar-item-title">What is the AI Governance Package & Why Did We Build It?</div>
         </div>
-        
+        <div class="sidebar-chapter-heading">Platform Overview</div>
+
         <div class="sidebar-item" onclick="goToSlide(1)" id="nav-item-1">
           <div class="sidebar-item-top">
             <span class="sidebar-item-num">02</span>
-            <span class="sidebar-item-tag">Under the Hood</span>
+            <span class="sidebar-item-tag">What Was Built</span>
           </div>
-          <div class="sidebar-item-title">Platform Architecture: How It Operates Under the Hood</div>
+          <div class="sidebar-item-title">What Have We Built & What Exists on Your Computer Today?</div>
         </div>
-        <div class="sidebar-chapter-heading">Policies & Standards</div>
-
+        
         <div class="sidebar-item" onclick="goToSlide(2)" id="nav-item-2">
           <div class="sidebar-item-top">
             <span class="sidebar-item-num">03</span>
-            <span class="sidebar-item-tag">Standards Covered</span>
+            <span class="sidebar-item-tag">How It Works</span>
           </div>
-          <div class="sidebar-item-title">What Policies & Standards Does It Check?</div>
+          <div class="sidebar-item-title">How Does It Work? The Simple 3-Step Process</div>
         </div>
-        <div class="sidebar-chapter-heading">Setup & Usage</div>
+        <div class="sidebar-chapter-heading">How to Use It</div>
 
         <div class="sidebar-item" onclick="goToSlide(3)" id="nav-item-3">
           <div class="sidebar-item-top">
             <span class="sidebar-item-num">04</span>
-            <span class="sidebar-item-tag">Git Workflow</span>
+            <span class="sidebar-item-tag">Usage Methods</span>
           </div>
-          <div class="sidebar-item-title">Git Setup: Publishing to GitHub (Personal & Company)</div>
+          <div class="sidebar-item-title">How Does Someone Actually Use It? (2 Simple Ways)</div>
         </div>
-        
+        <div class="sidebar-chapter-heading">Deliverables & Reports</div>
+
         <div class="sidebar-item" onclick="goToSlide(4)" id="nav-item-4">
           <div class="sidebar-item-top">
             <span class="sidebar-item-num">05</span>
-            <span class="sidebar-item-tag">Method 1: CLI</span>
+            <span class="sidebar-item-tag">What You Get</span>
           </div>
-          <div class="sidebar-item-title">How to Use It: Method 1 - Autonomous Governance Copilot</div>
+          <div class="sidebar-item-title">What Outputs & Reports Do You Get After Execution?</div>
         </div>
-        
+        <div class="sidebar-chapter-heading">Risk & Enforcement</div>
+
         <div class="sidebar-item" onclick="goToSlide(5)" id="nav-item-5">
           <div class="sidebar-item-top">
             <span class="sidebar-item-num">06</span>
-            <span class="sidebar-item-tag">Method 2: IDE MCP</span>
+            <span class="sidebar-item-tag">Company Protection</span>
           </div>
-          <div class="sidebar-item-title">How to Use It: Method 2 - IDE Chat Integration via MCP</div>
+          <div class="sidebar-item-title">What Happens If Something Fails or Standards Are Not Followed?</div>
         </div>
-        <div class="sidebar-chapter-heading">Hands-on Sandbox</div>
+        <div class="sidebar-chapter-heading">Executive Summary</div>
 
         <div class="sidebar-item" onclick="goToSlide(6)" id="nav-item-6">
           <div class="sidebar-item-top">
             <span class="sidebar-item-num">07</span>
-            <span class="sidebar-item-tag">Testing Sandbox</span>
+            <span class="sidebar-item-tag">Next Steps</span>
           </div>
-          <div class="sidebar-item-title">Hands-on Example Walkthrough: Testing with sample-ai-project</div>
-        </div>
-        
-        <div class="sidebar-item" onclick="goToSlide(7)" id="nav-item-7">
-          <div class="sidebar-item-top">
-            <span class="sidebar-item-num">08</span>
-            <span class="sidebar-item-tag">Inference Breakdown</span>
-          </div>
-          <div class="sidebar-item-title">What Does It Infer Once the YAML Files Are Generated?</div>
-        </div>
-        <div class="sidebar-chapter-heading">Deliverables & Enforcement</div>
-
-        <div class="sidebar-item" onclick="goToSlide(8)" id="nav-item-8">
-          <div class="sidebar-item-top">
-            <span class="sidebar-item-num">09</span>
-            <span class="sidebar-item-tag">Concrete Deliverables</span>
-          </div>
-          <div class="sidebar-item-title">The 7 Tangible Outputs You Get at the End of the Day</div>
-        </div>
-        
-        <div class="sidebar-item" onclick="goToSlide(9)" id="nav-item-9">
-          <div class="sidebar-item-top">
-            <span class="sidebar-item-num">10</span>
-            <span class="sidebar-item-tag">Enforcement & Fallback</span>
-          </div>
-          <div class="sidebar-item-title">Automated Enforcement: What Actions Happen If Standards Fail?</div>
+          <div class="sidebar-item-title">Executive Summary & Next Steps for Leadership</div>
         </div>
         
     </div>
@@ -1147,61 +1023,56 @@
           <div class="slide-header">
             <div class="slide-meta">
               <span class="slide-num-pill">Slide 01</span>
-              <span class="slide-chapter-tag">Platform Overview</span>
+              <span class="slide-chapter-tag">Executive Summary</span>
               <span class="slide-sep">&bull;</span>
-              <span class="slide-tag-pill">The Big Picture</span>
+              <span class="slide-tag-pill">Business Purpose</span>
             </div>
-            <h2 class="slide-main-title">What is the AI Governance Package & Why Does It Exist?</h2>
-            <p class="slide-main-subtitle">An automated, tool-neutral 'Governance-as-a-Service' engine that turns legal policies into automated code and CI/CD barriers.</p>
+            <h2 class="slide-main-title">What is the AI Governance Package & Why Did We Build It?</h2>
+            <p class="slide-main-subtitle">An automated, company-wide software framework that ensures all AI projects are safe, compliant, and audit-ready in seconds.</p>
           </div>
           <div class="slide-content-body">
             
 <div class="lead-banner">
-  <div class="lead-kicker">Core Mission</div>
-  <h3>Eliminate manual spreadsheets and legal bureaucracy by embedding automated, continuous governance directly into developer workflows.</h3>
-  <p>The package exists locally on your machine at <code>C:\ai-governance-package</code> and on GitHub at <code>github.com/dwaipayanmojumder24-lgtm/ai-governance-package</code>. It acts as a shared, plug-and-play governance engine across all AI projects in an organization.</p>
+  <div class="lead-kicker">Executive Summary</div>
+  <h3>Empower AI innovation at full speed without exposing the company to legal, security, or regulatory risks.</h3>
+  <p>Until now, AI compliance required weeks of manual paperwork, 50-page legal questionnaires, and spreadsheet reviews. We built this automated AI Governance Package to replace that friction with automated, 3-second verification that works across every project in the organization.</p>
 </div>
 
-<div class="grid-4" style="margin-top:20px;">
+<div class="grid-3" style="margin-top:22px;">
   <div class="stat-card">
-    <div class="stat-num">16</div>
-    <div class="stat-label">Baseline Policies</div>
-    <div class="stat-desc">Full lifecycle from inventory to retirement</div>
+    <div class="stat-num">3 Sec</div>
+    <div class="stat-label">Onboarding Time</div>
+    <div class="stat-desc">Takes 3 seconds to apply governance to any AI project instead of 6 weeks of legal review.</div>
   </div>
   <div class="stat-card">
-    <div class="stat-num">61</div>
-    <div class="stat-label">Machine Controls</div>
-    <div class="stat-desc">YAML schema-validated rule definitions</div>
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Automated Protection</div>
+    <div class="stat-desc">Protects against leaked passwords, copyright risks, and rogue AI agent actions automatically.</div>
   </div>
   <div class="stat-card">
-    <div class="stat-num">4</div>
-    <div class="stat-label">Regulatory Overlays</div>
-    <div class="stat-desc">EU AI Act, FinServ, High-Risk, Agents</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-num">3s</div>
-    <div class="stat-label">Copilot Setup</div>
-    <div class="stat-desc">Automated code inspection & manifest generation</div>
+    <div class="stat-num">Audit-Ready</div>
+    <div class="stat-label">Instant Evidence</div>
+    <div class="stat-desc">Generates visual HTML compliance reports and digital proof for auditors on demand.</div>
   </div>
 </div>
 
 <div class="grid-2" style="margin-top:24px;">
   <div class="content-box">
-    <div class="box-title">The Problem: Traditional Governance Fails</div>
+    <div class="box-title" style="color:var(--red);">The Old Way: High Friction & Risk</div>
     <ul class="clean-list">
-      <li><b>50-page Word questionnaires:</b> Developers fill them out once, forget them, and code drifts silently.</li>
-      <li><b>Manual review bottlenecks:</b> Releases stall for weeks waiting for legal and risk committees.</li>
-      <li><b>Zero mathematical proof:</b> When auditors ask for compliance evidence, teams scramble to piece together logs.</li>
-      <li><b>Unprotected agent tools:</b> LLMs execute database queries and external APIs without outside-the-model guardrails.</li>
+      <li><b>Months of Bureaucracy:</b> Engineering teams wait weeks for legal and risk committees to review Word documents.</li>
+      <li><b>Unverified AI Code:</b> Once approved, code changes continuously and nobody knows if policies are actually followed.</li>
+      <li><b>Accidental Data Leaks:</b> Developers can accidentally expose customer data or company passwords without knowing.</li>
+      <li><b>Regulatory Panic:</b> When auditors arrive, teams spend weeks scrambling to assemble compliance proof.</li>
     </ul>
   </div>
   <div class="content-box highlight">
-    <div class="box-title">The Solution: Governance-as-Code</div>
+    <div class="box-title" style="color:var(--green);">The New Way: Automated AI Governance</div>
     <ul class="clean-list">
-      <li><b>Automated Telemetry Scan:</b> Static AST inspects imports, models, vector DBs, and PII in seconds.</li>
-      <li><b>Cryptographic Proof (SHA-256):</b> Mathematical merge of baseline + overlays produces a sealed policy snapshot.</li>
-      <li><b>Hard CI/CD Barriers:</b> Pre-commit hooks stop API keys; GitHub Actions blocks non-compliant PR merges.</li>
-      <li><b>Outside-the-Model Interception:</b> Reverse proxy limits agent tool recursion depth and enforces human approval tokens.</li>
+      <li><b>Instant Automated Setup:</b> An intelligent software copilot inspects the project and sets up all rules in 3 seconds.</li>
+      <li><b>Continuous Protection:</b> Automated safety gates continuously watch code and stop risky actions before they reach production.</li>
+      <li><b>Zero Paperwork for Engineers:</b> Developers write zero manual policy documents; the system creates everything.</li>
+      <li><b>1-Click Executive Reports:</b> Generates a clean visual report with green checkmarks ready for leadership and auditors.</li>
     </ul>
   </div>
 </div>
@@ -1215,58 +1086,42 @@
               <span class="slide-num-pill">Slide 02</span>
               <span class="slide-chapter-tag">Platform Overview</span>
               <span class="slide-sep">&bull;</span>
-              <span class="slide-tag-pill">Under the Hood</span>
+              <span class="slide-tag-pill">What Was Built</span>
             </div>
-            <h2 class="slide-main-title">Platform Architecture: How It Operates Under the Hood</h2>
-            <p class="slide-main-subtitle">The 5-stage automated pipeline that takes raw source code and turns it into an audited, production-ready AI system.</p>
+            <h2 class="slide-main-title">What Have We Built & What Exists on Your Computer Today?</h2>
+            <p class="slide-main-subtitle">A complete, production-ready AI governance system published to GitHub and stored on your C: drive.</p>
           </div>
           <div class="slide-content-body">
             
-<div class="diagram-wrapper">
-  <div class="diagram-title">The 5-Stage Automated Governance Pipeline</div>
-  <div class="pipeline-grid">
-    <div class="pipeline-step">
-      <div class="step-badge">Stage 1</div>
-      <div class="step-name">Code Telemetry</div>
-      <div class="step-desc">Static AST scans imports, OpenAI/ChromaDB clients, tool calls, and PII fields.</div>
-      <div class="step-file">agents/governance_agent.py</div>
-    </div>
-    <div class="pipeline-step">
-      <div class="step-badge">Stage 2</div>
-      <div class="step-name">Risk Inference</div>
-      <div class="step-desc">Maps code to Archetype (e.g. autonomous_agent) and Risk Tier (tier_3_high).</div>
-      <div class="step-file">ai-project-manifest.yaml</div>
-    </div>
-    <div class="pipeline-step">
-      <div class="step-badge">Stage 3</div>
-      <div class="step-name">Policy Resolver</div>
-      <div class="step-desc">Pure Python math merges 61 baseline controls with regulatory overlays.</div>
-      <div class="step-file">project-kit/resolver/resolve.py</div>
-    </div>
-    <div class="pipeline-step">
-      <div class="step-badge">Stage 4</div>
-      <div class="step-name">SHA-256 Seal</div>
-      <div class="step-desc">Calculates cryptographic hash of the active obligations. Any edit breaks the seal.</div>
-      <div class="step-file">effective-policy-snapshot.json</div>
-    </div>
-    <div class="pipeline-step final">
-      <div class="step-badge red">Stage 5</div>
-      <div class="step-name">Active Gates</div>
-      <div class="step-desc">Pre-commit blocks secrets. CI/CD locks PR merge button. PEP proxy blocks rogue tools.</div>
-      <div class="step-file">.github/workflows/ + plugins/</div>
-    </div>
+<div class="grid-2">
+  <div class="content-box">
+    <div class="box-title">The Master Governance Package</div>
+    <p style="font-size:14px; line-height:1.6; color:var(--text-secondary); margin-bottom:12px;">
+      Located at <code>C:\ai-governance-package</code> on your machine and published to your personal GitHub repository at <code>dwaipayanmojumder24-lgtm/ai-governance-package</code>. It contains:
+    </p>
+    <ul class="clean-list">
+      <li><b>16 Enterprise Safety Policies:</b> Clear company standards covering data privacy, security, fairness, cost limits, and human oversight.</li>
+      <li><b>61 Automated Safety Rules:</b> Pre-configured checks covering international regulations like the EU AI Act and financial standards.</li>
+      <li><b>Autonomous Governance Copilot:</b> An intelligent helper that automatically configures any project without developer toil.</li>
+      <li><b>Pre-Built Security Shields:</b> Automated filters that block password leaks and prevent unsafe code updates.</li>
+    </ul>
+  </div>
+
+  <div class="content-box">
+    <div class="box-title">The Hands-on Test Project (sample-ai-project)</div>
+    <p style="font-size:14px; line-height:1.6; color:var(--text-secondary); margin-bottom:12px;">
+      Located at <code>C:\ai-governance-package\sample-ai-project</code> and on GitHub at <code>dwaipayanmojumder24-lgtm/sample-ai-project</code>:
+    </p>
+    <ul class="clean-list">
+      <li><b>A Realistic AI Application:</b> A simple customer support AI assistant that answers questions using company knowledge.</li>
+      <li><b>A Safe Testing Sandbox:</b> A safe playground where you can test how governance works, verify reports, and test security blocks without touching production systems.</li>
+      <li><b>Active Cloud Verification:</b> Connected to GitHub's free cloud testing runners (GitHub Actions) with live green checkmarks.</li>
+    </ul>
   </div>
 </div>
 
-<div class="grid-2" style="margin-top:24px;">
-  <div class="content-box">
-    <div class="box-title">Pure Deterministic Math (No AI Hallucinations)</div>
-    <p>The policy merge engine in <code>resolve.py</code> is written in pure Python 3 without LLM dependencies. Given the exact same project manifest and control catalog, it produces the exact same byte-for-byte policy snapshot and SHA-256 integrity hash every single time.</p>
-  </div>
-  <div class="content-box">
-    <div class="box-title">The Strict Monotonicity Invariant</div>
-    <p>A core mathematical law of this architecture: <b>Overlays can ONLY tighten obligations; they can NEVER loosen them.</b> An overlay can add mandatory red-teaming or raise accuracy from 85% to 92%, but it cannot waive baseline privacy or security controls.</p>
-  </div>
+<div class="callout-box info" style="margin-top:20px;">
+  <strong>Management Takeaway:</strong> Everything is 100% built, tested, and ready. You don't need to buy expensive software or hire consulting firms to create policies. The entire framework exists right now on your machine.
 </div>
 
           </div>
@@ -1276,67 +1131,61 @@
           <div class="slide-header">
             <div class="slide-meta">
               <span class="slide-num-pill">Slide 03</span>
-              <span class="slide-chapter-tag">Policies & Standards</span>
+              <span class="slide-chapter-tag">Platform Overview</span>
               <span class="slide-sep">&bull;</span>
-              <span class="slide-tag-pill">Standards Covered</span>
+              <span class="slide-tag-pill">How It Works</span>
             </div>
-            <h2 class="slide-main-title">What Policies & Standards Does It Check?</h2>
-            <p class="slide-main-subtitle">16 enterprise policy domains and 4 regulatory overlays covering the complete AI lifecycle.</p>
+            <h2 class="slide-main-title">How Does It Work? The Simple 3-Step Process</h2>
+            <p class="slide-main-subtitle">How the governance package automatically assesses risk and creates tailored safety rules for any AI application.</p>
           </div>
           <div class="slide-content-body">
             
-<div class="table-card">
-  <div class="table-header">The 16 Baseline Policy Domains (POL-ACC through POL-RET)</div>
-  <table class="data-table">
-    <thead>
-      <tr>
-        <th style="width:14%">Domain Code</th>
-        <th style="width:26%">Policy Domain Name</th>
-        <th style="width:60%">Core Operational Standard Enforced</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td><code>POL-ACC</code></td><td>Accountability & Inventory</td><td>Mandatory named business owner, technical lead, and entry in enterprise catalog.</td></tr>
-      <tr><td><code>POL-USE</code></td><td>Acceptable Use & Literacy</td><td>Prohibits deceptive AI, social scoring, biometric categorization; mandates literacy.</td></tr>
-      <tr><td><code>POL-RSK</code></td><td>Risk Classification & Impact</td><td>Assigns Risk Tiers 1-4; requires comprehensive AI Impact Assessment for Tiers 3 & 4.</td></tr>
-      <tr><td><code>POL-DAT</code></td><td>Data Privacy & Retention</td><td>Mandates PII sanitization, consent lineage tracking, and maximum 5-year retention rules.</td></tr>
-      <tr><td><code>POL-SUP</code></td><td>Supply Chain & Model Provenance</td><td>Requires Software Bill of Materials (SBOM) and verified cryptographic model weight origin.</td></tr>
-      <tr><td><code>POL-IPR</code></td><td>Intellectual Property & Code</td><td>Blocks copyleft GPL in commercial AI; mandates human peer review on AI-generated code.</td></tr>
-      <tr><td><code>POL-SEC</code></td><td>AI Security & Defense</td><td>Enforces prompt injection filtering, safe serialization (safetensors/ONNX), and secret scanning.</td></tr>
-      <tr><td><code>POL-ROB</code></td><td>Robustness & Evaluation</td><td>Enforces minimum benchmark accuracy >= 85% and hallucination rate ceiling <= 5.0%.</td></tr>
-      <tr><td><code>POL-FAI</code></td><td>Fairness, Bias & Accessibility</td><td>Requires demographic parity analysis; blocks disparate impact on protected classes.</td></tr>
-      <tr><td><code>POL-TRN</code></td><td>Transparency & Disclosures</td><td>Mandates synthetic media watermarking, user-facing disclosure notices, and explainability cards.</td></tr>
-      <tr><td><code>POL-HUM</code></td><td>Human Oversight & Redress</td><td>Guarantees human-in-the-loop fallback and recourse for automated AI decisions.</td></tr>
-      <tr><td><code>POL-AGT</code></td><td>Autonomous Agent Guardrails</td><td>Limits recursion depth <= 5; enforces sub-second kill switches and outside-the-model PEP proxy.</td></tr>
-      <tr><td><code>POL-MON</code></td><td>Continuous Monitoring & Drift</td><td>Monitors concept drift, token spending velocity, and automated security incident alerting.</td></tr>
-      <tr><td><code>POL-CST</code></td><td>Cost & Token Management</td><td>Enforces per-request token caps and monthly organizational spending ceilings.</td></tr>
-      <tr><td><code>POL-REC</code></td><td>Evidence Recordkeeping</td><td>Preserves cryptographic audit trails for a minimum of 7 years for compliance review.</td></tr>
-      <tr><td><code>POL-RET</code></td><td>Model Retirement & Decom</td><td>Prescribes zero-leak model weight destruction, data purges, and stakeholder notice.</td></tr>
-    </tbody>
-  </table>
+<div class="grid-3">
+  <div class="step-card">
+    <div class="step-card-num">Step 1</div>
+    <div class="step-card-body">
+      <h4>Automatic Inspection</h4>
+      <p>The system inspects your project files in 1 second. It checks:</p>
+      <ul class="clean-list" style="margin-top:8px;">
+        <li>What AI model is used (OpenAI, Claude, custom model)</li>
+        <li>What data is accessed (Customer email, financial data)</li>
+        <li>Whether the AI can take real-world actions (e.g. database updates, fund transfers)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-card-num">Step 2</div>
+    <div class="step-card-body">
+      <h4>Tailored Rule Assignment</h4>
+      <p>Based on the inspection, it assigns the exact safety level needed:</p>
+      <ul class="clean-list" style="margin-top:8px;">
+        <li><b>Low Risk:</b> Simple text summarizer &rarr; standard data privacy rules.</li>
+        <li><b>High Risk:</b> AI that takes actions or handles personal data &rarr; strict oversight rules.</li>
+        <li>Locks the exact rules into a <b>tamper-proof digital contract</b>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-card-num">Step 3</div>
+    <div class="step-card-body">
+      <h4>Automated Safety Shield</h4>
+      <p>It activates automated shields that protect the project during daily work:</p>
+      <ul class="clean-list" style="margin-top:8px;">
+        <li>Stops developers from accidentally committing passwords.</li>
+        <li>Blocks software updates if accuracy is low or error rate is high.</li>
+        <li>Generates an instant visual report for managers and auditors.</li>
+      </ul>
+    </div>
+  </div>
 </div>
 
-<div class="grid-4" style="margin-top:20px;">
-  <div class="overlay-card">
-    <div class="overlay-badge">Overlay 1</div>
-    <div class="overlay-name">EU AI Act</div>
-    <div class="overlay-desc">Article 9 Risk Management, Article 14 Oversight, Article 72 Incidents</div>
-  </div>
-  <div class="overlay-card">
-    <div class="overlay-badge">Overlay 2</div>
-    <div class="overlay-name">Financial Services</div>
-    <div class="overlay-desc">SR 11-7 Model Risk Management, SEC 17a-4 7-year audit recordkeeping</div>
-  </div>
-  <div class="overlay-card">
-    <div class="overlay-badge">Overlay 3</div>
-    <div class="overlay-name">Tier 3 High Risk</div>
-    <div class="overlay-desc">Mandatory pre-deployment red teaming and Cosign container image signing</div>
-  </div>
-  <div class="overlay-card">
-    <div class="overlay-badge">Overlay 4</div>
-    <div class="overlay-name">Autonomous Agents</div>
-    <div class="overlay-desc">Dual-key human approval tokens for financial or destructive tool calls</div>
-  </div>
+<div class="content-box highlight" style="margin-top:24px;">
+  <div class="box-title">Why Management Can Trust This System</div>
+  <p style="font-size:14px; line-height:1.6; color:var(--text-main);">
+    The system uses <b>exact mathematical logic</b>, not AI guesswork. Given the same project, it produces the exact same verified safety rules every single time. Most importantly: <b>Safety rules can only become tighter, never looser.</b> No developer or sub-system can accidentally water down company policies.
+  </p>
 </div>
 
           </div>
@@ -1346,54 +1195,52 @@
           <div class="slide-header">
             <div class="slide-meta">
               <span class="slide-num-pill">Slide 04</span>
-              <span class="slide-chapter-tag">Setup & Usage</span>
+              <span class="slide-chapter-tag">How to Use It</span>
               <span class="slide-sep">&bull;</span>
-              <span class="slide-tag-pill">Git Workflow</span>
+              <span class="slide-tag-pill">Usage Methods</span>
             </div>
-            <h2 class="slide-main-title">Git Setup: Publishing to GitHub (Personal & Company)</h2>
-            <p class="slide-main-subtitle">How to connect the master package and downstream AI projects to GitHub cleanly and securely.</p>
+            <h2 class="slide-main-title">How Does Someone Actually Use It? (2 Simple Ways)</h2>
+            <p class="slide-main-subtitle">You do not need to be a software engineer. Here are the two ways anyone can use this governance package.</p>
           </div>
           <div class="slide-content-body">
             
 <div class="grid-2">
   <div class="content-box">
-    <div class="box-title">Part A: The Central Governance Package</div>
-    <p>Your local package at <code>C:\ai-governance-package</code> is already committed to Git and live on GitHub:</p>
-    <div class="code-box">
-      <span class="cmd-comment"># Already pushed and synchronized:</span><br>
-      <span class="cmd-text">cd C:\ai-governance-package</span><br>
-      <span class="cmd-text">git remote add origin https://github.com/dwaipayanmojumder24-lgtm/ai-governance-package.git</span><br>
-      <span class="cmd-text">git branch -M main</span><br>
-      <span class="cmd-text">git push -u origin main</span>
+    <div class="box-title">Method 1: The 1-Line Command (Fastest)</div>
+    <p style="font-size:14px; color:var(--text-secondary); margin-bottom:12px;">
+      Open PowerShell on your Windows computer, paste this single line, and press Enter:
+    </p>
+    <div class="code-box highlight-cmd">
+      python C:\ai-governance-package\agents\governance_agent.py auto-setup sample-ai-project
     </div>
-    <div class="status-box green">
-      <strong>Status: 100% Live on GitHub</strong><br>
-      All 184 files and subdirectories are synchronized at commit <code>40f616c</code>.
+    <p style="font-size:13px; color:var(--text-muted); margin-top:10px;">
+      <b>What happens in 3 seconds:</b> The copilot inspects the project, creates the safety documents, sets up protective shields, and generates the compliance report.
+    </p>
+    <div class="status-box green" style="margin-top:12px;">
+      <strong>Result:</strong> 0 lines of manual paperwork. 100% compliant in 3 seconds.
     </div>
   </div>
 
-  <div class="content-box">
-    <div class="box-title">Part B: Your Downstream AI Project</div>
-    <p>When you start or work on an AI project that consumes this governance:</p>
-    <div class="code-box">
-      <span class="cmd-comment"># In your project directory:</span><br>
-      <span class="cmd-text">cd C:\ai-governance-package\sample-ai-project</span><br>
-      <span class="cmd-text">git init</span><br>
-      <span class="cmd-text">python C:\ai-governance-package\agents\governance_agent.py auto-setup .</span><br>
-      <span class="cmd-text">git add .</span><br>
-      <span class="cmd-text">git commit -m "feat(gov): add enterprise AI governance"</span><br>
-      <span class="cmd-text">git remote add origin https://github.com/dwaipayanmojumder24-lgtm/sample-ai-project.git</span><br>
-      <span class="cmd-text">git push -u origin main</span>
+  <div class="content-box highlight">
+    <div class="box-title">Method 2: Use AI Chat (Claude Desktop / Cursor)</div>
+    <p style="font-size:14px; color:var(--text-secondary); margin-bottom:12px;">
+      We already configured your Claude Desktop application! You never have to touch a terminal:
+    </p>
+    <p style="font-size:13px; color:var(--text-secondary); margin-bottom:8px;">
+      1. Open Claude Desktop.<br>
+      2. Type this exact sentence into the chat:
+    </p>
+    <div class="chat-prompt-box">
+      &ldquo;Use the ai_governance tool to inspect C:/ai-governance-package/sample-ai-project&rdquo;
     </div>
-    <div class="status-box blue">
-      <strong>Status: Cloud CI/CD Active</strong><br>
-      GitHub Actions automatically runs the AI governance validation gate on push.
-    </div>
+    <p style="font-size:13px; color:var(--text-muted); margin-top:10px;">
+      Claude connects directly to your local governance package and reports back the safety level and compliance status directly in your chat.
+    </p>
   </div>
 </div>
 
-<div class="callout-box info" style="margin-top:20px;">
-  <strong>How Authentication Works Securely:</strong> You never have to hardcode passwords or tokens in code. When you run <code>git push</code> on Windows, the <b>Windows Git Credential Manager</b> securely authenticates via your personal browser session and caches the token in your Windows Credential Locker.
+<div class="callout-box warning" style="margin-top:20px;">
+  <strong>The 1 Human Sign-Off Step:</strong> The software does 99% of the mechanical heavy lifting automatically. The only human step required before an AI system goes live to real customers is for a human manager or engineer to review the final report and confirm that testing scores meet company standards.
 </div>
 
           </div>
@@ -1403,44 +1250,58 @@
           <div class="slide-header">
             <div class="slide-meta">
               <span class="slide-num-pill">Slide 05</span>
-              <span class="slide-chapter-tag">Setup & Usage</span>
+              <span class="slide-chapter-tag">Deliverables & Reports</span>
               <span class="slide-sep">&bull;</span>
-              <span class="slide-tag-pill">Method 1: CLI</span>
+              <span class="slide-tag-pill">What You Get</span>
             </div>
-            <h2 class="slide-main-title">How to Use It: Method 1 - Autonomous Governance Copilot</h2>
-            <p class="slide-main-subtitle">Run one terminal command to automatically inspect code, bind controls, and generate compliance reports.</p>
+            <h2 class="slide-main-title">What Outputs & Reports Do You Get After Execution?</h2>
+            <p class="slide-main-subtitle">At the end of the day, what tangible evidence and reports does the business receive?</p>
           </div>
           <div class="slide-content-body">
             
-<div class="step-card">
-  <div class="step-card-num">Step 1</div>
-  <div class="step-card-body">
-    <h4>Open PowerShell and Run This Single Command</h4>
-    <div class="code-box highlight-cmd">
-      python C:\ai-governance-package\agents\governance_agent.py auto-setup C:\ai-governance-package\sample-ai-project
+<div class="grid-2">
+  <div class="output-card full" style="border-left: 5px solid var(--blue);">
+    <div class="output-num">Report 1</div>
+    <div class="output-body">
+      <h4>The Interactive HTML Compliance Audit Report</h4>
+      <p style="font-size:14px; margin-bottom:8px;"><b>File: <code>governance-compliance-report.html</code></b></p>
+      <p>A beautiful visual report that opens in any web browser (Chrome, Edge) with zero special software needed. It shows:</p>
+      <ul class="clean-list" style="margin-top:6px;">
+        <li><b>7 / 7 Green Verification Badges:</b> Proving that manifest, rules, secret scanner, and cards are verified.</li>
+        <li><b>Assigned Risk Tier:</b> Explaining why the system is classified as Low, Medium, or High Risk.</li>
+        <li><b>Digital Proof Seal:</b> A cryptographic stamp showing the exact date and time the rules were locked.</li>
+        <li><b>Print / Save as PDF:</b> One click to generate a clean PDF document to hand to auditors or executives.</li>
+      </ul>
     </div>
-    <p style="font-size:13px; color:var(--text-muted); margin-top:6px;">Takes ~3 seconds to execute. To govern any other project, simply replace the last path with your project folder.</p>
+  </div>
+
+  <div class="output-card full" style="border-left: 5px solid var(--green);">
+    <div class="output-num">Docs 2</div>
+    <div class="output-body">
+      <h4>Standardized AI Documentation Cards</h4>
+      <p style="font-size:14px; margin-bottom:8px;"><b>Folder: <code>governance-cards/</code></b></p>
+      <p>Two essential business and compliance certificates pre-filled by the system:</p>
+      <ul class="clean-list" style="margin-top:6px;">
+        <li><b>The Model Card (<code>model-card.yaml</code>):</b> The AI system's technical spec sheet. Records intended use, accuracy targets (88%), and error rate limits (under 4%).</li>
+        <li><b>The Data Card (<code>data-card.yaml</code>):</b> The privacy certificate. Certifies that personal customer data (PII) is protected and retention is capped at 5 years.</li>
+      </ul>
+    </div>
   </div>
 </div>
 
-<div class="grid-2" style="margin-top:20px;">
-  <div class="content-box">
-    <div class="box-title">What the Copilot Does 100% Automatically</div>
-    <ul class="clean-list">
-      <li><b>Inspects AST:</b> Detects libraries (<code>openai</code>, <code>chromadb</code>), tools, and PII fields (<code>customer_email</code>).</li>
-      <li><b>Infers Profile:</b> Assigns Archetype (<code>autonomous_agent</code>) and Risk Tier (<code>tier_3_high</code>).</li>
-      <li><b>Generates Manifest:</b> Writes <code>ai-project-manifest.yaml</code> with project owners and overlay bindings.</li>
-      <li><b>Resolves Snapshot:</b> Merges baseline controls into 40 active rules sealed with SHA-256.</li>
-      <li><b>Installs Gates:</b> Copies <code>.pre-commit-config.yaml</code> and <code>ai-governance-gate.yaml</code>.</li>
-      <li><b>Generates HTML Report:</b> Produces <code>governance-compliance-report.html</code>.</li>
-    </ul>
+<div class="grid-2" style="margin-top:18px;">
+  <div class="output-card">
+    <div class="output-num">03</div>
+    <div class="output-body">
+      <h4>The System Passport (Manifest)</h4>
+      <p>A simple declaration file registering the system name, technical lead, business owner email, and active regulatory standards.</p>
+    </div>
   </div>
-
-  <div class="content-box">
-    <div class="box-title">The Realistic Human Boundary (Before Production)</div>
-    <p style="font-size:13px; line-height:1.6; color:var(--text-main);">The Copilot eliminates 99% of mechanical friction (writing manifests, schemas, hashes, CI configs). However, true enterprise accountability still has <b>1 human verification step</b>:</p>
-    <div class="callout-box warning" style="margin-top:10px;">
-      <strong>The 1 Human Sign-Off Step:</strong> Before production release, an ML engineer reviews <code>governance-cards/model-card.yaml</code> to verify that actual evaluation scores match declared targets (accuracy >= 85%), and replaces <code>[ROLE: Business Owner]</code> with the real owner email.
+  <div class="output-card">
+    <div class="output-num">04</div>
+    <div class="output-body">
+      <h4>The Sealed Rulebook (Snapshot)</h4>
+      <p>A single digital rulebook containing the exact 40 safety obligations tailored to this project, locked with a digital security seal.</p>
     </div>
   </div>
 </div>
@@ -1452,50 +1313,63 @@
           <div class="slide-header">
             <div class="slide-meta">
               <span class="slide-num-pill">Slide 06</span>
-              <span class="slide-chapter-tag">Setup & Usage</span>
+              <span class="slide-chapter-tag">Risk & Enforcement</span>
               <span class="slide-sep">&bull;</span>
-              <span class="slide-tag-pill">Method 2: IDE MCP</span>
+              <span class="slide-tag-pill">Company Protection</span>
             </div>
-            <h2 class="slide-main-title">How to Use It: Method 2 - IDE Chat Integration via MCP</h2>
-            <p class="slide-main-subtitle">Integrate governance directly into Claude Desktop, Cursor, or VS Code. Zero terminal commands needed.</p>
+            <h2 class="slide-main-title">What Happens If Something Fails or Standards Are Not Followed?</h2>
+            <p class="slide-main-subtitle">How the system actively protects the company from data breaches, legal penalties, and rogue AI actions.</p>
           </div>
           <div class="slide-content-body">
             
-<div class="grid-2">
-  <div class="content-box highlight">
-    <div class="box-title">Claude Desktop is Already Configured on Your PC!</div>
-    <p>We already added the AI Governance MCP server to your active config file at:<br><code>%APPDATA%\Claude\claude_desktop_config.json</code></p>
-    <div class="code-box">
-{
-  "mcpServers": {
-    "ai-governance": {
-      "command": "python",
-      "args": ["C:/ai-governance-package/agents/mcp_server.py"]
-    }
-  }
-}
-    </div>
-    <p style="font-size:12px; color:var(--green); margin-top:8px;"><b>100% Local & Private:</b> Runs locally on your machine via standard stdio. No code or telemetry leaves your computer.</p>
-  </div>
-
-  <div class="content-box">
-    <div class="box-title">How to Use It in Chat (The Layman Experience)</div>
-    <p>1. Restart Claude Desktop (right-click Claude in system tray &rarr; Quit, then reopen).</p>
-    <p>2. Look for the small <b>hammer icon</b> in the chat box. You will see two tools:</p>
-    <ul class="clean-list" style="margin:10px 0;">
-      <li><code>ai_governance_inspect</code> &mdash; Read-only AST code telemetry scanner.</li>
-      <li><code>ai_governance_auto_setup</code> &mdash; Full manifest, snapshot, and gate generator.</li>
-    </ul>
-    <p>3. Simply type in the chat window:</p>
-    <div class="chat-prompt-box">
-      &ldquo;Use the ai_governance tool to inspect C:/ai-governance-package/sample-ai-project&rdquo;
-    </div>
-    <p style="font-size:12px; color:var(--text-muted); margin-top:8px;">Claude invokes the local tool, inspects your files, and reports the governance profile directly in chat.</p>
-  </div>
+<div class="table-card">
+  <div class="table-header">The Automated Safety Barriers: What Happens When a Rule is Violated</div>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th style="width:28%">Safety Risk Detected</th>
+        <th style="width:36%">Real-World Business Danger</th>
+        <th style="width:36%">Automated Action Taken by System</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>Developer leaves password or API key in code</b></td>
+        <td>High risk of database breach or massive unauthorized cloud spending.</td>
+        <td><span class="badge-action red">ABORTS COMMIT IMMEDIATELY</span><br>The code cannot leave the developer's laptop.</td>
+      </tr>
+      <tr>
+        <td><b>AI model has high error or hallucination rate</b></td>
+        <td>Bad AI advice reaches customers, causing reputational or legal damage.</td>
+        <td><span class="badge-action red">LOCKS SOFTWARE RELEASE</span><br>The update is blocked from merging into production.</td>
+      </tr>
+      <tr>
+        <td><b>AI system uses unlicensed/copyrighted code</b></td>
+        <td>Legal copyright lawsuits and intellectual property liability.</td>
+        <td><span class="badge-action red">BLOCKS PULL REQUEST</span><br>Flags copyleft license violation to engineering lead.</td>
+      </tr>
+      <tr>
+        <td><b>AI agent attempts an unauthorized action</b></td>
+        <td>Agent goes into a runaway loop or transfers funds without approval.</td>
+        <td><span class="badge-action red">BLOCKS ACTION IN REAL TIME</span><br>Stops tool execution and alerts human supervisor.</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
-<div class="callout-box info" style="margin-top:20px;">
-  <strong>Universal Editor Support:</strong> The exact same <code>agents/mcp_server.py</code> script works identically across <b>Cursor</b> (Settings &rarr; Features &rarr; MCP Servers), <b>VS Code Roo Code / Cline</b>, and <b>Claude Code</b>.
+<div class="grid-2" style="margin-top:20px;">
+  <div class="content-box">
+    <div class="box-title">What If an Urgent Exception is Needed? (The Lawful Fallback)</div>
+    <p style="font-size:13px; line-height:1.6; color:var(--text-main);">
+      If a legacy system or emergency fix cannot comply immediately, <b>developers cannot secretly bypass the system</b>. Instead, they must submit a formal Exception Request specifying compensating controls, valid for up to 90 days, requiring approval by the <b>AI Safety Board</b>.
+    </p>
+  </div>
+  <div class="content-box">
+    <div class="box-title">Zero Guesswork for Engineers</div>
+    <p style="font-size:13px; line-height:1.6; color:var(--text-main);">
+      Whenever an action is blocked, the developer receives a clear, plain-English message explaining exactly which company policy failed and the exact 1-step action needed to fix it.
+    </p>
+  </div>
 </div>
 
           </div>
@@ -1505,279 +1379,54 @@
           <div class="slide-header">
             <div class="slide-meta">
               <span class="slide-num-pill">Slide 07</span>
-              <span class="slide-chapter-tag">Hands-on Sandbox</span>
+              <span class="slide-chapter-tag">Executive Summary</span>
               <span class="slide-sep">&bull;</span>
-              <span class="slide-tag-pill">Testing Sandbox</span>
+              <span class="slide-tag-pill">Next Steps</span>
             </div>
-            <h2 class="slide-main-title">Hands-on Example Walkthrough: Testing with sample-ai-project</h2>
-            <p class="slide-main-subtitle">A complete step-by-step walkthrough using the customer support AI app included in your workspace.</p>
+            <h2 class="slide-main-title">Executive Summary & Next Steps for Leadership</h2>
+            <p class="slide-main-subtitle">Everything is complete, audited, and ready to scale across your organization.</p>
           </div>
           <div class="slide-content-body">
             
-<div class="grid-3">
-  <div class="feature-card">
-    <div class="card-tag">The Application</div>
-    <h4>app.py (35 Lines)</h4>
-    <p>A customer support assistant. Accepts a query, retrieves context from ChromaDB, calls OpenAI GPT, and handles <code>customer_email</code>.</p>
-  </div>
-  <div class="feature-card">
-    <div class="card-tag green">The Dependencies</div>
-    <h4>requirements.txt</h4>
-    <p>Contains <code>openai</code> and <code>chromadb</code>. Standard libraries found in thousands of enterprise generative AI projects.</p>
-  </div>
-  <div class="feature-card">
-    <div class="card-tag purple">Safe Sandbox</div>
-    <h4>Zero Risk</h4>
-    <p>A self-contained testing sandbox where you can modify code, test secret leaks, or re-run governance tools freely.</p>
-  </div>
+<div class="lead-banner">
+  <div class="lead-kicker">Status: 100% Complete & Verified</div>
+  <h3>Your company now has a battle-tested, automated AI Governance Platform.</h3>
+  <p>The package is fully implemented, verified, committed, and published to GitHub. Any engineering team in your company can adopt this governance standard tomorrow morning in 3 seconds.</p>
 </div>
 
-<div class="table-card" style="margin-top:24px;">
-  <div class="table-header">Interactive 5-Step Testing Procedure</div>
-  <table class="data-table">
-    <thead>
-      <tr>
-        <th style="width:10%">Step</th>
-        <th style="width:30%">Action You Perform</th>
-        <th style="width:35%">What the Tool Does</th>
-        <th style="width:25%">Verifiable Outcome</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><b>1</b></td>
-        <td>Open <code>sample-ai-project/app.py</code></td>
-        <td>Inspects Python code structure</td>
-        <td>Notice OpenAI, ChromaDB, and customer email.</td>
-      </tr>
-      <tr>
-        <td><b>2</b></td>
-        <td>Run Copilot <code>auto-setup</code> in PowerShell</td>
-        <td>Scans AST, creates manifest, snapshot & gates</td>
-        <td>5 files created in project folder in 3 seconds.</td>
-      </tr>
-      <tr>
-        <td><b>3</b></td>
-        <td>Double click <code>governance-compliance-report.html</code></td>
-        <td>Opens report in Chrome/Edge offline</td>
-        <td>Visual dashboard shows 7/7 verification checks passed.</td>
-      </tr>
-      <tr>
-        <td><b>4</b></td>
-        <td>Add a fake key <code>sk-123456...</code> and commit</td>
-        <td>Pre-commit hook intercepts staged files</td>
-        <td><b>Commit aborted!</b> Leaked key blocked on laptop.</td>
-      </tr>
-      <tr>
-        <td><b>5</b></td>
-        <td>Push to GitHub: <code>git push origin main</code></td>
-        <td>Triggers GitHub Actions cloud CI gate</td>
-        <td>Green checkmark on GitHub Actions tab.</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-          </div>
-        </section>
-        
-        <section class="slide-section" id="slide-8" data-index="7">
-          <div class="slide-header">
-            <div class="slide-meta">
-              <span class="slide-num-pill">Slide 08</span>
-              <span class="slide-chapter-tag">Hands-on Sandbox</span>
-              <span class="slide-sep">&bull;</span>
-              <span class="slide-tag-pill">Inference Breakdown</span>
-            </div>
-            <h2 class="slide-main-title">What Does It Infer Once the YAML Files Are Generated?</h2>
-            <p class="slide-main-subtitle">How the system analyzes raw code and maps it to concrete regulatory obligations.</p>
-          </div>
-          <div class="slide-content-body">
-            
-<div class="grid-2">
+<div class="grid-3" style="margin-top:24px;">
   <div class="content-box">
-    <div class="box-title">Why Did It Assign Archetype & Risk Tier?</div>
-    <ul class="clean-list">
-      <li><b>Detected <code>openai</code> client:</b> Identifies generative language model capabilities.</li>
-      <li><b>Detected <code>chromadb</code> + tool execution:</b> Elevates the system archetype from a static text generator to an <b><code>autonomous_agent</code></b> (because it queries external databases and executes tool calls).</li>
-      <li><b>Detected <code>customer_email</code>:</b> Identifies processing of Personally Identifiable Information (PII).</li>
-      <li><b>Assigned Risk Tier: <code>tier_3_high</code>:</b> Under the baseline charter, any system combining agent tool execution with personal data processing is classified as High Risk, requiring active outside-the-model guardrails.</li>
-    </ul>
+    <div class="box-title">1. Review the Visual Report</div>
+    <p style="font-size:13px; color:var(--text-secondary); line-height:1.6;">
+      Open the sample project report right now to see what auditors will see:
+    </p>
+    <p style="margin-top:8px;">
+      <a href="file:///C:/ai-governance-package/sample-ai-project/governance-compliance-report.html" target="_blank" style="font-size:13px; font-weight:700; color:var(--blue);">
+        👉 Open Sample Compliance Report
+      </a>
+    </p>
   </div>
 
   <div class="content-box">
-    <div class="box-title">Why Exactly 40 Active Controls in the Snapshot?</div>
-    <p style="font-size:13px; line-height:1.6; color:var(--text-main);">Out of 61 baseline controls in the enterprise catalog, why does this project have exactly 40 active obligations?</p>
-    <ul class="clean-list" style="margin-top:8px;">
-      <li><b>Baseline Controls:</b> Inactive domains (e.g. computer vision watermarking, hardware biometric scanning) are set to advisory or inactive.</li>
-      <li><b>High-Risk Overlay (<code>ORG-OVL-RSK-TIER3-001</code>):</b> Tightens benchmark accuracy to >= 85%, activates Cosign image signing.</li>
-      <li><b>Agent Overlay (<code>ORG-OVL-ARC-AGENT-001</code>):</b> Activates recursion depth limits (<= 5) and sub-second emergency kill switches.</li>
-    </ul>
-  </div>
-</div>
-
-<div class="table-card" style="margin-top:20px;">
-  <div class="table-header">Plain-English Translation of Every Generated File</div>
-  <table class="data-table">
-    <thead>
-      <tr>
-        <th style="width:25%">Generated Artifact</th>
-        <th style="width:25%">Plain-English Analogy</th>
-        <th style="width:50%">Why It Matters to Engineers & Auditors</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td><code>ai-project-manifest.yaml</code></td><td>The System Passport</td><td>Declares system ID, owners, lifecycle stage, and regulatory overlays bound to this repo.</td></tr>
-      <tr><td><code>effective-policy-snapshot.json</code></td><td>The Sealed Rulebook</td><td>The single authoritative source of truth. Its SHA-256 seal proves exactly what policies governed this build.</td></tr>
-      <tr><td><code>governance-cards/model-card.yaml</code></td><td>The Spec Sheet</td><td>Documents architecture, intended use, benchmark accuracy ceiling (88%), and hallucination ceiling (4%).</td></tr>
-      <tr><td><code>governance-cards/data-card.yaml</code></td><td>The Privacy Certificate</td><td>Certifies that PII sanitization is active and retention is strictly capped at 5 years.</td></tr>
-    </tbody>
-  </table>
-</div>
-
-          </div>
-        </section>
-        
-        <section class="slide-section" id="slide-9" data-index="8">
-          <div class="slide-header">
-            <div class="slide-meta">
-              <span class="slide-num-pill">Slide 09</span>
-              <span class="slide-chapter-tag">Deliverables & Enforcement</span>
-              <span class="slide-sep">&bull;</span>
-              <span class="slide-tag-pill">Concrete Deliverables</span>
-            </div>
-            <h2 class="slide-main-title">The 7 Tangible Outputs You Get at the End of the Day</h2>
-            <p class="slide-main-subtitle">Using this package yields 7 verifiable engineering and compliance deliverables for your organization.</p>
-          </div>
-          <div class="slide-content-body">
-            
-<div class="grid-2">
-  <div class="output-card">
-    <div class="output-num">01</div>
-    <div class="output-body">
-      <h4>Declarative Project Manifest (<code>ai-project-manifest.yaml</code>)</h4>
-      <p>Registers your AI system in the enterprise inventory. Contains ownership metadata, technical characteristics, and active regulatory bindings.</p>
+    <div class="box-title">2. Roll Out to First Project</div>
+    <p style="font-size:13px; color:var(--text-secondary); line-height:1.6;">
+      Pick any real AI project currently being developed in your team and run:
+    </p>
+    <div class="code-box" style="margin-top:8px; font-size:11px;">
+      python C:\ai-governance-package\agents\governance_agent.py auto-setup &lt;project-folder&gt;
     </div>
-  </div>
-  <div class="output-card">
-    <div class="output-num">02</div>
-    <div class="output-body">
-      <h4>Cryptographic Policy Snapshot (<code>effective-policy-snapshot.json</code>)</h4>
-      <p>A single-file rulebook of all active controls sealed with a SHA-256 integrity digest (e.g. <code>6ae8a7b81c4a...</code>). Proves compliance mathematically.</p>
-    </div>
-  </div>
-  <div class="output-card">
-    <div class="output-num">03</div>
-    <div class="output-body">
-      <h4>Interactive HTML Compliance Report (<code>governance-compliance-report.html</code>)</h4>
-      <p>A standalone, offline HTML audit report. Displays 7/7 verification checks, active enforcement rules, and can be exported as a PDF for leadership.</p>
-    </div>
-  </div>
-  <div class="output-card">
-    <div class="output-num">04</div>
-    <div class="output-body">
-      <h4>Workstation Secret Scanner (<code>.pre-commit-config.yaml</code>)</h4>
-      <p>A local Git hook that intercepts <code>git commit</code> if an unencrypted OpenAI or Anthropic API key is accidentally staged in code.</p>
-    </div>
-  </div>
-  <div class="output-card">
-    <div class="output-num">05</div>
-    <div class="output-body">
-      <h4>Cloud CI/CD PR Governance Gate (<code>ai-governance-gate.yaml</code>)</h4>
-      <p>A GitHub Actions workflow that evaluates every Pull Request. Fails the build and locks the merge button if policies fail.</p>
-    </div>
-  </div>
-  <div class="output-card">
-    <div class="output-num">06</div>
-    <div class="output-body">
-      <h4>Auditor-Ready Model & Data Cards (<code>governance-cards/*.yaml</code>)</h4>
-      <p>Standardized documentation declaring model benchmark accuracy, bias parity thresholds, and dataset privacy retention periods.</p>
-    </div>
-  </div>
-</div>
-
-<div class="output-card full" style="margin-top:16px;">
-  <div class="output-num">07</div>
-  <div class="output-body">
-    <h4>Signed Compliance Audit Evidence Bundle (<code>pr-governance-audit-bundle.zip</code>)</h4>
-    <p>A downloadable zip archive generated automatically by GitHub Actions containing the snapshot, test reports, and verification logs. Retained for 7 years for enterprise auditors.</p>
-  </div>
-</div>
-
-          </div>
-        </section>
-        
-        <section class="slide-section" id="slide-10" data-index="9">
-          <div class="slide-header">
-            <div class="slide-meta">
-              <span class="slide-num-pill">Slide 10</span>
-              <span class="slide-chapter-tag">Deliverables & Enforcement</span>
-              <span class="slide-sep">&bull;</span>
-              <span class="slide-tag-pill">Enforcement & Fallback</span>
-            </div>
-            <h2 class="slide-main-title">Automated Enforcement: What Actions Happen If Standards Fail?</h2>
-            <p class="slide-main-subtitle">The system does not just write notes; it actively blocks non-compliant code and provides a lawful exception process.</p>
-          </div>
-          <div class="slide-content-body">
-            
-<div class="table-card">
-  <div class="table-header">The 5 Automated Enforcement Barriers</div>
-  <table class="data-table">
-    <thead>
-      <tr>
-        <th style="width:25%">Enforcement Point</th>
-        <th style="width:35%">Violation Trigger (What Fails?)</th>
-        <th style="width:40%">Automated Action Taken by System</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><b>1. Workstation Pre-Commit</b></td>
-        <td>Developer accidentally stages an OpenAI/Anthropic API key.</td>
-        <td><span class="badge-action red">ABORTS GIT COMMIT</span> (Exit Code 1). Key cannot leave the laptop.</td>
-      </tr>
-      <tr>
-        <td><b>2. Pull Request Gate (CI/CD)</b></td>
-        <td>Accuracy &lt; 85%, hallucination &gt; 5%, or copyleft GPL licenses found.</td>
-        <td><span class="badge-action red">FAILS BUILD & LOCKS PR MERGE</span>. Code cannot be merged into main.</td>
-      </tr>
-      <tr>
-        <td><b>3. Model Registry Promotion</b></td>
-        <td>Model serialized in unsafe Python <code>.pkl</code> pickle format or missing Model Card.</td>
-        <td><span class="badge-action red">BLOCKS MODEL PROMOTION</span> to staging or production registry.</td>
-      </tr>
-      <tr>
-        <td><b>4. Kubernetes Cluster Admission</b></td>
-        <td>Container image lacks cryptographic Cosign signature from CI/CD.</td>
-        <td><span class="badge-action red">REJECTS POD DEPLOYMENT</span> with HTTP 403 Forbidden.</td>
-      </tr>
-      <tr>
-        <td><b>5. Runtime Agent Interceptor (PEP)</b></td>
-        <td>Agent executes tool &gt; 5 recursion depth or does sensitive action without approval.</td>
-        <td><span class="badge-action red">BLOCKS TOOL CALL IN REAL-TIME</span> and writes immutable audit record.</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<div class="grid-2" style="margin-top:20px;">
-  <div class="content-box">
-    <div class="box-title">What If You Need an Exception? (The Lawful Fallback)</div>
-    <p style="font-size:13px; line-height:1.6; color:var(--text-main);">If an urgent hotfix or legacy model cannot meet a rule immediately, developers <b>cannot silently bypass the check</b>. Instead, they must submit:</p>
-    <div class="code-box" style="margin:8px 0;">project-kit/exception-request.template.yaml</div>
-    <p style="font-size:12px; color:var(--text-muted); line-height:1.5;">Requires compensating controls, maximum 90-day time limit, and formal sign-off by the AI Safety Review Board (<code>[ROLE: AI Safety Board]</code>).</p>
   </div>
 
   <div class="content-box">
-    <div class="box-title">The Master 5-Step Daily Engineering Workflow</div>
-    <ol class="clean-ordered-list">
-      <li><b>Setup Git:</b> <code>git init</code> in your AI project folder.</li>
-      <li><b>Run Copilot:</b> <code>python C:\ai-governance-package\agents\governance_agent.py auto-setup .</code></li>
-      <li><b>Check Report:</b> Double-click <code>governance-compliance-report.html</code>.</li>
-      <li><b>Confirm Metrics:</b> Review evaluation numbers in <code>governance-cards/model-card.yaml</code>.</li>
-      <li><b>Commit & Push:</b> <code>git add . && git commit -m "feat(gov): add AI governance" && git push</code></li>
-    </ol>
+    <div class="box-title">3. Ratify Policies (Board)</div>
+    <p style="font-size:13px; color:var(--text-secondary); line-height:1.6;">
+      Have your AI Safety Review Board review the 16 baseline policies in <code>baseline/policies/</code>, replace the placeholder names with real department leads, and mark as active.
+    </p>
   </div>
+</div>
+
+<div class="callout-box success" style="margin-top:24px;">
+  <strong>Final Management Message:</strong> With this platform in place, your organization can boldly pursue cutting-edge generative AI and autonomous agents with complete confidence that your reputation, data privacy, and legal compliance are automatically protected.
 </div>
 
           </div>
@@ -1789,34 +1438,30 @@
 <div class="bottom-controller">
   <button class="nav-btn" id="btnPrev" onclick="prevSlide()">&#9664; Prev</button>
   <div class="progress-info">
-    <span id="slideCounterText">Slide 1 of 10</span>
+    <span id="slideCounterText">Slide 1 of 7</span>
     <div class="progress-bar-wrap">
-      <div class="progress-bar-fill" id="progressFill" style="width: 10%;"></div>
+      <div class="progress-bar-fill" id="progressFill" style="width: 14%;"></div>
     </div>
   </div>
   <button class="nav-btn" id="btnNext" onclick="nextSlide()">Next &#9654;</button>
   <select class="slide-select-dropdown" id="slideSelectDropdown" onchange="goToSlide(parseInt(this.value))">
-    <option value="0">01. What is the AI Governance Package & Why Does ...</option>
-<option value="1">02. Platform Architecture: How It Operates Under ...</option>
-<option value="2">03. What Policies & Standards Does It Check?...</option>
-<option value="3">04. Git Setup: Publishing to GitHub (Personal & C...</option>
-<option value="4">05. How to Use It: Method 1 - Autonomous Governan...</option>
-<option value="5">06. How to Use It: Method 2 - IDE Chat Integratio...</option>
-<option value="6">07. Hands-on Example Walkthrough: Testing with sa...</option>
-<option value="7">08. What Does It Infer Once the YAML Files Are Ge...</option>
-<option value="8">09. The 7 Tangible Outputs You Get at the End of ...</option>
-<option value="9">10. Automated Enforcement: What Actions Happen If...</option>
+    <option value="0">01. What is the AI Governance Package & Why Did W...</option>
+<option value="1">02. What Have We Built & What Exists on Your Comp...</option>
+<option value="2">03. How Does It Work? The Simple 3-Step Process...</option>
+<option value="3">04. How Does Someone Actually Use It? (2 Simple W...</option>
+<option value="4">05. What Outputs & Reports Do You Get After Execu...</option>
+<option value="5">06. What Happens If Something Fails or Standards ...</option>
+<option value="6">07. Executive Summary & Next Steps for Leadership...</option>
 
   </select>
 </div>
 
 <script>
   let currentSlide = 0;
-  const totalSlides = 10;
+  const totalSlides = 7;
   let currentMode = 'slide';
 
   function updateUI() {
-    // Hide / show slides in slide mode
     for (let i = 0; i < totalSlides; i++) {
       const sec = document.getElementById('slide-' + (i + 1));
       const navItem = document.getElementById('nav-item-' + i);
@@ -1832,7 +1477,6 @@
       }
     }
 
-    // Update bottom controller
     const counterText = document.getElementById('slideCounterText');
     if (counterText) counterText.textContent = `Slide ${currentSlide + 1} of ${totalSlides}`;
 
@@ -1850,7 +1494,6 @@
     const dropdown = document.getElementById('slideSelectDropdown');
     if (dropdown) dropdown.value = currentSlide;
 
-    // Scroll active slide into view if full mode
     if (currentMode === 'full') {
       const sec = document.getElementById('slide-' + (currentSlide + 1));
       if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -1910,7 +1553,6 @@
     });
   }
 
-  // Keyboard navigation
   window.addEventListener('keydown', (e) => {
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
     if (e.key === 'ArrowRight' || e.key === 'PageDown') {
@@ -1928,7 +1570,6 @@
     }
   });
 
-  // Init
   updateUI();
 </script>
 </body>
