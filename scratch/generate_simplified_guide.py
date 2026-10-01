@@ -115,18 +115,18 @@ CA = "Appendix: The Novice Cheat Sheet"
 # 1.1 Start Here: What You Have & Your 2 Goals
 # ------------------------------------------------------------------------------
 slide("1.1", C1, "exec", "Start Here", "The Situation: What You Have on Your C: Drive & Your 2 Goals",
-      "You do not need to read 61 legal policies. Here is exactly what is on your computer and the two goals you need to achieve.",
+      "You do not need to read 61 legal policies. Here is exactly what is on your computer and the two practical goals you need to achieve.",
       "Workspace: C:\\ai-governance-package | Sample Project: C:\\ai-governance-package\\sample-ai-project",
-      banner("Your Goal as a Novice", "Take an AI application and make it 100% compliant with enterprise rules in 3 seconds.",
-             "The governance package already exists on your C: drive at C:\\ai-governance-package. You now have a project (like our sample app) that needs governance. Here are the exact steps to connect them.",
-             "Effort", "1 Command") +
+      banner("Your Goal as a Novice", "Establish an audit-ready, automated AI governance foundation for your application in 3 seconds.",
+             "The governance package already exists on your C: drive at C:\\ai-governance-package. You now have a project (like our sample app) that needs governance. Here are the exact steps to connect them without manual paperwork.",
+             "Setup Time", "3 Seconds") +
       kpi_grid([
-          kpi("Governance Package", "C:\\ai-gov", "Already on your C: drive", "navy"),
+          kpi("Governance Package", "C:\\ai-gov", "Master controls on C: drive", "navy"),
           kpi("Sample AI Project", "Ready", "sample-ai-project for testing", "blue"),
-          kpi("Manual Policies to Write", "0", "Zero documentation to write", "green"),
-          kpi("Time Required", "3 Seconds", "Fully automated by Copilot", "purple", "derived"),
-          kpi("Two Easy Methods", "CLI or IDE", "Copilot command OR Cursor/Claude chat", "amber"),
-          kpi("Compliance Result", "100%", "Emits audit-ready snapshot & gates", "green", "derived")
+          kpi("Automated Scaffolding", "100%", "Manifest, snapshot & gates auto-generated", "green"),
+          kpi("Copilot Execution", "3 Seconds", "Zero manual YAML configuration", "purple", "derived"),
+          kpi("Two Easy Methods", "CLI or IDE", "Copilot command OR Claude/Cursor chat", "amber"),
+          kpi("Human Verification", "1 Step", "Confirm draft model benchmark metrics", "green", "derived")
       ]) +
       cols([
           box("1. This is what you already have on your C: drive",
@@ -134,7 +134,7 @@ slide("1.1", C1, "exec", "Start Here", "The Situation: What You Have on Your C: 
               "<li><b>The Hands-on Test Project:</b> Located at <code>C:\\ai-governance-package\\sample-ai-project</code>. A realistic starter AI app (Python, OpenAI, ChromaDB) where you can safely test everything.</li></ul>"),
           box("2. This is what you need to do (Your 2 Choices)",
               "<ol><li><b>Choice 1 (Autonomous Governance Copilot):</b> Run 1 command in your terminal. The copilot inspects the code, sets up your governance files, and generates a visual HTML audit report.</li>"
-              "<li><b>Choice 2 (IDE Integration via MCP):</b> Open Cursor, Claude Desktop, or VS Code, and configure our Model Context Protocol server once. Then simply ask the AI chat to govern your project!</li></ol>")
+              "<li><b>Choice 2 (IDE Integration via MCP):</b> Open Cursor, Claude Desktop, or VS Code. Our Model Context Protocol server is already configured! Then simply ask Claude to govern your project.</li></ol>")
       ]) +
       note("Opening line", "Welcome. You have two files already on your computer, and you only need to run one command today."))
 
@@ -177,7 +177,7 @@ slide("1.2", C1, "arch", "Git Setup", "Git Setup: How to Set Up Git Locally & Pu
 # 2.1 Point 1: Autonomous Governance Copilot
 # ------------------------------------------------------------------------------
 slide("2.1", C2, "exec", "Point 1: Copilot", "Point 1: The Autonomous Governance Copilot (Terminal Command)",
-      "This is the fastest method. Open your terminal, run 1 single command, and the Copilot does 100% of the governance work in 3 seconds.",
+      "This is the fastest CLI method. Open your terminal, run 1 single command, and the Copilot builds your governance scaffold in 3 seconds.",
       "C:\\ai-governance-package\\agents\\governance_agent.py",
       cols([
           box("1. This is what I need to do",
@@ -187,15 +187,18 @@ slide("2.1", C2, "exec", "Point 1: Copilot", "Point 1: The Autonomous Governance
               "<span style='color:#4ADE80'>python</span> C:\\ai-governance-package\\agents\\governance_agent.py auto-setup C:\\ai-governance-package\\sample-ai-project"
               "</div>"
               "<p style='margin-top:10px;font-size:12px;color:#64748B;'>Tip: To run it on any other project, just replace the last folder path with your project's folder!</p>"),
-          box("2. This is what the Copilot does automatically (Zero Manual Work)",
-              "<ul style='padding-left:18px;line-height:1.7'>"
-              "<li><b>Scans Code:</b> Analyzes imports, vector DBs (ChromaDB), models (OpenAI), and PII fields.</li>"
-              "<li><b>Infers Identity:</b> Automatically assigns the Archetype (<code>autonomous_agent</code>) and Risk Tier (<code>tier_3_high</code>).</li>"
-              "<li><b>Generates Manifest:</b> Creates <code>ai-project-manifest.yaml</code> with project owners and bindings.</li>"
-              "<li><b>Resolves Policy Snapshot:</b> Merges baseline controls with overlays into <code>effective-policy-snapshot.json</code> sealed with SHA-256.</li>"
-              "<li><b>Installs Gates:</b> Sets up <code>.pre-commit-config.yaml</code> and <code>.github/workflows/ai-governance-gate.yaml</code>.</li>"
-              "<li><b>Generates HTML Report:</b> Creates <code>governance-compliance-report.html</code>.</li>"
-              "</ul>")
+          box("2. What is 100% Automated vs. What Requires Human Sign-off",
+              "<p style='font-size:12px;color:#0B2E59;font-weight:700;'>100% Automated by the Copilot (Zero Toil):</p>"
+              "<ul style='padding-left:18px;font-size:12px;line-height:1.6;margin-bottom:8px;'>"
+              "<li>AST code scan & dependency telemetry (detects OpenAI, ChromaDB, PII).</li>"
+              "<li>System Archetype & Risk Tier assignment.</li>"
+              "<li>Deterministic mathematical merge into <code>effective-policy-snapshot.json</code> with SHA-256 seal.</li>"
+              "<li>Workstation secret scanner hook & GitHub Actions CI PR gate installation.</li>"
+              "<li>Starter Model Card & Data Card scaffolding with default threshold targets.</li>"
+              "<li>Visual HTML compliance audit report generation.</li>"
+              "</ul>"
+              "<p style='font-size:12px;color:#D97706;font-weight:700;'>The 1 Human Verification Step (Before Production):</p>"
+              "<p style='font-size:12px;color:#78350F;line-height:1.5;'>A human engineer/owner reviews the starter <code>model-card.yaml</code> to confirm that actual evaluation benchmark scores match declared thresholds, and replaces <code>[ROLE: Business Owner]</code> with the real owner email.</p>")
       ]) +
       box("Copilot Terminal Output (What You See on Screen)",
           "<div style='background:#061A33;color:#F8FAFC;padding:14px;border-radius:8px;font-family:Consolas,monospace;font-size:12px;line-height:1.6'>"
@@ -207,10 +210,10 @@ slide("2.1", C2, "exec", "Point 1: Copilot", "Point 1: The Autonomous Governance
           "<span style='color:#38BDF8'>[AGENT]</span> Pre-populating starter Model Card & Data Card...<br>"
           "<span style='color:#38BDF8'>[AGENT]</span> Generating interactive HTML compliance audit report... governance-compliance-report.html<br>"
           "<span style='color:#4ADE80'>=================================================================</span><br>"
-          "<span style='color:#4ADE80'>  AUTONOMOUS GOVERNANCE SETUP COMPLETE (0 MANUAL WORK)</span><br>"
+          "<span style='color:#4ADE80'>  AUTONOMOUS GOVERNANCE SETUP COMPLETE</span><br>"
           "<span style='color:#4ADE80'>=================================================================</span>"
           "</div>") +
-      alert("No Forms to Fill:", "You did not write a single line of YAML or policy documentation. The copilot inspected your code and configured everything.", "success"))
+      alert("Realistic Enterprise Governance:", "The copilot removes 99% of the mechanical friction (manifests, schemas, rule engines, hashes). Humans focus purely on accountability and accuracy sign-off.", "success"))
 
 # ------------------------------------------------------------------------------
 # 2.2 Point 2: IDE Model Context Protocol (MCP) Integration
@@ -219,26 +222,23 @@ slide("2.2", C2, "arch", "Point 2: MCP IDE", "Point 2: IDE Integration via Model
       "If you use Cursor, Claude Desktop, or VS Code, you don't even have to open a terminal. Just ask your AI assistant in chat.",
       "C:\\ai-governance-package\\agents\\mcp_server.py | Cursor / Claude / VS Code",
       cols([
-          box("Step 1: Configure MCP in Your Editor (One-Time Setup)",
-              "<p><b>In Cursor:</b></p>"
-              "<ol style='padding-left:18px;margin-bottom:8px;font-size:12px;line-height:1.6'>"
-              "<li>Open Cursor > Settings (Ctrl+Shift+J) > Features > MCP Servers > Add New.</li>"
-              "<li>Name: <code>ai-governance</code> | Type: <code>command</code></li>"
-              "<li>Command: <code>python C:/ai-governance-package/agents/mcp_server.py</code></li>"
-              "</ol>"
-              "<p><b>In Claude Desktop:</b></p>"
-              "<div style='background:#061A33;color:#F8FAFC;padding:8px;border-radius:4px;font-family:Consolas,monospace;font-size:11px'>"
+          box("Step 1: Your Claude Desktop Config is Already Configured!",
+              "<p>We have already updated your Claude Desktop configuration file at:<br><code>%APPDATA%\\Claude\\claude_desktop_config.json</code></p>"
+              "<div style='background:#061A33;color:#F8FAFC;padding:8px;border-radius:4px;font-family:Consolas,monospace;font-size:11px;margin:8px 0;'>"
               '{\n  "mcpServers": {\n    "ai-governance": {\n      "command": "python",\n      "args": ["C:/ai-governance-package/agents/mcp_server.py"]\n    }\n  }\n}'
-              "</div>"),
-          box("Step 2: How to Use It in Chat (The Layman Experience)",
-              "<p>Open any AI project folder in your editor, open the chat sidebar, and type:</p>"
-              "<div style='background:#EFF6FF;border-left:4px solid #0284C7;padding:12px;border-radius:4px;margin:10px 0;font-size:14px;font-weight:700;color:#0B2E59'>"
-              "&ldquo;Set up AI governance for this project.&rdquo;"
               "</div>"
-              "<p style='font-size:13px;line-height:1.6;color:#334155'>The AI assistant automatically discovers the MCP tool <code>ai_governance_auto_setup</code>, invokes it, generates all manifest files, and reports back:<br>"
-              "<i style='color:#059669'>\"Governance configured: Inferred High-Risk Agent, 40 active controls bound, CI/CD gates and HTML audit report generated.\"</i></p>")
+              "<p style='font-size:12px;color:#059669;'><b>Tools exposed to Claude:</b><br>"
+              "1. <code>ai_governance_inspect</code> (read-only AST telemetry)<br>"
+              "2. <code>ai_governance_auto_setup</code> (full manifest, snapshot & gates setup)</p>"),
+          box("Step 2: How to Use It in Chat (The Layman Experience)",
+              "<p>Restart Claude Desktop, click the hammer icon to verify the tools, and type:</p>"
+              "<div style='background:#EFF6FF;border-left:4px solid #0284C7;padding:12px;border-radius:4px;margin:10px 0;font-size:14px;font-weight:700;color:#0B2E59'>"
+              "&ldquo;Use the ai_governance tool to inspect C:/ai-governance-package/sample-ai-project&rdquo;"
+              "</div>"
+              "<p style='font-size:13px;line-height:1.6;color:#334155'>Claude executes the tool via local stdio and reports back:<br>"
+              "<i style='color:#059669'>\"Inferred Archetype: autonomous_agent | Assigned Risk: tier_3_high | 40 active controls bound.\"</i></p>")
       ]) +
-      alert("Universal Editor Support:", "The exact same MCP server file (<code>agents/mcp_server.py</code>) works seamlessly across Cursor, Claude Desktop, Claude Code, Roo Code, and VS Code.", "info"))
+      alert("Zero Network Latency:", "The MCP server runs locally on your workstation via pure standard input/output (stdio). No data or code leaves your computer during inspection.", "info"))
 
 # ------------------------------------------------------------------------------
 # 3.1 Testing with the Sample Project
