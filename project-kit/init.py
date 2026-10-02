@@ -136,6 +136,31 @@ governance_bindings:
 
     print(f"\n[OK] Created clean manifest: {manifest_path.resolve()}")
 
+    # Automatically scaffold governance-cards directory and data-card.yaml
+    cards_dir = Path("governance-cards")
+    cards_dir.mkdir(exist_ok=True)
+    data_card_path = cards_dir / "data-card.yaml"
+    if not data_card_path.exists():
+        data_card_content = f"""# Standard Governance Data Card
+# Auto-scaffolded by project-kit/init.py
+dataset_details:
+  dataset_id: "DAT-{project_id}"
+  dataset_name: "{project_name} Training & Context Corpus"
+  contains_pii: {str(has_pii).lower()}
+  sanitization_applied: true
+  retention_period_years: 5
+
+licensing:
+  copyright_cleared: true
+  reciprocal_copyleft_free: true
+  commercial_use_cleared: true
+  licensing_classification: "internal_proprietary"
+"""
+        with open(data_card_path, "w", encoding="utf-8") as f:
+            f.write(data_card_content)
+        print(f"[OK] Automatically created data card: {data_card_path.resolve()}")
+
+
     # Determine paths for resolver
     repo_root = Path(__file__).resolve().parent.parent
     resolver_script = repo_root / "project-kit" / "resolver" / "resolve.py"
@@ -173,7 +198,7 @@ governance_bindings:
         print(f"  * Snapshot Hash:          {snapshot_hash}...")
         print("=" * 65)
         print("\nWHAT TO DO NEXT (Just 2 Steps!):")
-        print("  1. git add ai-project-manifest.yaml effective-policy-snapshot.json")
+        print("  1. git add ai-project-manifest.yaml effective-policy-snapshot.json governance-cards/")
         print("  2. git commit -m 'feat: add enterprise AI governance baseline'")
         print("\nThat's it! Your project is now registered and compliant.\n")
     else:
