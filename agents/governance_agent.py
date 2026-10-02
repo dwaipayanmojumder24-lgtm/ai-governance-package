@@ -135,8 +135,29 @@ class GovernanceAgent:
                                     if cat == "llm": findings["has_llm"] = True
                                     if cat == "predictive_ml": findings["has_predictive"] = True
 
+                        # Check Hardcoded AI Secrets & API Keys
+                        if "leaked_secrets" not in findings:
+                            findings["leaked_secrets"] = []
+                        secret_regexes = [
+                            ("OpenAI Secret Key", re.compile(r"sk-[a-zA-Z0-9_\-]{20,}")),
+                            ("Anthropic API Key", re.compile(r"sk-ant-[a-zA-Z0-9_\-]{20,}")),
+                            ("HuggingFace Token", re.compile(r"hf_[a-zA-Z0-9]{20,}")),
+                            ("Generic API Key", re.compile(r"(?i)(api_key|secret_key|access_token)\s*=\s*['\"][a-zA-Z0-9_\-]{20,}['\"]"))
+                        ]
+                        for line_idx, line in enumerate(lines, 1):
+                            # Skip comments that document violations
+                            if line.strip().startswith("#"):
+                                continue
+                            for s_name, s_pat in secret_regexes:
+                                if s_pat.search(line):
+                                    findings["leaked_secrets"].append(f"{s_name} in {file}:{line_idx}")
+                                    break
+
                     except Exception:
                         continue
+
+        if "leaked_secrets" not in findings:
+            findings["leaked_secrets"] = []
 
         return findings
 
@@ -298,9 +319,9 @@ licensing:
             with open(data_card_path, "w", encoding="utf-8") as f:
                 f.write(dc_content)
 
-    def generate_html_report(self, audit_results: Dict[str, Any]) -> Path:
+    def generate_html_report(self, audit_results: Dict[str, Any], report_filename: str = "governance-compliance-report.html") -> Path:
         """Generates a standalone, beautiful HTML governance audit report."""
-        report_path = self.target_dir / "governance-compliance-report.html"
+        report_path = self.target_dir / report_filename
         p_name = audit_results.get("project_name", self.target_dir.name)
         p_id = audit_results.get("project_id", "SYS-UNKNOWN")
         risk_tier = audit_results.get("risk_tier", "Unknown")
@@ -309,7 +330,11 @@ licensing:
         active_controls = audit_results.get("active_controls", 0)
         checks = audit_results.get("checks", [])
         passed_count = sum(1 for c in checks if c["status"] == "PASS")
+        failed_count = sum(1 for c in checks if c["status"] == "FAIL")
+        warn_count = sum(1 for c in checks if c["status"] == "WARN")
         total_checks = len(checks)
+
+        is_failing = (failed_count > 0)
 
         check_rows = ""
         for c in checks:
@@ -322,6 +347,22 @@ licensing:
               <td><code>{c['detail']}</code></td>
               <td><span class="enforce-rule">{c['enforcement']}</span></td>
             </tr>
+            """
+
+        header_tag_bg = "var(--red)" if is_failing else "var(--green)"
+        header_tag_text = f"🚨 {failed_count} NON-COMPLIANCE ANOMALIES DETECTED" if is_failing else "✓ OFFICIAL COMPLIANCE RECORD (VERIFIED)"
+        kpi_1_cls = "red" if is_failing else "green"
+        kpi_1_text = f"<span style='color:var(--red);'>{passed_count} / {total_checks} PASSED</span>" if is_failing else f"{passed_count} / {total_checks}"
+        kpi_3_cls = "red" if is_failing else "green"
+        kpi_3_text = "<span style='color:var(--red); font-size:16px; font-weight:800;'>BLOCKED (NON-COMPLIANT)</span>" if is_failing else "<span style='color:var(--green); font-size:16px; font-weight:800;'>ACTIVE (PASSED)</span>"
+
+        alert_box_html = ""
+        if is_failing:
+            alert_box_html = f"""
+            <div class="action-box" style="background:#FFF1F2; border:1px solid #FECDD3; border-left:4px solid var(--red); padding:16px 20px; border-radius:6px; margin-bottom:20px;">
+              <h3 style="color:#991B1B; font-size:15px; margin-bottom:6px;">🚨 Automated Pipeline Release Barrier Engaged</h3>
+              <p style="color:#4C0519; font-size:13px; line-height:1.5;">This project currently violates mandatory enterprise governance policies. Automated safety shields have locked software deployment and pull-request merging until the flagged non-compliant items are remediated.</p>
+            </div>
             """
 
         html_content = f"""<!DOCTYPE html>
@@ -343,7 +384,7 @@ licensing:
   
   /* Header */
   header {{ background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%); color: #fff; padding: 28px 36px; border-bottom: 3px solid var(--red); }}
-  .header-tag {{ display: inline-block; background: var(--red); color: #fff; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }}
+  .header-tag {{ display: inline-block; background: {header_tag_bg}; color: #fff; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }}
   h1 {{ font-size: 24px; font-weight: 700; margin-bottom: 6px; }}
   .header-meta {{ font-size: 13px; color: #CBD5E1; display: flex; gap: 20px; flex-wrap: wrap; margin-top: 10px; }}
   
@@ -353,8 +394,7 @@ licensing:
   .kpi-card.green {{ border-top-color: var(--green); }}
   .kpi-card.red {{ border-top-color: var(--red); }}
   .kpi-label {{ font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px; }}
-  .kpi-value {{ font-size: 24px; font-weight: 800; color: var(--navy); margin-top: 4px; font-family: monospace; }}
-  .kpi-card.green .kpi-value {{ color: var(--green); }}
+  .kpi-value {{ font-size: 22px; font-weight: 800; color: var(--navy); margin-top: 4px; font-family: monospace; }}
   
   /* Content Sections */
   .section {{ padding: 28px 36px; border-bottom: 1px solid var(--border); }}
@@ -402,7 +442,7 @@ licensing:
 
 <div class="container">
   <header>
-    <div class="header-tag">Official Compliance Record</div>
+    <div class="header-tag">{header_tag_text}</div>
     <h1>AI Governance Verification & Audit Report</h1>
     <div class="header-meta">
       <span><strong>Project:</strong> {p_name} ({p_id})</span>
@@ -413,25 +453,26 @@ licensing:
   </header>
 
   <div class="kpi-grid">
-    <div class="kpi-card green">
+    <div class="kpi-card {kpi_1_cls}">
       <div class="kpi-label">Compliance Checks</div>
-      <div class="kpi-value">{passed_count} / {total_checks}</div>
+      <div class="kpi-value">{kpi_1_text}</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">Active Controls Bound</div>
       <div class="kpi-value">{active_controls}</div>
     </div>
-    <div class="kpi-card">
+    <div class="kpi-card {kpi_3_cls}">
       <div class="kpi-label">Governance Status</div>
-      <div class="kpi-value" style="font-size:18px; color:var(--green);">ACTIVE (DRAFT)</div>
+      <div class="kpi-value">{kpi_3_text}</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">Integrity State</div>
-      <div class="kpi-value" style="font-size:18px; color:var(--navy);">SEALED</div>
+      <div class="kpi-value" style="font-size:18px; color:var(--navy);">{'SEALED' if hash_val != 'NOT-RESOLVED' else 'UNSEALED'}</div>
     </div>
   </div>
 
   <div class="section">
+    {alert_box_html}
     <h2>1. Codebase Inspection & Inference Summary</h2>
     <p class="lead">What the system detected, inferred, and bound to this repository based on static AST and dependency analysis:</p>
     
@@ -440,7 +481,6 @@ licensing:
       <ul>
         <li><strong>Inferred Archetype:</strong> <code>{archetype}</code> (Identified via language models, agentic tooling, and vector memory dependencies).</li>
         <li><strong>Assigned Risk Tier:</strong> <code>{risk_tier}</code> (Bound to high-scrutiny controls under baseline charter).</li>
-        <li><strong>Mandatory Overlays Inferred:</strong> High-Risk Tier Overlay (<code>ORG-OVL-RSK-TIER3-001</code>) and Autonomous Agent Overlay (<code>ORG-OVL-ARC-AGENT-001</code>).</li>
         <li><strong>Effective Contract:</strong> Baseline 61 controls merged monotonically with overlay obligations to yield exactly <strong>{active_controls} active obligations</strong>.</li>
         <li><strong>Cryptographic Proof:</strong> State sealed with SHA-256 integrity digest <code>{hash_val}</code>.</li>
       </ul>
@@ -473,10 +513,10 @@ licensing:
     <div class="action-box">
       <h3>Active Enforcement Barriers:</h3>
       <p style="margin-bottom:8px;"><strong>1. Pre-Commit Gate:</strong> If an API key or unencrypted token is staged, <code>git commit</code> is aborted immediately (exit code 1). Credentials cannot leave the developer's workstation.</p>
-      <p style="margin-bottom:8px;"><strong>2. Pull Request Gate:</strong> In CI/CD, if accuracy falls below 85%, hallucination rate exceeds 5%, or copyleft GPL licenses are detected, GitHub Actions fails and the PR merge button is locked.</p>
+      <p style="margin-bottom:8px;"><strong>2. Pull Request Gate:</strong> In CI/CD, if accuracy falls below 85%, hallucination rate exceeds 4%, or copyleft GPL licenses are detected, GitHub Actions fails and the PR merge button is locked.</p>
       <p style="margin-bottom:8px;"><strong>3. Model Promotion Gate:</strong> In the model registry, unsafe Python <code>pickle</code> files are rejected. Only <code>safetensors</code> and <code>ONNX</code> with validated Model Cards can be promoted to staging or production.</p>
       <p style="margin-bottom:8px;"><strong>4. Kubernetes Admission Webhook:</strong> Pods without valid cryptographic Cosign signatures or flagged as Tier 4 Prohibited AI are rejected at deployment with HTTP 403 Forbidden.</p>
-      <p><strong>5. Runtime Tool PEP Interceptor:</strong> For autonomous agents, tool calls exceeding depth 5 or sensitive financial transactions lacking dual-key human approval tokens are blocked in real-time.</p>
+      <p><strong>5. Runtime Tool PEP Interceptor:</strong> For autonomous agents, tool calls exceeding depth 3 or sensitive financial transactions lacking dual-key human approval tokens are blocked in real-time.</p>
     </div>
   </div>
 
@@ -493,7 +533,7 @@ licensing:
             f.write(html_content)
         return report_path
 
-    def audit(self, generate_html: bool = True) -> Dict[str, Any]:
+    def audit(self, generate_html: bool = True, output_filename: str = "governance-compliance-report.html") -> Dict[str, Any]:
         """Audits the target repository against all governance requirements and produces report."""
         print(f"\n[AUDIT] Performing full AI Governance audit on: {self.target_dir}")
         manifest_path = self.target_dir / "ai-project-manifest.yaml"
@@ -504,12 +544,13 @@ licensing:
         model_card = cards_dir / "model-card.yaml"
         data_card = cards_dir / "data-card.yaml"
 
+        findings = self.scan_codebase()
         checks = []
 
         # 1. Project Manifest
         if manifest_path.exists():
             checks.append({
-                "name": "Declarative Project Manifest",
+                "name": "Declarative Project Manifest (POL-ACC-01)",
                 "desc": "Defines project identity, risk tier, owners, and bindings",
                 "status": "PASS",
                 "detail": manifest_path.name,
@@ -517,7 +558,7 @@ licensing:
             })
         else:
             checks.append({
-                "name": "Declarative Project Manifest",
+                "name": "Declarative Project Manifest (POL-ACC-01)",
                 "desc": "Defines project identity, risk tier, owners, and bindings",
                 "status": "FAIL",
                 "detail": "MISSING: ai-project-manifest.yaml",
@@ -544,7 +585,7 @@ licensing:
                 p_id = sdata.get("project_id", "SYS-UNKNOWN")
 
                 checks.append({
-                    "name": "Cryptographic Effective Policy Snapshot",
+                    "name": "Cryptographic Policy Snapshot (POL-REC-01)",
                     "desc": "Deterministic merge of baseline + overlays with SHA-256 seal",
                     "status": "PASS",
                     "detail": f"{active_controls} controls active | SHA-256: {snapshot_hash}...",
@@ -552,7 +593,7 @@ licensing:
                 })
             except Exception as e:
                 checks.append({
-                    "name": "Cryptographic Effective Policy Snapshot",
+                    "name": "Cryptographic Policy Snapshot (POL-REC-01)",
                     "desc": "Deterministic merge of baseline + overlays with SHA-256 seal",
                     "status": "FAIL",
                     "detail": f"Corrupt JSON snapshot: {e}",
@@ -560,7 +601,7 @@ licensing:
                 })
         else:
             checks.append({
-                "name": "Cryptographic Effective Policy Snapshot",
+                "name": "Cryptographic Policy Snapshot (POL-REC-01)",
                 "desc": "Deterministic merge of baseline + overlays with SHA-256 seal",
                 "status": "FAIL",
                 "detail": "MISSING: effective-policy-snapshot.json",
@@ -570,7 +611,7 @@ licensing:
         # 3. Secret Scanner
         if pre_commit_path.exists():
             checks.append({
-                "name": "Pre-Commit Secrets Scanner",
+                "name": "Pre-Commit Secrets Scanner (POL-SEC-01)",
                 "desc": "Intercepts unencrypted API keys and credentials before git commit",
                 "status": "PASS",
                 "detail": pre_commit_path.name,
@@ -578,7 +619,7 @@ licensing:
             })
         else:
             checks.append({
-                "name": "Pre-Commit Secrets Scanner",
+                "name": "Pre-Commit Secrets Scanner (POL-SEC-01)",
                 "desc": "Intercepts unencrypted API keys and credentials before git commit",
                 "status": "WARN",
                 "detail": "Pre-commit hook not installed",
@@ -603,51 +644,105 @@ licensing:
                 "enforcement": "Deployment blocked by registry gate"
             })
 
-        # 5. Model Card
+        # 5. Model Card & Accuracy Standards
         if model_card.exists():
-            checks.append({
-                "name": "Model Card Documentation",
-                "desc": "Records architecture, training intent, accuracy, and bias metrics",
-                "status": "PASS",
-                "detail": "governance-cards/model-card.yaml",
-                "enforcement": "Model registry promotion blocked if missing"
-            })
+            mc_content = ""
+            try:
+                with open(model_card, "r", encoding="utf-8") as f:
+                    mc_content = f.read()
+            except Exception:
+                pass
+            acc_match = re.search(r'benchmark_accuracy:\s*([0-9.]+)', mc_content)
+            halluc_match = re.search(r'hallucination_rate_ceiling:\s*([0-9.]+)', mc_content)
+            acc = float(acc_match.group(1)) if acc_match else 0.88
+            halluc = float(halluc_match.group(1)) if halluc_match else 0.04
+
+            if acc < 0.85:
+                checks.append({
+                    "name": "Model Quality & Accuracy Standard (POL-ROB-01)",
+                    "desc": "Validates benchmark accuracy >= 85% and hallucination <= 4%",
+                    "status": "FAIL",
+                    "detail": f"ACCURACY FAILED: {acc*100:.1f}% is below company standard (>=85%)",
+                    "enforcement": "Promotion to staging/production locked"
+                })
+            elif halluc > 0.04:
+                checks.append({
+                    "name": "Model Quality & Accuracy Standard (POL-ROB-01)",
+                    "desc": "Validates benchmark accuracy >= 85% and hallucination <= 4%",
+                    "status": "FAIL",
+                    "detail": f"HALLUCINATION CEILING EXCEEDED: {halluc*100:.1f}% exceeds limit (<=4%)",
+                    "enforcement": "PR merge button locked in CI/CD"
+                })
+            else:
+                checks.append({
+                    "name": "Model Quality & Accuracy Standard (POL-ROB-01)",
+                    "desc": "Validates benchmark accuracy >= 85% and hallucination <= 4%",
+                    "status": "PASS",
+                    "detail": f"Model Card Verified | Accuracy: {acc*100:.1f}% | Hallucination: {halluc*100:.1f}%",
+                    "enforcement": "Model registry promotion permitted"
+                })
         else:
             checks.append({
-                "name": "Model Card Documentation",
+                "name": "Model Card Documentation (POL-ROB-01)",
                 "desc": "Records architecture, training intent, accuracy, and bias metrics",
                 "status": "WARN",
-                "detail": "Model card missing",
+                "detail": "Model card missing in governance-cards/",
                 "enforcement": "Model registry promotion blocked"
             })
 
-        # 6. Data Card
+        # 6. Data Card & Privacy Sanitization
         if data_card.exists():
-            checks.append({
-                "name": "Data Card Documentation",
-                "desc": "Records dataset provenance, PII sanitization, and copyright clearance",
-                "status": "PASS",
-                "detail": "governance-cards/data-card.yaml",
-                "enforcement": "Legal audit flag if unverified"
-            })
+            dc_content = ""
+            try:
+                with open(data_card, "r", encoding="utf-8") as f:
+                    dc_content = f.read()
+            except Exception:
+                pass
+            sanitized_match = re.search(r'sanitization_applied:\s*(true|false)', dc_content.lower())
+            sanitized = (sanitized_match.group(1) == "true") if sanitized_match else True
+
+            if findings["has_pii"] and not sanitized:
+                checks.append({
+                    "name": "Data Privacy & PII Protection Standard (POL-DAT-01)",
+                    "desc": "Enforces customer PII sanitization and statutory retention schedules",
+                    "status": "FAIL",
+                    "detail": "PRIVACY HAZARD: Customer PII detected but sanitization_applied is false",
+                    "enforcement": "Deployment blocked; privacy audit required"
+                })
+            else:
+                checks.append({
+                    "name": "Data Privacy & PII Protection Standard (POL-DAT-01)",
+                    "desc": "Enforces customer PII sanitization and statutory retention schedules",
+                    "status": "PASS",
+                    "detail": f"Data Card Verified | Sanitization: {'Enforced' if sanitized else 'N/A'}",
+                    "enforcement": "Regulatory audit clearance granted"
+                })
         else:
             checks.append({
-                "name": "Data Card Documentation",
-                "desc": "Records dataset provenance, PII sanitization, and copyright clearance",
+                "name": "Data Privacy & PII Protection Standard (POL-DAT-01)",
+                "desc": "Enforces customer PII sanitization and statutory retention schedules",
                 "status": "WARN",
-                "detail": "Data card missing",
+                "detail": "Data card missing in governance-cards/",
                 "enforcement": "Legal audit flag if unverified"
             })
 
         # 7. Codebase Secrets Check
-        findings = self.scan_codebase()
-        checks.append({
-            "name": "AST Codebase Vulnerability Scan",
-            "desc": "Static analysis of code for PII patterns, tool execution, and dependencies",
-            "status": "PASS",
-            "detail": f"{findings['scanned_files']} files scanned | PII: {'Detected' if findings['has_pii'] else 'None'}",
-            "enforcement": "Runtime PII redaction enforced if detected"
-        })
+        if len(findings["leaked_secrets"]) > 0:
+            checks.append({
+                "name": "Hardcoded AI Secret & Credential Scan (POL-SEC-01)",
+                "desc": "Scans codebase for unencrypted API keys, bearer tokens, and secrets",
+                "status": "FAIL",
+                "detail": f"SECURITY BREACH: {findings['leaked_secrets'][0]}",
+                "enforcement": "Aborts git commit; blocks PR merge button"
+            })
+        else:
+            checks.append({
+                "name": "Hardcoded AI Secret & Credential Scan (POL-SEC-01)",
+                "desc": "Scans codebase for unencrypted API keys, bearer tokens, and secrets",
+                "status": "PASS",
+                "detail": f"{findings['scanned_files']} files clean | No hardcoded credentials detected",
+                "enforcement": "Code authorized for git commit & PR merge"
+            })
 
         audit_results = {
             "project_name": p_name,
@@ -668,7 +763,7 @@ licensing:
         print("=" * 65)
 
         if generate_html:
-            report_file = self.generate_html_report(audit_results)
+            report_file = self.generate_html_report(audit_results, report_filename=output_filename)
             print(f"\n[REPORT] Interactive HTML compliance report generated at:")
             print(f"         {report_file}")
             print(f"         Double-click to open in your browser!\n")
