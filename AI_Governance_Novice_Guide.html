@@ -768,6 +768,61 @@
     background: rgba(2,132,199,0.02);
   }
 
+  /* QA ACCORDION / CARDS */
+  .qa-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 14px;
+  }
+
+  .qa-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 18px 20px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .qa-question {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .qa-q-badge {
+    background: var(--navy);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-family: var(--mono);
+    flex-shrink: 0;
+  }
+
+  body.dark-mode .qa-q-badge {
+    background: var(--blue);
+  }
+
+  .qa-question h4 {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.4;
+  }
+
+  body.dark-mode .qa-question h4 {
+    color: #93C5FD;
+  }
+
+  .qa-answer p {
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
   /* BADGES & CALLOUTS */
   .badge {
     display: inline-block;
@@ -814,6 +869,12 @@
     background: var(--green-soft);
     border: 1px solid #A7F3D0;
     color: #065F46;
+  }
+
+  .callout-box.warning {
+    background: var(--amber-soft);
+    border: 1px solid #FDE68A;
+    color: #92400E;
   }
 
   .code-box {
@@ -978,7 +1039,7 @@
     <div class="gov-badge">AI-GOV</div>
     <div class="brand-text">
       <h1>Enterprise AI Governance</h1>
-      <p>Senior Management & Executive Overview &bull; Production Platform</p>
+      <p>Senior Management & Executive Master Overview &bull; Production Platform</p>
     </div>
   </div>
 
@@ -1007,7 +1068,7 @@
   <!-- SIDEBAR -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-search-box">
-      <input type="text" class="search-input" id="sidebar-search" placeholder="Search slides or policies..." onkeyup="filterSidebar()">
+      <input type="text" class="search-input" id="sidebar-search" placeholder="Search slides, policies, Q&A..." onkeyup="filterSidebar()">
     </div>
     <nav class="sidebar-nav" id="sidebar-nav">
       <div class="sidebar-chapter-heading">Executive Summary</div>
@@ -1019,72 +1080,108 @@
           </div>
           <div class="sidebar-item-title">What is the AI Governance Package & Why Did We Build It?</div>
         </div>
-        <div class="sidebar-chapter-heading">Platform Architecture</div>
+        <div class="sidebar-chapter-heading">Business Value & ROI</div>
 
         <div class="sidebar-item" onclick="goToSlide(1)" id="nav-item-1">
           <div class="sidebar-item-top">
             <span class="sidebar-item-num">02</span>
+            <span class="sidebar-item-tag">Value & Benefits</span>
+          </div>
+          <div class="sidebar-item-title">Business Value & ROI: What Do People Get Out of This?</div>
+        </div>
+        <div class="sidebar-chapter-heading">Standards & Policies</div>
+
+        <div class="sidebar-item" onclick="goToSlide(2)" id="nav-item-2">
+          <div class="sidebar-item-top">
+            <span class="sidebar-item-num">03</span>
+            <span class="sidebar-item-tag">What Is Tracked</span>
+          </div>
+          <div class="sidebar-item-title">The Policy Standards & Checks Tracked by the System</div>
+        </div>
+        <div class="sidebar-chapter-heading">Platform Architecture</div>
+
+        <div class="sidebar-item" onclick="goToSlide(3)" id="nav-item-3">
+          <div class="sidebar-item-top">
+            <span class="sidebar-item-num">04</span>
             <span class="sidebar-item-tag">How It Works</span>
           </div>
           <div class="sidebar-item-title">Platform Architecture: The 4-Stage Automated Pipeline</div>
         </div>
         <div class="sidebar-chapter-heading">How to Use It</div>
 
-        <div class="sidebar-item" onclick="goToSlide(2)" id="nav-item-2">
+        <div class="sidebar-item" onclick="goToSlide(4)" id="nav-item-4">
           <div class="sidebar-item-top">
-            <span class="sidebar-item-num">03</span>
+            <span class="sidebar-item-num">05</span>
             <span class="sidebar-item-tag">Integration Workflow</span>
           </div>
           <div class="sidebar-item-title">How to Plug Governance Into Any Existing AI Project</div>
         </div>
         <div class="sidebar-chapter-heading">Executed Sample Projects</div>
 
-        <div class="sidebar-item" onclick="goToSlide(3)" id="nav-item-3">
+        <div class="sidebar-item" onclick="goToSlide(5)" id="nav-item-5">
           <div class="sidebar-item-top">
-            <span class="sidebar-item-num">04</span>
+            <span class="sidebar-item-num">06</span>
             <span class="sidebar-item-tag">Sample Project 1</span>
           </div>
           <div class="sidebar-item-title">Real Executed Sample 1: Customer Support AI (sample-ai-project)</div>
         </div>
         
-        <div class="sidebar-item" onclick="goToSlide(4)" id="nav-item-4">
+        <div class="sidebar-item" onclick="goToSlide(6)" id="nav-item-6">
           <div class="sidebar-item-top">
-            <span class="sidebar-item-num">05</span>
+            <span class="sidebar-item-num">07</span>
             <span class="sidebar-item-tag">Sample Project 2</span>
           </div>
           <div class="sidebar-item-title">Real Executed Sample 2: HR Resume Screener (sample-hr-resume-screening)</div>
         </div>
         
-        <div class="sidebar-item" onclick="goToSlide(5)" id="nav-item-5">
+        <div class="sidebar-item" onclick="goToSlide(7)" id="nav-item-7">
           <div class="sidebar-item-top">
-            <span class="sidebar-item-num">06</span>
+            <span class="sidebar-item-num">08</span>
             <span class="sidebar-item-tag">Sample Project 3</span>
           </div>
           <div class="sidebar-item-title">Real Executed Sample 3: Autonomous Financial Advisor (sample-financial-advisor)</div>
         </div>
         <div class="sidebar-chapter-heading">Deliverables & Reports</div>
 
-        <div class="sidebar-item" onclick="goToSlide(6)" id="nav-item-6">
+        <div class="sidebar-item" onclick="goToSlide(8)" id="nav-item-8">
           <div class="sidebar-item-top">
-            <span class="sidebar-item-num">07</span>
+            <span class="sidebar-item-num">09</span>
             <span class="sidebar-item-tag">What You Get</span>
           </div>
-          <div class="sidebar-item-title">What Outputs & Reports Do You Get After Execution?</div>
+          <div class="sidebar-item-title">What Outputs & Deliverables Does the Business Receive?</div>
+        </div>
+        <div class="sidebar-chapter-heading">Customization & Flexibility</div>
+
+        <div class="sidebar-item" onclick="goToSlide(9)" id="nav-item-9">
+          <div class="sidebar-item-top">
+            <span class="sidebar-item-num">10</span>
+            <span class="sidebar-item-tag">Customization</span>
+          </div>
+          <div class="sidebar-item-title">Is This Customizable? Tailoring Policies, Overlays & Exceptions</div>
         </div>
         <div class="sidebar-chapter-heading">Risk & Enforcement</div>
 
-        <div class="sidebar-item" onclick="goToSlide(7)" id="nav-item-7">
+        <div class="sidebar-item" onclick="goToSlide(10)" id="nav-item-10">
           <div class="sidebar-item-top">
-            <span class="sidebar-item-num">08</span>
+            <span class="sidebar-item-num">11</span>
             <span class="sidebar-item-tag">Company Protection</span>
           </div>
           <div class="sidebar-item-title">What Happens If Something Fails or Standards Are Not Followed?</div>
         </div>
+        <div class="sidebar-chapter-heading">Executive Q&A Appendix</div>
+
+        <div class="sidebar-item" onclick="goToSlide(11)" id="nav-item-11">
+          <div class="sidebar-item-top">
+            <span class="sidebar-item-num">12</span>
+            <span class="sidebar-item-tag">Management FAQ</span>
+          </div>
+          <div class="sidebar-item-title">Appendix: Senior Management & Boardroom Q&A</div>
+        </div>
         <div class="sidebar-chapter-heading">Executive Summary</div>
 
-        <div class="sidebar-item" onclick="goToSlide(8)" id="nav-item-8">
+        <div class="sidebar-item" onclick="goToSlide(12)" id="nav-item-12">
           <div class="sidebar-item-top">
-            <span class="sidebar-item-num">09</span>
+            <span class="sidebar-item-num">13</span>
             <span class="sidebar-item-tag">Next Steps</span>
           </div>
           <div class="sidebar-item-title">Executive Summary & Next Steps for Leadership</div>
@@ -1161,6 +1258,182 @@
           <div class="slide-header">
             <div class="slide-meta">
               <span class="slide-num-pill">Slide 02</span>
+              <span class="slide-chapter-tag">Business Value & ROI</span>
+              <span class="slide-sep">&bull;</span>
+              <span class="slide-tag-pill">Value & Benefits</span>
+            </div>
+            <h2 class="slide-main-title">Business Value & ROI: What Do People Get Out of This?</h2>
+            <p class="slide-main-subtitle">Clear, tangible benefits for Senior Leadership, Engineering Teams, Compliance Officers, and Business Units.</p>
+          </div>
+          <div class="slide-content-body">
+            
+<div class="lead-banner" style="border-left-color:var(--green);">
+  <div class="lead-kicker">Business Value Proposition</div>
+  <h3>Eliminate the false choice between AI speed and enterprise safety.</h3>
+  <p>This platform delivers massive returns across the entire organization by turning governance from a slow manual bottleneck into an instant, automated enabler of innovation.</p>
+</div>
+
+<div class="grid-2" style="margin-top:22px;">
+  <div class="content-box">
+    <div class="box-title" style="color:var(--navy);">1. For Senior Leadership & Board of Directors</div>
+    <ul class="clean-list">
+      <li><b>Protection Against Massive Fines:</b> Directly shields the company from EU AI Act fines (up to &euro;35 Million or 7% of global annual turnover) and GDPR penalties.</li>
+      <li><b>Brand & Reputation Safeguard:</b> Prevents public embarrassment from biased AI models, customer data leaks, or unmonitored chatbot hallucinations.</li>
+      <li><b>Boardroom Confidence:</b> Real-time visibility into every AI project across the enterprise with cryptographic audit proof.</li>
+    </ul>
+  </div>
+
+  <div class="content-box">
+    <div class="box-title" style="color:var(--blue);">2. For Engineering Leads & Developers</div>
+    <ul class="clean-list">
+      <li><b>Zero Paperwork Burden:</b> Developers never fill out 50-page legal questionnaires; the copilot auto-generates manifests and cards in 3 seconds.</li>
+      <li><b>Fast Development Velocity:</b> New AI features go from idea to production without getting stalled in committee queues for months.</li>
+      <li><b>Career-Saving Guardrails:</b> Pre-commit shields catch leaked API keys and copyright violations on developers' laptops before code is pushed.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="grid-2" style="margin-top:18px;">
+  <div class="content-box">
+    <div class="box-title" style="color:var(--purple);">3. For Chief Risk Officers & Legal Compliance</div>
+    <ul class="clean-list">
+      <li><b>Continuous Verification:</b> Replaces annual "point-in-time" reviews with automated checks running on every single code commit.</li>
+      <li><b>Zero Scrambling During Audits:</b> Visual compliance audit reports are generated instantly with 1-click export to PDF.</li>
+      <li><b>Enforceable Rules:</b> Policies are no longer ignored PDF documents on a shared drive; they are active automated software gates.</li>
+    </ul>
+  </div>
+
+  <div class="content-box">
+    <div class="box-title" style="color:var(--amber);">4. For Business Unit Leaders & Product Owners</div>
+    <ul class="clean-list">
+      <li><b>Faster Time-to-Market:</b> Launch competitive AI-powered products months ahead of competitors who are stuck in legal reviews.</li>
+      <li><b>Customer Trust & Market Advantage:</b> Present enterprise clients with verified Model and Data Cards demonstrating responsible AI.</li>
+      <li><b>Cost Predictability:</b> Built-in cost governance prevents runaway cloud bills and token overuse.</li>
+    </ul>
+  </div>
+</div>
+
+          </div>
+        </section>
+        
+        <section class="slide-section" id="slide-3" data-index="2">
+          <div class="slide-header">
+            <div class="slide-meta">
+              <span class="slide-num-pill">Slide 03</span>
+              <span class="slide-chapter-tag">Standards & Policies</span>
+              <span class="slide-sep">&bull;</span>
+              <span class="slide-tag-pill">What Is Tracked</span>
+            </div>
+            <h2 class="slide-main-title">The Policy Standards & Checks Tracked by the System</h2>
+            <p class="slide-main-subtitle">16 enterprise policy standards mapped to international regulations (EU AI Act, NIST AI RMF, ISO 42001, GDPR).</p>
+          </div>
+          <div class="slide-content-body">
+            
+<div class="lead-banner">
+  <div class="lead-kicker">Complete Regulatory Coverage</div>
+  <h3>Comprehensive protection spanning privacy, security, ethics, and legal compliance.</h3>
+  <p>The platform tracks and enforces <b>16 baseline company policies</b> encompassing <b>61 machine-evaluable controls</b>, fully mapped to the world's most stringent regulatory frameworks.</p>
+</div>
+
+<div class="table-card" style="margin-top:20px;">
+  <div class="table-header">The 16 Enterprise AI Governance Policy Standards</div>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th style="width:14%">Policy Code</th>
+        <th style="width:26%">Policy Standard Name</th>
+        <th style="width:38%">What the System Checks & Enforces</th>
+        <th style="width:22%">Regulatory Alignment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>POL-ACC</code></td>
+        <td><b>Accountability & Inventory</b></td>
+        <td>Every AI system must have a designated business owner, technical lead, and system manifest.</td>
+        <td>ISO 42001 / NIST AI RMF</td>
+      </tr>
+      <tr>
+        <td><code>POL-SEC</code></td>
+        <td><b>AI Security & Secret Protection</b></td>
+        <td>Blocks hardcoded API secrets, detects prompt injection risks, scans for vulnerabilities.</td>
+        <td>OWASP Top 10 for LLMs</td>
+      </tr>
+      <tr>
+        <td><code>POL-DAT</code></td>
+        <td><b>Data Privacy & Retention</b></td>
+        <td>Enforces customer PII sanitization and binds strict statutory data deletion schedules.</td>
+        <td>GDPR / CCPA</td>
+      </tr>
+      <tr>
+        <td><code>POL-HUM</code></td>
+        <td><b>Human Oversight & Redress</b></td>
+        <td>Mandates human review for high-impact decisions; prohibits unmonitored autonomous rejections.</td>
+        <td>EU AI Act Article 14</td>
+      </tr>
+      <tr>
+        <td><code>POL-FAI</code></td>
+        <td><b>Fairness & Non-Discrimination</b></td>
+        <td>Measures demographic parity and fairness ratios; prohibits unlawful bias in decision-making.</td>
+        <td>EU AI Act Article 10</td>
+      </tr>
+      <tr>
+        <td><code>POL-ROB</code></td>
+        <td><b>Accuracy & Robustness</b></td>
+        <td>Enforces accuracy benchmark targets (&ge;85%) and caps hallucination rates (&le;4%).</td>
+        <td>EU AI Act Article 15</td>
+      </tr>
+      <tr>
+        <td><code>POL-AGT</code></td>
+        <td><b>Autonomous Agent Guardrails</b></td>
+        <td>Restricts tool calling permissions, bounds recursion depth (&le;3), requires dual-key approval.</td>
+        <td>NIST AI RMF / Agentic Safety</td>
+      </tr>
+      <tr>
+        <td><code>POL-IPR</code></td>
+        <td><b>Intellectual Property & Licensing</b></td>
+        <td>Prohibits unauthorized copyrighted training data and flags restrictive copyleft code licenses.</td>
+        <td>Copyright / IP Standards</td>
+      </tr>
+      <tr>
+        <td><code>POL-SUP</code></td>
+        <td><b>Model Supply Chain Security</b></td>
+        <td>Rejects unsafe Python pickle files; permits only safe serialized weights (Safetensors, ONNX).</td>
+        <td>SLSA / Supply Chain</td>
+      </tr>
+      <tr>
+        <td><code>POL-TRN</code></td>
+        <td><b>Transparency & User Disclosure</b></td>
+        <td>Requires watermarking and explicit user notification that they are interacting with AI.</td>
+        <td>EU AI Act Article 50</td>
+      </tr>
+      <tr>
+        <td><code>POL-CST</code></td>
+        <td><b>Cost & Resource Limits</b></td>
+        <td>Sets monthly budget ceilings, rate limits, and token caps to prevent runaway cloud bills.</td>
+        <td>FinOps Best Practices</td>
+      </tr>
+      <tr>
+        <td><code>POL-REC</code></td>
+        <td><b>Audit Logging & Recordkeeping</b></td>
+        <td>Cryptographically seals policy versions and logs prompt execution trails for 7 years.</td>
+        <td>EU AI Act Article 12 / SEC</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="callout-box info" style="margin-top:16px;">
+  <strong>Management Takeaway:</strong> You do not need to create these policies from scratch. All 16 baseline policies exist today in your package at <code>C:\ai-governance-package\baseline\policies\</code> and are fully customizable to your company's needs.
+</div>
+
+          </div>
+        </section>
+        
+        <section class="slide-section" id="slide-4" data-index="3">
+          <div class="slide-header">
+            <div class="slide-meta">
+              <span class="slide-num-pill">Slide 04</span>
               <span class="slide-chapter-tag">Platform Architecture</span>
               <span class="slide-sep">&bull;</span>
               <span class="slide-tag-pill">How It Works</span>
@@ -1244,10 +1517,10 @@
           </div>
         </section>
         
-        <section class="slide-section" id="slide-3" data-index="2">
+        <section class="slide-section" id="slide-5" data-index="4">
           <div class="slide-header">
             <div class="slide-meta">
-              <span class="slide-num-pill">Slide 03</span>
+              <span class="slide-num-pill">Slide 05</span>
               <span class="slide-chapter-tag">How to Use It</span>
               <span class="slide-sep">&bull;</span>
               <span class="slide-tag-pill">Integration Workflow</span>
@@ -1338,10 +1611,10 @@
           </div>
         </section>
         
-        <section class="slide-section" id="slide-4" data-index="3">
+        <section class="slide-section" id="slide-6" data-index="5">
           <div class="slide-header">
             <div class="slide-meta">
-              <span class="slide-num-pill">Slide 04</span>
+              <span class="slide-num-pill">Slide 06</span>
               <span class="slide-chapter-tag">Executed Sample Projects</span>
               <span class="slide-sep">&bull;</span>
               <span class="slide-tag-pill">Sample Project 1</span>
@@ -1405,10 +1678,10 @@
           </div>
         </section>
         
-        <section class="slide-section" id="slide-5" data-index="4">
+        <section class="slide-section" id="slide-7" data-index="6">
           <div class="slide-header">
             <div class="slide-meta">
-              <span class="slide-num-pill">Slide 05</span>
+              <span class="slide-num-pill">Slide 07</span>
               <span class="slide-chapter-tag">Executed Sample Projects</span>
               <span class="slide-sep">&bull;</span>
               <span class="slide-tag-pill">Sample Project 2</span>
@@ -1479,10 +1752,10 @@
           </div>
         </section>
         
-        <section class="slide-section" id="slide-6" data-index="5">
+        <section class="slide-section" id="slide-8" data-index="7">
           <div class="slide-header">
             <div class="slide-meta">
-              <span class="slide-num-pill">Slide 06</span>
+              <span class="slide-num-pill">Slide 08</span>
               <span class="slide-chapter-tag">Executed Sample Projects</span>
               <span class="slide-sep">&bull;</span>
               <span class="slide-tag-pill">Sample Project 3</span>
@@ -1553,16 +1826,16 @@
           </div>
         </section>
         
-        <section class="slide-section" id="slide-7" data-index="6">
+        <section class="slide-section" id="slide-9" data-index="8">
           <div class="slide-header">
             <div class="slide-meta">
-              <span class="slide-num-pill">Slide 07</span>
+              <span class="slide-num-pill">Slide 09</span>
               <span class="slide-chapter-tag">Deliverables & Reports</span>
               <span class="slide-sep">&bull;</span>
               <span class="slide-tag-pill">What You Get</span>
             </div>
-            <h2 class="slide-main-title">What Outputs & Reports Do You Get After Execution?</h2>
-            <p class="slide-main-subtitle">At the end of the day, what tangible evidence and reports does the business receive?</p>
+            <h2 class="slide-main-title">What Outputs & Deliverables Does the Business Receive?</h2>
+            <p class="slide-main-subtitle">At the end of the day, what tangible evidence and reports does the business receive after execution?</p>
           </div>
           <div class="slide-content-body">
             
@@ -1616,10 +1889,64 @@
           </div>
         </section>
         
-        <section class="slide-section" id="slide-8" data-index="7">
+        <section class="slide-section" id="slide-10" data-index="9">
           <div class="slide-header">
             <div class="slide-meta">
-              <span class="slide-num-pill">Slide 08</span>
+              <span class="slide-num-pill">Slide 10</span>
+              <span class="slide-chapter-tag">Customization & Flexibility</span>
+              <span class="slide-sep">&bull;</span>
+              <span class="slide-tag-pill">Customization</span>
+            </div>
+            <h2 class="slide-main-title">Is This Customizable? Tailoring Policies, Overlays & Exceptions</h2>
+            <p class="slide-main-subtitle">How your organization adapts rules to specific business units, regulatory jurisdictions, and legacy systems.</p>
+          </div>
+          <div class="slide-content-body">
+            
+<div class="lead-banner">
+  <div class="lead-kicker">100% Modular & Extensible</div>
+  <h3>Designed to fit your enterprise, not force your enterprise to fit the software.</h3>
+  <p>Every company has unique risk appetites, industry rules, and legacy systems. This platform provides three simple layers of customization without requiring custom code.</p>
+</div>
+
+<div class="grid-3" style="margin-top:22px;">
+  <div class="content-box">
+    <div class="box-title">1. Edit Baseline Policies</div>
+    <p style="font-size:13px; color:var(--text-secondary); line-height:1.6;">
+      All 16 baseline policies are written in clean Markdown and YAML in <code>baseline/policies/</code>. Your legal or risk team can modify thresholds (e.g. changing accuracy targets from 85% to 90%, or changing data retention from 5 years to 3 years) in minutes.
+    </p>
+  </div>
+
+  <div class="content-box">
+    <div class="box-title">2. Plug In Industry Overlays</div>
+    <p style="font-size:13px; color:var(--text-secondary); line-height:1.6;">
+      Add specialized rules for regulated sectors:
+    </p>
+    <ul class="clean-list" style="margin-top:6px; font-size:12px;">
+      <li><b>Financial Services:</b> SEC/FINRA retention & dual-key authorizations.</li>
+      <li><b>Healthcare & Life Sciences:</b> HIPAA privacy & clinical validation.</li>
+      <li><b>Geography:</b> EU AI Act, US Federal Executive Orders.</li>
+    </ul>
+  </div>
+
+  <div class="content-box">
+    <div class="box-title">3. The 90-Day Exception Gateway</div>
+    <p style="font-size:13px; color:var(--text-secondary); line-height:1.6;">
+      For legacy systems or emergency situations where full compliance is impossible today, developers can submit a formal <b>Exception Request</b>. It requires compensating controls and approval by the <b>AI Safety Board</b>, valid for up to 90 days.
+    </p>
+  </div>
+</div>
+
+<div class="callout-box warning" style="margin-top:20px;">
+  <strong>The Monotonicity Safety Guarantee:</strong> Customization can only make rules <i>stricter</i> or grant formal, audited exceptions. No rogue team or sub-department can secretly disable safety standards or water down corporate policies.
+</div>
+
+          </div>
+        </section>
+        
+        <section class="slide-section" id="slide-11" data-index="10">
+          <div class="slide-header">
+            <div class="slide-meta">
+              <span class="slide-num-pill">Slide 11</span>
               <span class="slide-chapter-tag">Risk & Enforcement</span>
               <span class="slide-sep">&bull;</span>
               <span class="slide-tag-pill">Company Protection</span>
@@ -1666,15 +1993,15 @@
 
 <div class="grid-2" style="margin-top:20px;">
   <div class="content-box">
-    <div class="box-title">What If an Urgent Exception is Needed? (The Lawful Fallback)</div>
+    <div class="box-title">Clear Remediation for Engineers</div>
     <p style="font-size:13px; line-height:1.6; color:var(--text-main);">
-      If a legacy system or emergency fix cannot comply immediately, <b>developers cannot secretly bypass the system</b>. Instead, they must submit a formal Exception Request specifying compensating controls, valid for up to 90 days, requiring approval by the <b>AI Safety Board</b>.
+      Whenever an action is blocked, the developer receives a clear, plain-English message explaining exactly which company policy failed and the exact 1-step action needed to fix it.
     </p>
   </div>
   <div class="content-box">
-    <div class="box-title">Zero Guesswork for Engineers</div>
+    <div class="box-title">Audit Logging of Blocks</div>
     <p style="font-size:13px; line-height:1.6; color:var(--text-main);">
-      Whenever an action is blocked, the developer receives a clear, plain-English message explaining exactly which company policy failed and the exact 1-step action needed to fix it.
+      Every prevented breach and blocked release is logged in the compliance record, providing leadership with tangible proof that enterprise guardrails are working.
     </p>
   </div>
 </div>
@@ -1682,10 +2009,116 @@
           </div>
         </section>
         
-        <section class="slide-section" id="slide-9" data-index="8">
+        <section class="slide-section" id="slide-12" data-index="11">
           <div class="slide-header">
             <div class="slide-meta">
-              <span class="slide-num-pill">Slide 09</span>
+              <span class="slide-num-pill">Slide 12</span>
+              <span class="slide-chapter-tag">Executive Q&A Appendix</span>
+              <span class="slide-sep">&bull;</span>
+              <span class="slide-tag-pill">Management FAQ</span>
+            </div>
+            <h2 class="slide-main-title">Appendix: Senior Management & Boardroom Q&A</h2>
+            <p class="slide-main-subtitle">Direct, plain-English answers to the top 8 questions asked by Senior Executives, Directors, and Legal Counsel.</p>
+          </div>
+          <div class="slide-content-body">
+            
+<div class="qa-grid">
+  <!-- Q1 -->
+  <div class="qa-card">
+    <div class="qa-question">
+      <span class="qa-q-badge">Q1</span>
+      <h4>Will this slow down our software developers and delay AI product launches?</h4>
+    </div>
+    <div class="qa-answer">
+      <p><b>No, it actually accelerates delivery.</b> Instead of engineers waiting 4 to 6 weeks for legal and security review committees to review 50-page questionnaires, the automated copilot inspects the code and sets up 100% compliant policies in <b>3 seconds</b>. Development proceeds at full speed with continuous automated guardrails.</p>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="qa-card">
+    <div class="qa-question">
+      <span class="qa-q-badge">Q2</span>
+      <h4>Is this compliant with international regulations like the EU AI Act, NIST AI RMF, and ISO 42001?</h4>
+    </div>
+    <div class="qa-answer">
+      <p><b>Yes.</b> The 16 baseline policies and 61 machine controls directly map to the mandatory articles of the <b>EU AI Act</b> (Articles 9–15: risk management, data governance, human oversight, transparency, accuracy), <b>NIST AI RMF 1.0</b> (Govern, Map, Measure, Manage), and <b>ISO/IEC 42001:2023</b>.</p>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="qa-card">
+    <div class="qa-question">
+      <span class="qa-q-badge">Q3</span>
+      <h4>Can our company customize the rules for our specific industry (e.g. Healthcare or Banking)?</h4>
+    </div>
+    <div class="qa-answer">
+      <p><b>Yes, 100%.</b> All baseline policies are stored in plain, human-readable Markdown and YAML. Your risk team can adjust thresholds (e.g. accuracy limits, spending caps, retention periods) in minutes, or attach industry-specific overlays for financial, healthcare, or government requirements.</p>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="qa-card">
+    <div class="qa-question">
+      <span class="qa-q-badge">Q4</span>
+      <h4>What if an emergency software patch must go live immediately and cannot meet every standard today?</h4>
+    </div>
+    <div class="qa-answer">
+      <p>The platform includes an official <b>Exception Request Process</b>. A project team can apply for a formal, time-bounded waiver (valid up to 90 days) requiring documented compensating safety controls and sign-off by the <b>AI Safety Board</b>. This provides necessary business flexibility without creating unmonitored loopholes.</p>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="qa-card">
+    <div class="qa-question">
+      <span class="qa-q-badge">Q5</span>
+      <h4>Does this system send our proprietary code or company data to external cloud servers?</h4>
+    </div>
+    <div class="qa-answer">
+      <p><b>No.</b> The entire governance platform runs 100% <b>locally and within your own private corporate infrastructure</b> (your developer laptops, internal servers, or private GitHub Actions runners). It never sends your code, intellectual property, or confidential customer data to third-party AI services.</p>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="qa-card">
+    <div class="qa-question">
+      <span class="qa-q-badge">Q6</span>
+      <h4>How do we prove compliance when external regulators or auditors come to inspect us?</h4>
+    </div>
+    <div class="qa-answer">
+      <p>The platform generates an interactive <b>Compliance Audit Report</b> (<code>governance-compliance-report.html</code>) stamped with an immutable cryptographic SHA-256 seal. With one click, you can export a clean, executive PDF proving exactly which policies were enforced, when they were verified, and who approved them.</p>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="qa-card">
+    <div class="qa-question">
+      <span class="qa-q-badge">Q7</span>
+      <h4>What is the ongoing cost and maintenance overhead of running this framework?</h4>
+    </div>
+    <div class="qa-answer">
+      <p><b>Virtually zero recurring software licensing cost.</b> The entire package is built using open-standard, vendor-agnostic architecture. It runs on existing developer machines and CI/CD pipelines without requiring expensive multi-million dollar enterprise SaaS subscriptions.</p>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="qa-card">
+    <div class="qa-question">
+      <span class="qa-q-badge">Q8</span>
+      <h4>Who owns and approves changes to company AI policies?</h4>
+    </div>
+    <div class="qa-answer">
+      <p>Policy governance is managed via a Git-based workflow owned by your company's <b>AI Safety Review Board</b> (typically comprising the Chief Risk Officer, Head of AI/Engineering, and Legal Counsel). Changes follow a standard Pull Request review process requiring multi-stakeholder approval before taking effect.</p>
+    </div>
+  </div>
+</div>
+
+          </div>
+        </section>
+        
+        <section class="slide-section" id="slide-13" data-index="12">
+          <div class="slide-header">
+            <div class="slide-meta">
+              <span class="slide-num-pill">Slide 13</span>
               <span class="slide-chapter-tag">Executive Summary</span>
               <span class="slide-sep">&bull;</span>
               <span class="slide-tag-pill">Next Steps</span>
@@ -1750,17 +2183,21 @@
   </div>
 
   <div style="display:flex; align-items:center; gap:16px;">
-    <span class="footer-indicator" id="footer-slide-counter">Slide 1 of 9</span>
+    <span class="footer-indicator" id="footer-slide-counter">Slide 1 of 13</span>
     <select class="footer-dropdown" id="slide-jump-select" onchange="goToSlide(parseInt(this.value))">
       <option value="0">01. What is the AI Governance Package & Why Did W...</option>
-<option value="1">02. Platform Architecture: The 4-Stage Automated ...</option>
-<option value="2">03. How to Plug Governance Into Any Existing AI P...</option>
-<option value="3">04. Real Executed Sample 1: Customer Support AI (...</option>
-<option value="4">05. Real Executed Sample 2: HR Resume Screener (s...</option>
-<option value="5">06. Real Executed Sample 3: Autonomous Financial ...</option>
-<option value="6">07. What Outputs & Reports Do You Get After Execu...</option>
-<option value="7">08. What Happens If Something Fails or Standards ...</option>
-<option value="8">09. Executive Summary & Next Steps for Leadership...</option>
+<option value="1">02. Business Value & ROI: What Do People Get Out ...</option>
+<option value="2">03. The Policy Standards & Checks Tracked by the ...</option>
+<option value="3">04. Platform Architecture: The 4-Stage Automated ...</option>
+<option value="4">05. How to Plug Governance Into Any Existing AI P...</option>
+<option value="5">06. Real Executed Sample 1: Customer Support AI (...</option>
+<option value="6">07. Real Executed Sample 2: HR Resume Screener (s...</option>
+<option value="7">08. Real Executed Sample 3: Autonomous Financial ...</option>
+<option value="8">09. What Outputs & Deliverables Does the Business...</option>
+<option value="9">10. Is This Customizable? Tailoring Policies, Ove...</option>
+<option value="10">11. What Happens If Something Fails or Standards ...</option>
+<option value="11">12. Appendix: Senior Management & Boardroom Q&A...</option>
+<option value="12">13. Executive Summary & Next Steps for Leadership...</option>
 
     </select>
   </div>
@@ -1768,7 +2205,7 @@
 
 <script>
   let currentSlide = 0;
-  const totalSlides = 9;
+  const totalSlides = 13;
   let isFullView = false;
 
   function updateSlideUI() {
